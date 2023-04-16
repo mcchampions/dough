@@ -123,7 +123,7 @@ public final class ItemUtils {
             }
 
             // PersistentDataContainer
-            if (aMeta.getPersistentDataContainer().equals(bMeta.getPersistentDataContainer())) {
+            if (!aMeta.getPersistentDataContainer().equals(bMeta.getPersistentDataContainer())) {
                 return false;
             }
 
