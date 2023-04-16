@@ -122,6 +122,11 @@ public final class ItemUtils {
                 return false;
             }
 
+            // PersistentDataContainer
+            if (aMeta.getPersistentDataContainer().equals(bMeta.getPersistentDataContainer())) {
+                return false;
+            }
+
             // Lore
             if (aMeta.hasLore() != bMeta.hasLore()) {
                 return false;
