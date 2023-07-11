@@ -1,20 +1,16 @@
 package io.github.bakedlibs.dough.protection.modules;
 
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-
-import org.bukkit.OfflinePlayer;
-import org.bukkit.block.Block;
-import org.bukkit.plugin.Plugin;
-
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.permissions.Permission;
 import com.plotsquared.core.player.PlotPlayer;
 import com.plotsquared.core.plot.Plot;
-import com.plotsquared.core.util.Permissions;
-
 import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.block.Block;
+import org.bukkit.plugin.Plugin;
 
 public class PlotSquaredProtectionModule implements ProtectionModule {
 
@@ -53,12 +49,12 @@ public class PlotSquaredProtectionModule implements ProtectionModule {
 
         switch (action) {
             case INTERACT_BLOCK:
-                return Permissions.hasPermission(player, Permission.PERMISSION_ADMIN_INTERACT_UNOWNED);
+                return player.hasPermission(Permission.PERMISSION_ADMIN_INTERACT_UNOWNED);
             case ATTACK_PLAYER:
-                return Permissions.hasPermission(player, Permission.PERMISSION_ADMIN_PVP);
+                return player.hasPermission(Permission.PERMISSION_ADMIN_PVP);
             case PLACE_BLOCK:
             default:
-                return Permissions.hasPermission(player, Permission.PERMISSION_ADMIN_BUILD_UNOWNED);
+                return player.hasPermission(Permission.PERMISSION_ADMIN_BUILD_UNOWNED);
         }
     }
 }
