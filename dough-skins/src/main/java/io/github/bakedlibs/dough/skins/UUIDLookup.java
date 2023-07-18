@@ -1,6 +1,12 @@
 package io.github.bakedlibs.dough.skins;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import io.github.bakedlibs.dough.common.DoughLogger;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -8,19 +14,10 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
-
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-
 import org.apache.commons.lang.Validate;
 import org.bukkit.plugin.Plugin;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import io.github.bakedlibs.dough.common.DoughLogger;
 
 public class UUIDLookup {
 
@@ -29,7 +26,8 @@ public class UUIDLookup {
     private static final String ERROR_TOKEN = "error";
     private static final Pattern NAME_PATTERN = Pattern.compile("[\\w]+");
 
-    private UUIDLookup() {}
+    private UUIDLookup() {
+    }
 
     @ParametersAreNonnullByDefault
     public static @Nonnull CompletableFuture<UUID> forUsername(Plugin plugin, String name) {
@@ -46,19 +44,28 @@ public class UUIDLookup {
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
             String targetUrl = "https://api.mojang.com/users/profiles/minecraft/" + name;
 
-            try (InputStreamReader reader = new InputStreamReader(new URL(targetUrl).openStream(), StandardCharsets.UTF_8)) {
-                JsonElement element = JSON_PARSER.parse(reader);
+            try {
+                HttpURLConnection httpConn = (HttpURLConnection) new URL(targetUrl).openConnection();
 
-                if (!(element instanceof JsonNull)) {
-                    JsonObject obj = element.getAsJsonObject();
+                if (httpConn.getResponseCode() != 200) {
+                    future.completeExceptionally(new RuntimeException("Response not success"));
+                    return;
+                }
 
-                    if (obj.has(ERROR_TOKEN)) {
-                        String error = obj.get(ERROR_TOKEN).getAsString();
-                        future.completeExceptionally(new UnsupportedOperationException(error));
+                try (InputStreamReader reader = new InputStreamReader(httpConn.getInputStream(), StandardCharsets.UTF_8)) {
+                    JsonElement element = JSON_PARSER.parse(reader);
+
+                    if (!(element instanceof JsonNull)) {
+                        JsonObject obj = element.getAsJsonObject();
+
+                        if (obj.has(ERROR_TOKEN)) {
+                            String error = obj.get(ERROR_TOKEN).getAsString();
+                            future.completeExceptionally(new UnsupportedOperationException(error));
+                        }
+
+                        String id = obj.get("id").getAsString();
+                        future.complete(UUID.fromString(UUID_PATTERN.matcher(id).replaceAll("$1-$2-$3-$4-$5")));
                     }
-
-                    String id = obj.get("id").getAsString();
-                    future.complete(UUID.fromString(UUID_PATTERN.matcher(id).replaceAll("$1-$2-$3-$4-$5")));
                 }
             } catch (MalformedURLException e) {
                 logger.log(Level.SEVERE, "Malformed sessions url: {0}", targetUrl);
