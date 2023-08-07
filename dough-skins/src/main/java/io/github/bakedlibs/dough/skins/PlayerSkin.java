@@ -1,6 +1,5 @@
 package io.github.bakedlibs.dough.skins;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -111,10 +110,7 @@ public final class PlayerSkin {
                 logger.log(Level.SEVERE, "Malformed sessions url: {0}", targetUrl);
                 future.completeExceptionally(e);
             } catch (IOException e) {
-                if (!(e instanceof FileNotFoundException)) {
-                    logger.log(Level.SEVERE, "Exception while requesting skin: {0}", targetUrl);
-                }
-
+                logger.log(Level.SEVERE, "Exception while requesting skin: {0}", targetUrl);
                 future.completeExceptionally(e);
             }
         });
