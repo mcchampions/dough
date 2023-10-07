@@ -1,16 +1,13 @@
 package io.github.bakedlibs.dough.skins;
 
-import java.util.UUID;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.bukkit.inventory.meta.SkullMeta;
-
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-
 import io.github.bakedlibs.dough.reflection.ReflectionUtils;
+import java.util.UUID;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import org.bukkit.Bukkit;
+import org.bukkit.inventory.meta.SkullMeta;
 
 final class CustomGameProfile extends GameProfile {
 
@@ -37,7 +34,7 @@ final class CustomGameProfile extends GameProfile {
         ReflectionUtils.setFieldValue(meta, "profile", this);
 
         // Forces SkullMeta to properly deserialize and serialize the profile
-        meta.setOwningPlayer(meta.getOwningPlayer());
+        meta.setOwnerProfile(Bukkit.createPlayerProfile(meta.getOwningPlayer().getUniqueId(), PLAYER_NAME));
 
         // Now override the texture again
         ReflectionUtils.setFieldValue(meta, "profile", this);

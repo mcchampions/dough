@@ -33,14 +33,10 @@
     </issueManagement>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>osshr</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-
         <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>github</id>
+            <name>GitHub StarWishsama Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/StarWishsama/dough</url>
         </repository>
     </distributionManagement>
 
