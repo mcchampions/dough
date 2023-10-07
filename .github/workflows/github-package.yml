@@ -31,6 +31,6 @@ jobs:
         run: mvn -B package --file pom.xml --errors
       - name: Publish dough
         if: github.event_name != 'pull_request'
-        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml --file pom.xml --errors
+        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml --file pom-github-package.xml --errors
         env:
           GITHUB_TOKEN: ${{ github.token }}
