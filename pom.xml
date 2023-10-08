@@ -36,7 +36,7 @@
         <repository>
             <id>github</id>
             <name>GitHub StarWishsama Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/StarWishsama/Slimefun-Secret</url>
+            <url>https://maven.pkg.github.com/StarWishsama/dough</url>
         </repository>
     </distributionManagement>
 
