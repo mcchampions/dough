@@ -41,6 +41,6 @@ jobs:
 
     - name: Publish dough
       if: github.event_name != 'pull_request'
-      run: mvn -B deploy --projects dough-api --file pom.xml --errors
+      run: mvn -B deploy --file pom.xml --errors
       env:
         GITHUB_TOKEN: ${{ github.token }}

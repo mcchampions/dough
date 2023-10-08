@@ -10,6 +10,14 @@
         <version>1.3.0</version>
     </parent>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub StarWishsama Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/StarWishsama/dough</url>
+        </repository>
+    </distributionManagement>
+
     <artifactId>dough-common</artifactId>
     <packaging>jar</packaging>
 
