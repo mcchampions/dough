@@ -7,10 +7,13 @@ on:
   pull_request:
     branches:
     - main
+  workflow_dispatch:
 
 jobs:
   build:
-
+    permissions:
+      contents: read
+      packages: write
     name: Maven build
     runs-on: ubuntu-latest
 
@@ -35,3 +38,9 @@ jobs:
 
     - name: Build with Maven
       run: mvn package --file pom.xml
+
+    - name: Publish dough
+      if: github.event_name != 'pull_request'
+      run: mvn -B deploy --projects dough-api --file pom.xml --errors
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
