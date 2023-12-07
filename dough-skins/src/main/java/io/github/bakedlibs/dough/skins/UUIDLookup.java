@@ -1,10 +1,5 @@
 package io.github.bakedlibs.dough.skins;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import io.github.bakedlibs.dough.common.DoughLogger;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -18,10 +13,18 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
+
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.commons.lang.Validate;
 import org.bukkit.plugin.Plugin;
+
+import io.github.bakedlibs.dough.common.DoughLogger;
 
 public class UUIDLookup {
 
@@ -62,7 +65,7 @@ public class UUIDLookup {
                 .thenApply(HttpResponse::body)
                 .thenApply(s -> JSON_PARSER.parse(s).getAsJsonObject())
                 .thenApply(jsonObject -> {
-                    if (jsonObject.get("code").getAsString().equals("player.found")) {
+                    if (jsonObject.get("success").getAsBoolean()) {
                         JsonObject data = jsonObject.getAsJsonObject("data");
                         JsonObject player = data.getAsJsonObject("player");
                         return UUID.fromString(player.get("id").getAsString());

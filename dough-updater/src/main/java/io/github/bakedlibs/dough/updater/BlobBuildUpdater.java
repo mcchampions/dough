@@ -13,7 +13,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.logging.Level;
 
-// TODO: add a way to get the current version.
 // TODO: checksum checking.
 public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
 
@@ -28,7 +27,7 @@ public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
     }
 
     public BlobBuildUpdater(@Nonnull Plugin plugin, @Nonnull File file, @Nonnull String project, @Nonnull String releaseChannel) {
-        super(plugin, file, new PrefixedVersion(releaseChannel, 0));
+        super(plugin, file, extractBuild(releaseChannel + " - ", plugin));
 
         this.project = project;
         this.releaseChannel = releaseChannel;
@@ -51,10 +50,11 @@ public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
                     }
 
                     JsonObject data = json.getAsJsonObject("data");
-                    int latestVersion = data.get("build_id").getAsInt();
-                    URL downloadURL = new URI(data.get("file_download_url").getAsString()).toURL();
+                    int latestVersion = data.get("buildId").getAsInt();
+                    URL downloadURL = new URI(data.get("fileDownloadUrl").getAsString()).toURL();
+                    String checksum = data.get("checksum").getAsString();
 
-                    return new UpdateInfo(downloadURL, new PrefixedVersion(releaseChannel, latestVersion));
+                    return new UpdateInfo(downloadURL, new PrefixedVersion(releaseChannel + " - ", latestVersion), checksum);
                 }
             });
         } catch (MalformedURLException | URISyntaxException e ) {
