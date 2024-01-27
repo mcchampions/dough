@@ -13,11 +13,10 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.logging.Level;
 
-// TODO: checksum checking.
 public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
 
     private static final String SITE_URL = "https://blob.build";
-    private static final String API_URL = SITE_URL + "/api/projects";
+    private static final String API_URL = SITE_URL + "/api/builds";
 
     private final String project;
     private final String releaseChannel;
@@ -53,8 +52,10 @@ public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
                     int latestVersion = data.get("buildId").getAsInt();
                     URL downloadURL = new URI(data.get("fileDownloadUrl").getAsString()).toURL();
                     String checksum = data.get("checksum").getAsString();
+                    PrefixedVersion latest = new PrefixedVersion(releaseChannel + " - ", latestVersion);
+                    getLatestVersion().complete(latest);
 
-                    return new UpdateInfo(downloadURL, new PrefixedVersion(releaseChannel + " - ", latestVersion), checksum);
+                    return new UpdateInfo(downloadURL, latest, checksum);
                 }
             });
         } catch (MalformedURLException | URISyntaxException e ) {
