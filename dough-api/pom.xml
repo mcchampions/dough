@@ -7,21 +7,13 @@
     <parent>
         <groupId>io.github.baked-libs</groupId>
         <artifactId>dough</artifactId>
-        <version>1.3.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>dough-api</artifactId>
     <packaging>jar</packaging>
 
     <description>This is the complete API of dough.</description>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub StarWishsama Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/StarWishsama/dough</url>
-        </repository>
-    </distributionManagement>
 
     <profiles>
         <profile>
@@ -275,7 +267,7 @@
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
-            <version>7.0.8</version>
+            <version>7.0.9</version>
             <scope>provided</scope>
         </dependency>
 
@@ -291,7 +283,7 @@
         <dependency>
             <groupId>net.coreprotect</groupId>
             <artifactId>coreprotect</artifactId>
-            <version>21.2</version>
+            <version>21.3</version>
             <scope>provided</scope>
         </dependency>
 
@@ -315,7 +307,7 @@
         <dependency>
             <groupId>com.github.TechFortress</groupId>
             <artifactId>GriefPrevention</artifactId>
-            <version>16.18.1</version>
+            <version>16.18.2</version>
             <scope>provided</scope>
         </dependency>
 
@@ -331,13 +323,13 @@
         <dependency>
             <groupId>me.lucko</groupId>
             <artifactId>helper</artifactId>
-            <version>5.6.10</version>
+            <version>5.6.14</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.massivecraft</groupId>
             <artifactId>Factions</artifactId>
-            <version>1.6.9.5-2.7.0-STABLE</version>
+            <version>1.6.9.5-4.1.4-STABLE</version>
             <scope>provided</scope>
         </dependency>
 
@@ -413,7 +405,7 @@
         <dependency>
             <groupId>com.github.angeschossen</groupId>
             <artifactId>ChestProtectAPI</artifactId>
-            <version>3.6.0</version>
+            <version>3.9.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -430,6 +422,22 @@
             <groupId>com.github.WiIIiam278</groupId>
             <artifactId>HuskTowns</artifactId>
             <version>1.7</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- ShopChest -->
+        <dependency>
+            <groupId>de.epiceric</groupId>
+            <artifactId>ShopChest</artifactId>
+            <version>1.13-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Bolt -->
+        <dependency>
+            <groupId>org.popcraft</groupId>
+            <artifactId>bolt-bukkit</artifactId>
+            <version>1.0.580</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
