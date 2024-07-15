@@ -19,7 +19,7 @@ public interface PlayerHeadAdapter {
         try {
             MinecraftVersion version = MinecraftVersion.get();
 
-            if (PaperLib.isPaper() && version.isAtLeast(1, 19)) {
+            if (PaperLib.isPaper()) {
                 return new PlayerHeadAdapterPaper();
             }
 
