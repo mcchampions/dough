@@ -14,6 +14,15 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Skull;
 
 public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
+    private final Method getName;
+    private final Method getValue;
+    private final Method getSignature;
+
+    PlayerHeadAdapterPaper() {
+        getName = ReflectionUtils.getMethod(Property.class, "getName");
+        getValue = ReflectionUtils.getMethod(Property.class, "getValue");
+        getSignature = ReflectionUtils.getMethod(Property.class, "getSignature");
+    }
 
     @Override
     @ParametersAreNonnullByDefault
@@ -26,10 +35,6 @@ public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
         Property property = profile.getProperties().get("textures").iterator().next();
 
         PlayerProfile paperPlayerProfile = Bukkit.createProfile(profile.getId(), profile.getName());
-
-        Method getName = ReflectionUtils.getMethod(Property.class, "getName");
-        Method getValue = ReflectionUtils.getMethod(Property.class, "getValue");
-        Method getSignature = ReflectionUtils.getMethod(Property.class, "getSignature");
 
         // Old authlib check
         if (getName != null && getValue != null && getSignature != null) {
