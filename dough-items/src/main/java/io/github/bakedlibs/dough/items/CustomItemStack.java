@@ -3,7 +3,6 @@ package io.github.bakedlibs.dough.items;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -24,7 +23,12 @@ public class CustomItemStack extends ItemStack {
     }
 
     public CustomItemStack(ItemStack item, Consumer<ItemMeta> meta) {
-        super(item);
+        super(item.getType(), item.getAmount());
+
+        if (item.hasItemMeta()) {
+            setItemMeta(item.getItemMeta());
+        }
+
         ItemMeta im = getItemMeta();
         meta.accept(im);
         setItemMeta(im);
