@@ -23,7 +23,7 @@ public interface PlayerHeadAdapter {
                 return new PlayerHeadAdapterPaper();
             }
 
-            if (version.isAtLeast(1, 20, 5)) {
+            if (version.isAtLeast(1, 21)) {
                 // 1.20.5 mappings
                 return new PlayerHeadAdapter20v5();
             } else if (version.isAtLeast(1, 18)) {
