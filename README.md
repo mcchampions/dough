@@ -114,17 +114,3 @@ To shadow dough and relocate it:
   </plugins>
 </build>
 ```
-
-## :sparkles: Features and Documentation
-**TODO: Finish this section**
-
-## :headphones: Discord server
-You can also find us on discord by the way!
-If you need any help with dough or have a question regarding this project, feel free to join and connect with other members of the community.
-Note that this server is not as active at times, so response times may vary.
-
-<p align="center">
-  <a href="https://discord.gg/c8tk8rP8Wb">
-    <img src="https://discordapp.com/api/guilds/862336191839600650/widget.png?style=banner3" alt="Discord Invite"/>
-  </a>
-</p>
