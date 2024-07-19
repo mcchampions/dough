@@ -1,0 +1,16 @@
+name: Package Maintainer
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 17 * * *'
+
+jobs:
+  delete-package-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v4
+        with:
+          package-name: 'io.github.baked-libs.dough'
+          package-type: 'maven'
+          min-versions-to-keep: 2
