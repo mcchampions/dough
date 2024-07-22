@@ -15,7 +15,11 @@ import org.bukkit.inventory.meta.PotionMeta;
 public class CustomItemStack extends ItemStack {
 
     public CustomItemStack(ItemStack item) {
-        super(item);
+        super(item.getType(), item.getAmount());
+
+        if (item.hasItemMeta()) {
+            setItemMeta(item.getItemMeta());
+        }
     }
 
     public CustomItemStack(Material type) {
@@ -36,7 +40,6 @@ public class CustomItemStack extends ItemStack {
 
     public CustomItemStack(Material type, Consumer<ItemMeta> meta) {
         this(new ItemStack(type), meta);
-
     }
 
     public CustomItemStack(ItemStack item, String name, String... lore) {
@@ -113,12 +116,22 @@ public class CustomItemStack extends ItemStack {
     }
 
     public CustomItemStack(ItemStack item, int amount) {
-        super(item);
+        super(item.getType(), item.getAmount());
+
+        if (item.hasItemMeta()) {
+            setItemMeta(item.getItemMeta());
+        }
+
         setAmount(amount);
     }
 
     public CustomItemStack(ItemStack item, Material type) {
-        super(item);
+        super(item.getType(), item.getAmount());
+
+        if (item.hasItemMeta()) {
+            setItemMeta(item.getItemMeta());
+        }
+
         setType(type);
     }
 
