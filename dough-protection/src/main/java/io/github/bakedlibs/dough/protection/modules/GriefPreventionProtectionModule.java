@@ -74,7 +74,7 @@ public class GriefPreventionProtectionModule implements ProtectionModule {
         return checkLegacy(claim, (Player) p, action, l);
     }
 
-    private boolean checkPermission(Claim claim, OfflinePlayer offline, Interaction action) {
+    private static boolean checkPermission(Claim claim, OfflinePlayer offline, Interaction action) {
         // Do our best to translate Interaction to ClaimPermission.
         ClaimPermission permission;
         if (action == Interaction.INTERACT_BLOCK || action == Interaction.ATTACK_ENTITY) {
@@ -94,7 +94,7 @@ public class GriefPreventionProtectionModule implements ProtectionModule {
         return claim.checkPermission(offline.getUniqueId(), permission, null) == null;
     }
 
-    private boolean checkLegacy(Claim claim, Player player, Interaction action, Location location) {
+    private static boolean checkLegacy(Claim claim, Player player, Interaction action, Location location) {
         return switch (action) {
             case INTERACT_BLOCK -> claim.allowContainers(player) == null;
             case BREAK_BLOCK -> claim.allowBreak(player, location.getBlock().getType()) == null;

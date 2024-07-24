@@ -36,8 +36,7 @@ public class FunnyGuildsProtectionModule implements ProtectionModule {
         return p instanceof Player && ProtectionSystem.isProtected((Player) p, l, convert(action)).isEmpty();
     }
 
-    private boolean convert(Interaction protectableAction) {
+    private static boolean convert(Interaction protectableAction) {
         return protectableAction == Interaction.PLACE_BLOCK;
     }
-
 }

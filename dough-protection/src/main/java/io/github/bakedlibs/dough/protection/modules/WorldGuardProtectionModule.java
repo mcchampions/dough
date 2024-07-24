@@ -68,7 +68,7 @@ public class WorldGuardProtectionModule implements ProtectionModule {
         }
     }
 
-    private StateFlag convert(Interaction action) {
+    private static StateFlag convert(Interaction action) {
         return switch (action) {
             case ATTACK_PLAYER -> Flags.PVP;
             case ATTACK_ENTITY -> Flags.DAMAGE_ANIMALS;

@@ -42,7 +42,7 @@ public class PlotSquaredProtectionModule implements ProtectionModule {
         return plot == null || plot.isAdded(p.getUniqueId()) || check(p, action);
     }
 
-    private boolean check(OfflinePlayer p, Interaction action) {
+    private static boolean check(OfflinePlayer p, Interaction action) {
         PlotPlayer<OfflinePlayer> player = PlotPlayer.from(p);
 
         return switch (action) {

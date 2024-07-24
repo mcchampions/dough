@@ -147,7 +147,7 @@ public class MinecraftRecipe<T extends Recipe> {
     public static <T extends Recipe> Optional<MinecraftRecipe<? super T>> of(T recipe) {
         Class<?> recipeClass = recipe.getClass();
 
-        return recipeTypes.stream().filter(type -> type.getRecipeClass().isAssignableFrom(recipeClass)).findAny().map(type -> (MinecraftRecipe<? super T>) type);
+        return recipeTypes.stream().filter(type -> type.recipeClass.isAssignableFrom(recipeClass)).findAny().map(type -> (MinecraftRecipe<? super T>) type);
     }
 
     public static Stream<MinecraftRecipe<?>> stream() {

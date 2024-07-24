@@ -37,7 +37,7 @@ public class TownyProtectionModule implements ProtectionModule {
         return PlayerCacheUtil.getCachePermission(player, l, l.getBlock().getType(), convert(action));
     }
 
-    private ActionType convert(Interaction action) {
+    private static ActionType convert(Interaction action) {
         return switch (action) {
             case INTERACT_BLOCK, INTERACT_ENTITY, ATTACK_PLAYER, ATTACK_ENTITY -> ActionType.ITEM_USE;
             case BREAK_BLOCK -> ActionType.DESTROY;

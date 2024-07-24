@@ -28,7 +28,7 @@ abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater
         prepareUpdateFolder();
     }
 
-    private void prepareUpdateFolder() {
+    private static void prepareUpdateFolder() {
         File dir = new File("plugins/" + Bukkit.getUpdateFolder());
 
         if (!dir.exists()) {

@@ -112,7 +112,7 @@ public class RecipeSnapshot {
      * 
      * @return The Inputs for the given Recipe
      */
-    public <T extends Recipe> RecipeChoice[] getRecipeInput(MinecraftRecipe<? super T> recipeType, T recipe) {
+    public static <T extends Recipe> RecipeChoice[] getRecipeInput(MinecraftRecipe<? super T> recipeType, T recipe) {
         return recipeType.getInputs(recipe);
     }
 

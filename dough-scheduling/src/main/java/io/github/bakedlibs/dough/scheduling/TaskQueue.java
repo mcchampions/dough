@@ -35,7 +35,7 @@ public class TaskQueue {
         run(plugin, head, 0);
     }
 
-    private void run(Plugin plugin, TaskNode node, int index) {
+    private static void run(Plugin plugin, TaskNode node, int index) {
         if (node == null) {
             return;
         }

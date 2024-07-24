@@ -170,6 +170,6 @@ public final class ChunkPosition {
         World w = this.world.get();
         final String worldName = w != null ? w.getName() : "<no reference>";
 
-        return String.format("ChunkPosition(world=%s, x=%d, z=%d, position=%d)", worldName, getX(), getZ(), getPosition());
+        return String.format("ChunkPosition(world=%s, x=%d, z=%d, position=%d)", worldName, getX(), getZ(), position);
     }
 }

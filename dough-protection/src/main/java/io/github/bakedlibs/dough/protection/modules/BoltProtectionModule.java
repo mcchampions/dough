@@ -42,7 +42,7 @@ public class BoltProtectionModule implements ProtectionModule {
         return this.bolt.canAccess(protection, p.getUniqueId(), permission);
     }
 
-    private String boltPermission(Interaction interaction) {
+    private static String boltPermission(Interaction interaction) {
         return switch (interaction) {
             case BREAK_BLOCK, ATTACK_PLAYER, ATTACK_ENTITY -> Permission.DESTROY;
             case PLACE_BLOCK, INTERACT_BLOCK, INTERACT_ENTITY -> Permission.INTERACT;

@@ -55,7 +55,7 @@ public class HuskClaimsProtectionModule implements ProtectionModule {
      * @param doughAction The dough {@link Interaction}
      * @return The corresponding HuskClaims {@link OperationType}
      */
-    public @Nonnull OperationType getHuskClaimsAction(@Nonnull Interaction doughAction) {
+    public static @Nonnull OperationType getHuskClaimsAction(@Nonnull Interaction doughAction) {
         return switch (doughAction) {
             case BREAK_BLOCK -> OperationType.BLOCK_BREAK;
             case PLACE_BLOCK -> OperationType.BLOCK_PLACE;

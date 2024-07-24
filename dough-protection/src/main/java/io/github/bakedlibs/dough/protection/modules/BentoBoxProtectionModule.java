@@ -65,7 +65,7 @@ public class BentoBoxProtectionModule implements ProtectionModule {
         return true;
     }
 
-    private Flag convert(Interaction action, World world) {
+    private static Flag convert(Interaction action, World world) {
         switch (action) {
             case INTERACT_BLOCK:
                 return Flags.CONTAINER;

@@ -147,7 +147,7 @@ public class Config {
      */
     public void setValue(String path, Object value) {
         if (value == null) {
-            this.store(path, value);
+            this.store(path, null);
         } else if (value instanceof Optional) {
             this.store(path, ((Optional<?>) value).orElse(null));
         } else if (value instanceof Inventory) {

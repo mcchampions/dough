@@ -48,7 +48,7 @@ public class LandsProtectionModule implements ProtectionModule {
         }
     }
 
-    private RoleFlag convert(Interaction protectableAction) {
+    private static RoleFlag convert(Interaction protectableAction) {
         return switch (protectableAction) {
             case PLACE_BLOCK -> Flags.BLOCK_PLACE;
             case BREAK_BLOCK -> Flags.BLOCK_BREAK;

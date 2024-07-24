@@ -254,7 +254,7 @@ public final class BlockPosition {
         World w = this.world.get();
         String worldName = w != null ? w.getName() : "<no reference>";
 
-        return String.format("BlockPosition(world=%s, x=%d, y=%d, z=%d, position=%d)", worldName, getX(), getY(), getZ(), getPosition());
+        return String.format("BlockPosition(world=%s, x=%d, y=%d, z=%d, position=%d)", worldName, getX(), getY(), getZ(), position);
     }
 
 }

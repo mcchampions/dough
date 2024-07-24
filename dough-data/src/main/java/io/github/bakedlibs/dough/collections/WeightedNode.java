@@ -36,7 +36,7 @@ public class WeightedNode<T> {
     public boolean equals(Object obj) {
         Object compared = obj;
         if (obj instanceof WeightedNode) {
-            compared = ((WeightedNode<?>) obj).getObject();
+            compared = ((WeightedNode<?>) obj).object;
         }
 
         return object.getClass().isInstance(compared) && compared.hashCode() == hashCode();

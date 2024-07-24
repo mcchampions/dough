@@ -51,7 +51,7 @@ abstract class AbstractNumericVersion implements Version {
     @Override
     public boolean isNewerThan(Version version) {
         if (isSimilar(version)) {
-            return getVersionNumber() > ((AbstractNumericVersion) version).getVersionNumber();
+            return versionNumber > ((AbstractNumericVersion) version).versionNumber;
         } else {
             throw new IncomparableVersionsException(this, version);
         }
@@ -63,7 +63,7 @@ abstract class AbstractNumericVersion implements Version {
     @Override
     public boolean isEqualTo(Version version) {
         if (isSimilar(version)) {
-            return getVersionNumber() == ((AbstractNumericVersion) version).getVersionNumber();
+            return versionNumber == ((AbstractNumericVersion) version).versionNumber;
         } else {
             throw new IncomparableVersionsException(this, version);
         }
@@ -75,7 +75,7 @@ abstract class AbstractNumericVersion implements Version {
     @Override
     public boolean isOlderThan(Version version) {
         if (isSimilar(version)) {
-            return getVersionNumber() < ((AbstractNumericVersion) version).getVersionNumber();
+            return versionNumber < ((AbstractNumericVersion) version).versionNumber;
         } else {
             throw new IncomparableVersionsException(this, version);
         }

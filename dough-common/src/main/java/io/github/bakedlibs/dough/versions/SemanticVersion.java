@@ -87,7 +87,7 @@ public class SemanticVersion implements Version {
      * @return Whether this is a patch version
      */
     public final boolean isPatch() {
-        return getPatchVersion() > 0;
+        return patchVersion > 0;
     }
 
     public boolean isAtLeast(int major, int minor, int patch) {
@@ -113,23 +113,23 @@ public class SemanticVersion implements Version {
     public boolean isNewerThan(Version version) {
         if (isSimilar(version)) {
             SemanticVersion semver = (SemanticVersion) version;
-            int major = semver.getMajorVersion();
+            int major = semver.majorVersion;
 
-            if (getMajorVersion() > major) {
+            if (majorVersion > major) {
                 return true;
-            } else if (major > getMajorVersion()) {
+            } else if (major > majorVersion) {
                 return false;
             }
 
-            int minor = semver.getMinorVersion();
+            int minor = semver.minorVersion;
 
-            if (getMinorVersion() > minor) {
+            if (minorVersion > minor) {
                 return true;
-            } else if (minor > getMinorVersion()) {
+            } else if (minor > minorVersion) {
                 return false;
             }
 
-            return getPatchVersion() > semver.getPatchVersion();
+            return patchVersion > semver.patchVersion;
         } else {
             throw new IncomparableVersionsException(this, version);
         }
@@ -142,19 +142,19 @@ public class SemanticVersion implements Version {
     public boolean isEqualTo(Version version) {
         if (isSimilar(version)) {
             SemanticVersion semver = (SemanticVersion) version;
-            int major = semver.getMajorVersion();
+            int major = semver.majorVersion;
 
-            if (major != getMajorVersion()) {
+            if (major != majorVersion) {
                 return false;
             }
 
-            int minor = semver.getMinorVersion();
+            int minor = semver.minorVersion;
 
-            if (minor != getMinorVersion()) {
+            if (minor != minorVersion) {
                 return false;
             }
 
-            return getPatchVersion() == semver.getPatchVersion();
+            return patchVersion == semver.patchVersion;
         } else {
             throw new IncomparableVersionsException(this, version);
         }
@@ -167,23 +167,23 @@ public class SemanticVersion implements Version {
     public boolean isOlderThan(Version version) {
         if (isSimilar(version)) {
             SemanticVersion semver = (SemanticVersion) version;
-            int major = semver.getMajorVersion();
+            int major = semver.majorVersion;
 
-            if (major > getMajorVersion()) {
+            if (major > majorVersion) {
                 return true;
-            } else if (getMajorVersion() > major) {
+            } else if (majorVersion > major) {
                 return false;
             }
 
-            int minor = semver.getMinorVersion();
+            int minor = semver.minorVersion;
 
-            if (minor > getMinorVersion()) {
+            if (minor > minorVersion) {
                 return true;
-            } else if (getMinorVersion() > minor) {
+            } else if (minorVersion > minor) {
                 return false;
             }
 
-            return semver.getPatchVersion() > getPatchVersion();
+            return semver.patchVersion > patchVersion;
         } else {
             throw new IncomparableVersionsException(this, version);
         }
@@ -241,7 +241,7 @@ public class SemanticVersion implements Version {
      * @return Whether the two versions are equal (ignoring their patch version)
      */
     public boolean equalsIgnorePatch(SemanticVersion version) {
-                return equalsIgnorePatch(version.getMajorVersion(), version.getMinorVersion());
+                return equalsIgnorePatch(version.majorVersion, version.minorVersion);
     }
 
     /**
