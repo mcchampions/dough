@@ -139,11 +139,39 @@
             </exclusions>
         </dependency>
 
+        <!-- LogBlock -->
+        <dependency>
+            <groupId>de.diddiz</groupId>
+            <artifactId>logblock</artifactId>
+            <version>1.17.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>bukkit</artifactId>
+                    <groupId>*</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!-- SimpleClans -->
         <dependency>
             <groupId>com.github.marcelo-mason</groupId>
             <artifactId>SimpleClans</artifactId>
             <version>7c3db52796</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>bukkit</artifactId>
+                    <groupId>*</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- GriefPrevention -->
+        <dependency>
+            <groupId>com.github.GriefPrevention</groupId>
+            <artifactId>GriefPrevention</artifactId>
+            <version>16.18.2</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -184,6 +212,20 @@
             <groupId>com.massivecraft</groupId>
             <artifactId>Factions</artifactId>
             <version>1.6.9.5-4.1.4-STABLE</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>bukkit</artifactId>
+                    <groupId>*</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Towny -->
+        <dependency>
+            <groupId>com.github.LlmDl</groupId>
+            <artifactId>Towny</artifactId>
+            <version>1b86d017c5</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
