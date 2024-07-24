@@ -3,7 +3,6 @@ package io.github.bakedlibs.dough.skins;
 import java.lang.reflect.InvocationTargetException;
 import java.util.function.Consumer;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;

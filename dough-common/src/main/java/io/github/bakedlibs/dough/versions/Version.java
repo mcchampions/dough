@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.versions;
 
-import org.apache.commons.lang.Validate;
-
 /**
  * A {@link Version} is a unique name or number that describes the condition of
  * an object. Versions can be compared with each other and a {@link Version} is either

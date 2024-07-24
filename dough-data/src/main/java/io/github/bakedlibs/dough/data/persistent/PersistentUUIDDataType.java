@@ -2,7 +2,6 @@ package io.github.bakedlibs.dough.data.persistent;
 
 import java.util.UUID;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.persistence.PersistentDataAdapterContext;
 import org.bukkit.persistence.PersistentDataType;
 

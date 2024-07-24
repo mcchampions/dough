@@ -2,8 +2,6 @@ package io.github.bakedlibs.dough.versions;
 
 import java.util.Objects;
 
-import org.apache.commons.lang.Validate;
-
 /**
  * This {@link Version} implementation consists of two components.
  * A prefix, e.g. "DEV #" or "pre-" and a numeric version component.

@@ -3,7 +3,6 @@ package io.github.bakedlibs.dough.items;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;

@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.collections;
 
-import org.apache.commons.lang.Validate;
-
 public class WeightedNode<T> {
     private float weight;
 

@@ -2,8 +2,6 @@ package io.github.bakedlibs.dough.scheduling;
 
 import java.util.function.IntConsumer;
 
-import org.apache.commons.lang.Validate;
-
 // TODO: Convert to Java 16 record
 class TaskNode {
     private final IntConsumer runnable;
