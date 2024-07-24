@@ -51,7 +51,7 @@ public final class CommonPatterns {
     /**
      * {@link Pattern} for {@literal '/'}
      */
-    public static final Pattern SLASH = Pattern.compile("\\/");
+    public static final Pattern SLASH = Pattern.compile("/");
 
     /**
      * {@link Pattern} for {@literal '[A-Za-z "_]+'}
