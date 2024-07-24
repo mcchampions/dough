@@ -24,7 +24,8 @@ jobs:
         distribution: 'adopt'
         java-package: jdk
         architecture: x64
-
+    - name: Deploy jitpack
+      run: curl -s -m 5 https://jitpack.io/com/github/mcchampions/dough/${{ github.sha }}/ || true
     - name: Cache Maven packages
       uses: actions/cache@v3
       with:
@@ -34,6 +35,3 @@ jobs:
 
     - name: Build with Maven
       run: mvn package --file pom.xml
-
-    - name: Deploy jitpack
-      run: curl -s -m 30 https://jitpack.io/com/github/mcchampions/dough/${{ github.sha }}/ || true
