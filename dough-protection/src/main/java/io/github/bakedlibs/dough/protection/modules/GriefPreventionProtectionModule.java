@@ -96,16 +96,12 @@ public class GriefPreventionProtectionModule implements ProtectionModule {
     }
 
     private boolean checkLegacy(Claim claim, Player player, Interaction action, Location location) {
-        switch (action) {
-            case INTERACT_BLOCK:
-                return claim.allowContainers(player) == null;
-            case BREAK_BLOCK:
-                return claim.allowBreak(player, location.getBlock().getType()) == null;
-            case PLACE_BLOCK:
-                return claim.allowBuild(player, location.getBlock().getType()) == null;
-            default:
-                return claim.allowAccess(player) == null;
-        }
+        return switch (action) {
+            case INTERACT_BLOCK -> claim.allowContainers(player) == null;
+            case BREAK_BLOCK -> claim.allowBreak(player, location.getBlock().getType()) == null;
+            case PLACE_BLOCK -> claim.allowBuild(player, location.getBlock().getType()) == null;
+            default -> claim.allowAccess(player) == null;
+        };
     }
 
 }

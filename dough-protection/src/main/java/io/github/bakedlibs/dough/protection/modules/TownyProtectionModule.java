@@ -31,27 +31,19 @@ public class TownyProtectionModule implements ProtectionModule {
 
     @Override
     public boolean hasPermission(OfflinePlayer p, Location l, Interaction action) {
-        if (!(p instanceof Player)) {
+        if (!(p instanceof Player player)) {
             return false;
         }
 
-        Player player = (Player) p;
         return PlayerCacheUtil.getCachePermission(player, l, l.getBlock().getType(), convert(action));
     }
 
     private ActionType convert(Interaction action) {
-        switch (action) {
-            case INTERACT_BLOCK:
-            case INTERACT_ENTITY:
-            case ATTACK_PLAYER:
-            case ATTACK_ENTITY:
-                return ActionType.ITEM_USE;
-            case BREAK_BLOCK:
-                return ActionType.DESTROY;
-            case PLACE_BLOCK:
-            default:
-                return ActionType.BUILD;
-        }
+        return switch (action) {
+            case INTERACT_BLOCK, INTERACT_ENTITY, ATTACK_PLAYER, ATTACK_ENTITY -> ActionType.ITEM_USE;
+            case BREAK_BLOCK -> ActionType.DESTROY;
+            default -> ActionType.BUILD;
+        };
     }
 
 }

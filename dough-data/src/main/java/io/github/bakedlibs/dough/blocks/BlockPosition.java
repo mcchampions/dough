@@ -221,8 +221,7 @@ public final class BlockPosition {
      */
     @Override
     public boolean equals(Object o) {
-        if (o instanceof BlockPosition) {
-            BlockPosition pos = (BlockPosition) o;
+        if (o instanceof BlockPosition pos) {
 
             if (pos.world.get() == null) {
                 return false;

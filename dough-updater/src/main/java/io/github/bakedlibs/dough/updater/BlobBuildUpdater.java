@@ -36,7 +36,7 @@ public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
         try {
             URL versionsURL = new URI(API_URL + "/" + project + "/" + releaseChannel + "/latest").toURL();
 
-            scheduleAsyncUpdateTask(new UpdaterTask<PrefixedVersion>(this, versionsURL) {
+            scheduleAsyncUpdateTask(new UpdaterTask<>(this, versionsURL) {
 
                 @Override
                 public UpdateInfo parse(String result) throws MalformedURLException, URISyntaxException {

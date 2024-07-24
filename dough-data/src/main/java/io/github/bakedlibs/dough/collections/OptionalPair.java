@@ -42,10 +42,9 @@ public class OptionalPair<P, S> {
         if (o == this) {
             return true;
         }
-        if (!(o instanceof OptionalPair)) {
+        if (!(o instanceof OptionalPair<?, ?> other)) {
             return false;
         }
-        final OptionalPair<?, ?> other = (OptionalPair<?, ?>) o;
         if (!Objects.equals(firstValue, other.firstValue)) {
             return false;
         }

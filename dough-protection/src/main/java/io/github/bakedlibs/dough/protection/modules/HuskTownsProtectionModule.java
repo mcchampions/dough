@@ -57,19 +57,13 @@ public class HuskTownsProtectionModule implements ProtectionModule {
      * @return The corresponding HuskTowns {@link OperationType}
      */
     public @Nonnull OperationType getHuskTownsAction(@Nonnull Interaction doughAction) {
-        switch (doughAction) {
-            case BREAK_BLOCK:
-                return OperationType.BLOCK_BREAK;
-            case PLACE_BLOCK:
-                return OperationType.BLOCK_PLACE;
-            case ATTACK_ENTITY:
-                return OperationType.PLAYER_DAMAGE_ENTITY;
-            case ATTACK_PLAYER:
-                return OperationType.PLAYER_DAMAGE_PLAYER;
-            case INTERACT_BLOCK:
-                return OperationType.BLOCK_INTERACT;
-            default:
-                return OperationType.ENTITY_INTERACT;
-        }
+        return switch (doughAction) {
+            case BREAK_BLOCK -> OperationType.BLOCK_BREAK;
+            case PLACE_BLOCK -> OperationType.BLOCK_PLACE;
+            case ATTACK_ENTITY -> OperationType.PLAYER_DAMAGE_ENTITY;
+            case ATTACK_PLAYER -> OperationType.PLAYER_DAMAGE_PLAYER;
+            case INTERACT_BLOCK -> OperationType.BLOCK_INTERACT;
+            default -> OperationType.ENTITY_INTERACT;
+        };
     }
 }

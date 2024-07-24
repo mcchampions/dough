@@ -359,7 +359,7 @@ public class Config {
      * @return The Float at that path
      */
     public float getFloat(String path) {
-        return Float.valueOf(String.valueOf(getValue(path)));
+        return Float.parseFloat(String.valueOf(getValue(path)));
     }
 
     /**
@@ -371,7 +371,7 @@ public class Config {
      * @return The Long at that path
      */
     public long getLong(String path) {
-        return Long.valueOf(String.valueOf(getValue(path)));
+        return Long.parseLong(String.valueOf(getValue(path)));
     }
 
     /**

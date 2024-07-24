@@ -13,17 +13,7 @@ import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import org.bukkit.Material;
-import org.bukkit.inventory.BlastingRecipe;
-import org.bukkit.inventory.CampfireRecipe;
-import org.bukkit.inventory.FurnaceRecipe;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
-import org.bukkit.inventory.RecipeChoice;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.inventory.SmithingRecipe;
-import org.bukkit.inventory.SmokingRecipe;
-import org.bukkit.inventory.StonecuttingRecipe;
+import org.bukkit.inventory.*;
 
 import io.github.bakedlibs.dough.common.DoughLogger;
 
@@ -94,7 +84,7 @@ public class MinecraftRecipe<T extends Recipe> {
             return true;
         }).findAny().map(ShapelessRecipe::getResult)));
 
-        FURNACE = findRecipeType(logger, "FURNACE", type -> new MinecraftRecipe<>(type, FurnaceRecipe.class, recipe -> recipe.length == 1, recipe -> new RecipeChoice[] { recipe.getInputChoice() }, (input, stream) -> stream.filter(recipe -> recipe.getInputChoice().test(input[0])).findAny().map(recipe -> recipe.getResult())));
+        FURNACE = findRecipeType(logger, "FURNACE", type -> new MinecraftRecipe<>(type, FurnaceRecipe.class, recipe -> recipe.length == 1, recipe -> new RecipeChoice[] { recipe.getInputChoice() }, (input, stream) -> stream.filter(recipe -> recipe.getInputChoice().test(input[0])).findAny().map(CookingRecipe::getResult)));
 
         // 1.14+
         BLAST_FURNACE = findRecipeType(logger, "BLAST_FURNACE", type -> new MinecraftRecipe<>(type, BlastingRecipe.class, recipe -> recipe.length == 1, recipe -> new RecipeChoice[] { recipe.getInputChoice() }, (input, stream) -> stream.filter(recipe -> recipe.getInputChoice().test(input[0])).findAny().map(BlastingRecipe::getResult)));

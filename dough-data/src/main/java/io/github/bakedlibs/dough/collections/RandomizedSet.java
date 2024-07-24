@@ -122,7 +122,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
+        return new Iterator<>() {
 
             private final Iterator<WeightedNode<T>> iterator = internalSet.iterator();
 

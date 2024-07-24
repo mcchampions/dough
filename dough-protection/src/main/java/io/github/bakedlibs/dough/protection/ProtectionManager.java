@@ -75,24 +75,24 @@ public final class ProtectionManager {
         PluginManager pm = plugin.getServer().getPluginManager();
 
         // We sadly cannot use ModuleName::new as this would load the class into memory prematurely
-        registerModule(pm, "WorldGuard", worldGuard -> new WorldGuardProtectionModule(worldGuard));
-        registerModule(pm, "Towny", towny -> new TownyProtectionModule(towny));
-        registerModule(pm, "GriefPrevention", griefPrevention -> new GriefPreventionProtectionModule(griefPrevention));
-        registerModule(pm, "LWC", lwc -> new LWCProtectionModule(lwc));
-        registerModule(pm, "PreciousStones", preciousStones -> new PreciousStonesProtectionModule(preciousStones));
-        registerModule(pm, "Lockette", lockette -> new LocketteProtectionModule(lockette));
-        registerModule(pm, "RedProtect", redProtect -> new RedProtectProtectionModule(redProtect));
-        registerModule(pm, "BentoBox", bentoBox -> new BentoBoxProtectionModule(bentoBox));
-        registerModule(pm, "BlockLocker", blockLocker -> new BlockLockerProtectionModule(blockLocker));
+        registerModule(pm, "WorldGuard", WorldGuardProtectionModule::new);
+        registerModule(pm, "Towny", TownyProtectionModule::new);
+        registerModule(pm, "GriefPrevention", GriefPreventionProtectionModule::new);
+        registerModule(pm, "LWC", LWCProtectionModule::new);
+        registerModule(pm, "PreciousStones", PreciousStonesProtectionModule::new);
+        registerModule(pm, "Lockette", LocketteProtectionModule::new);
+        registerModule(pm, "RedProtect", RedProtectProtectionModule::new);
+        registerModule(pm, "BentoBox", BentoBoxProtectionModule::new);
+        registerModule(pm, "BlockLocker", BlockLockerProtectionModule::new);
         registerModule(pm, "Lands", lands -> new LandsProtectionModule(lands, plugin));
-        registerModule(pm, "ChestProtect", chestProtect -> new ChestProtectProtectionModule(chestProtect));
-        registerModule(pm, "Factions", factions -> new FactionsUUIDProtectionModule(factions));
-        registerModule(pm, "FunnyGuilds", funnyGuilds -> new FunnyGuildsProtectionModule(funnyGuilds));
-        registerModule(pm, "PlotSquared", plotSquared -> new PlotSquaredProtectionModule(plotSquared));
-        registerModule(pm, "HuskTowns", huskTowns -> new HuskTownsProtectionModule(huskTowns));
-        registerModule(pm, "ShopChest", shopChest -> new ShopChestProtectionModule(shopChest));
-        registerModule(pm, "HuskClaims", huskClaims -> new HuskClaimsProtectionModule(huskClaims));
-        registerModule(pm, "Bolt", bolt -> new BoltProtectionModule(bolt));
+        registerModule(pm, "ChestProtect", ChestProtectProtectionModule::new);
+        registerModule(pm, "Factions", FactionsUUIDProtectionModule::new);
+        registerModule(pm, "FunnyGuilds", FunnyGuildsProtectionModule::new);
+        registerModule(pm, "PlotSquared", PlotSquaredProtectionModule::new);
+        registerModule(pm, "HuskTowns", HuskTownsProtectionModule::new);
+        registerModule(pm, "ShopChest", ShopChestProtectionModule::new);
+        registerModule(pm, "HuskClaims", HuskClaimsProtectionModule::new);
+        registerModule(pm, "Bolt", BoltProtectionModule::new);
 
         /*
          * The following Plugins work by utilising one of the above listed

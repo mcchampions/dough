@@ -36,7 +36,7 @@ public class GitHubBuildsUpdater extends AbstractPluginUpdater<PrefixedVersion> 
         try {
             URL versionsURL = new URL(API_URL + repository + "/builds.json");
 
-            scheduleAsyncUpdateTask(new UpdaterTask<PrefixedVersion>(this, versionsURL) {
+            scheduleAsyncUpdateTask(new UpdaterTask<>(this, versionsURL) {
 
                 @Override
                 public UpdateInfo parse(String result) throws MalformedURLException {

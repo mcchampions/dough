@@ -36,7 +36,7 @@ public class BukkitUpdater extends AbstractPluginUpdater<SemanticVersion> {
         try {
             URL url = new URL(API_URL + projectId);
 
-            scheduleAsyncUpdateTask(new UpdaterTask<SemanticVersion>(this, url) {
+            scheduleAsyncUpdateTask(new UpdaterTask<>(this, url) {
 
                 @Override
                 public UpdateInfo parse(String result) throws MalformedURLException {

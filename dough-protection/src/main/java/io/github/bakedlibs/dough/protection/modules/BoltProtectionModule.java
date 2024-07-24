@@ -44,16 +44,9 @@ public class BoltProtectionModule implements ProtectionModule {
     }
 
     private String boltPermission(Interaction interaction) {
-        switch (interaction) {
-            case BREAK_BLOCK:
-            case ATTACK_PLAYER:
-            case ATTACK_ENTITY:
-                return Permission.DESTROY;
-            case PLACE_BLOCK:
-            case INTERACT_BLOCK:
-            case INTERACT_ENTITY:
-                return Permission.INTERACT;
-        }
-        return null;
+        return switch (interaction) {
+            case BREAK_BLOCK, ATTACK_PLAYER, ATTACK_ENTITY -> Permission.DESTROY;
+            case PLACE_BLOCK, INTERACT_BLOCK, INTERACT_ENTITY -> Permission.INTERACT;
+        };
     }
 }

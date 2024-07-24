@@ -70,20 +70,13 @@ public class WorldGuardProtectionModule implements ProtectionModule {
     }
 
     private StateFlag convert(Interaction action) {
-        switch (action) {
-            case ATTACK_PLAYER:
-                return Flags.PVP;
-            case ATTACK_ENTITY:
-                return Flags.DAMAGE_ANIMALS;
-            case INTERACT_BLOCK:
-            case INTERACT_ENTITY:
-                return Flags.USE;
-            case BREAK_BLOCK:
-                return Flags.BLOCK_BREAK;
-            case PLACE_BLOCK:
-                return Flags.BLOCK_PLACE;
-            default:
-                return Flags.BUILD;
-        }
+        return switch (action) {
+            case ATTACK_PLAYER -> Flags.PVP;
+            case ATTACK_ENTITY -> Flags.DAMAGE_ANIMALS;
+            case INTERACT_BLOCK, INTERACT_ENTITY -> Flags.USE;
+            case BREAK_BLOCK -> Flags.BLOCK_BREAK;
+            case PLACE_BLOCK -> Flags.BLOCK_PLACE;
+            default -> Flags.BUILD;
+        };
     }
 }

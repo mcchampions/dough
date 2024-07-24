@@ -50,19 +50,13 @@ public class LandsProtectionModule implements ProtectionModule {
     }
 
     private RoleFlag convert(Interaction protectableAction) {
-        switch (protectableAction) {
-            case PLACE_BLOCK:
-                return Flags.BLOCK_PLACE;
-            case BREAK_BLOCK:
-                return Flags.BLOCK_BREAK;
-            case INTERACT_BLOCK:
-                return Flags.INTERACT_CONTAINER;
-            case ATTACK_PLAYER:
-                return Flags.ATTACK_PLAYER;
-            case ATTACK_ENTITY:
-                return Flags.ATTACK_ANIMAL;
-            default:
-                return Flags.INTERACT_VILLAGER;
-        }
+        return switch (protectableAction) {
+            case PLACE_BLOCK -> Flags.BLOCK_PLACE;
+            case BREAK_BLOCK -> Flags.BLOCK_BREAK;
+            case INTERACT_BLOCK -> Flags.INTERACT_CONTAINER;
+            case ATTACK_PLAYER -> Flags.ATTACK_PLAYER;
+            case ATTACK_ENTITY -> Flags.ATTACK_ANIMAL;
+            default -> Flags.INTERACT_VILLAGER;
+        };
     }
 }

@@ -46,14 +46,10 @@ public class PlotSquaredProtectionModule implements ProtectionModule {
     private boolean check(OfflinePlayer p, Interaction action) {
         PlotPlayer<OfflinePlayer> player = PlotPlayer.from(p);
 
-        switch (action) {
-            case INTERACT_BLOCK:
-                return player.hasPermission(Permission.PERMISSION_ADMIN_INTERACT_UNOWNED);
-            case ATTACK_PLAYER:
-                return player.hasPermission(Permission.PERMISSION_ADMIN_PVP);
-            case PLACE_BLOCK:
-            default:
-                return player.hasPermission(Permission.PERMISSION_ADMIN_BUILD_UNOWNED);
-        }
+        return switch (action) {
+            case INTERACT_BLOCK -> player.hasPermission(Permission.PERMISSION_ADMIN_INTERACT_UNOWNED);
+            case ATTACK_PLAYER -> player.hasPermission(Permission.PERMISSION_ADMIN_PVP);
+            default -> player.hasPermission(Permission.PERMISSION_ADMIN_BUILD_UNOWNED);
+        };
     }
 }

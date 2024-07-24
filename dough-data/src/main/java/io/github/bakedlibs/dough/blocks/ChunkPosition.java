@@ -137,8 +137,7 @@ public final class ChunkPosition {
      */
     @Override
     public boolean equals(Object o) {
-        if (o instanceof ChunkPosition) {
-            final ChunkPosition pos = (ChunkPosition) o;
+        if (o instanceof ChunkPosition pos) {
 
             if (pos.world.get() == null) {
                 return false;
