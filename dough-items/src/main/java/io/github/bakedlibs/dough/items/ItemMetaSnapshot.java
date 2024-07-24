@@ -87,7 +87,7 @@ public class ItemMetaSnapshot {
 
         if (hasDisplayName != displayName.isPresent()) {
             return false;
-        } else if (hasDisplayName && displayName.isPresent() && !meta.getDisplayName().equals(displayName.get())) {
+        } else if (hasDisplayName && !meta.getDisplayName().equals(displayName.get())) {
             return false;
         } else {
             boolean hasLore = meta.hasLore();
