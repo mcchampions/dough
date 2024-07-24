@@ -12,7 +12,6 @@ import org.bukkit.plugin.Plugin;
  *
  */
 public interface ProtectionModule {
-
     /**
      * Use this method to load instances of your API or other utilites you need
      */

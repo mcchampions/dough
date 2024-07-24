@@ -6,7 +6,6 @@ import org.apache.commons.lang.Validate;
 
 // TODO: Convert to Java 16 record
 class TaskNode {
-
     private final IntConsumer runnable;
     private final boolean asynchronous;
     private int delay = 0;
@@ -48,8 +47,6 @@ class TaskNode {
     }
 
     public void setDelay(int delay) {
-        Validate.isTrue(delay >= 0, "The delay cannot be negative.");
-
         this.delay = delay;
     }
 

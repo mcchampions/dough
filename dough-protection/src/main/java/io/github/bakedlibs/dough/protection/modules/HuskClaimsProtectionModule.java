@@ -17,7 +17,6 @@ import javax.annotation.Nonnull;
  * @author William278
  */
 public class HuskClaimsProtectionModule implements ProtectionModule {
-
     private BukkitHuskClaimsAPI huskClaimsAPI;
     private final Plugin plugin;
 

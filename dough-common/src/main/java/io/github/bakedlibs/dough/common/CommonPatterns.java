@@ -15,7 +15,6 @@ import io.github.bakedlibs.dough.versions.SemanticVersion;
  * 
  */
 public final class CommonPatterns {
-
     private CommonPatterns() {}
 
     /**

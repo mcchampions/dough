@@ -26,7 +26,6 @@ import java.util.stream.Stream;
  *            The Type of element stored in the given {@link Collection}
  */
 public class LoopIterator<T> implements Iterator<T>, Streamable<T> {
-
     private List<T> list;
     private int size;
 

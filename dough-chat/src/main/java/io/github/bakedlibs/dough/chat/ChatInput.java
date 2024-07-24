@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public final class ChatInput {
-
     static ChatInputListener listener;
 
     private ChatInput() {}
@@ -45,7 +44,6 @@ public final class ChatInput {
      */
     public static void waitForPlayer(Plugin plugin, Player p, Predicate<String> predicate, Consumer<String> handler) {
         queue(plugin, p, new ChatInputHandler() {
-
             @Override
             public boolean test(String msg) {
                 return predicate.test(msg);
@@ -91,7 +89,6 @@ public final class ChatInput {
      */
     public static void waitForPlayer(Plugin plugin, Player p, Predicate<String> predicate, BiConsumer<Player, String> handler) {
         queue(plugin, p, new ChatInputHandler() {
-
             @Override
             public boolean test(String msg) {
                 return predicate.test(msg);

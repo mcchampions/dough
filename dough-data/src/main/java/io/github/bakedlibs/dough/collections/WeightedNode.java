@@ -3,14 +3,12 @@ package io.github.bakedlibs.dough.collections;
 import org.apache.commons.lang.Validate;
 
 public class WeightedNode<T> {
-
     private float weight;
 
     private T object;
 
     public WeightedNode(float weight, T object) {
-        Validate.notNull(object, "Object cannot be null");
-
+        
         this.weight = weight;
         this.object = object;
     }
@@ -28,8 +26,7 @@ public class WeightedNode<T> {
     }
 
     public void setObject(T object) {
-        Validate.notNull(object, "Object cannot be null");
-        this.object = object;
+                this.object = object;
     }
 
     @Override

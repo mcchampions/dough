@@ -15,7 +15,6 @@ import java.io.Serial;
  *
  */
 public class IncomparableVersionsException extends RuntimeException {
-
     @Serial
     private static final long serialVersionUID = -4276437450741965941L;
 

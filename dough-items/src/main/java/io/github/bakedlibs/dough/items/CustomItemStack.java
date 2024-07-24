@@ -13,7 +13,6 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 
 public class CustomItemStack extends ItemStack {
-
     public CustomItemStack(ItemStack item) {
         super(item.getType(), item.getAmount());
 

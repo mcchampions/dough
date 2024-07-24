@@ -15,7 +15,6 @@ import org.bukkit.entity.Player;
  *
  */
 public final class PlayerList {
-
     private PlayerList() {}
 
     /**

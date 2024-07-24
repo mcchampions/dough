@@ -31,7 +31,6 @@ import java.util.stream.StreamSupport;
  *            The Type of Element that is stored in this Set
  */
 public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
-
     private final Set<WeightedNode<T>> internalSet;
 
     private int size = 0;
@@ -123,7 +122,6 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
-
             private final Iterator<WeightedNode<T>> iterator = internalSet.iterator();
 
             @Override

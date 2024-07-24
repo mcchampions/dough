@@ -15,7 +15,6 @@ import org.bukkit.persistence.PersistentDataType;
  *
  */
 public final class PersistentUUIDDataType implements PersistentDataType<int[], UUID> {
-
     public static final PersistentDataType<int[], UUID> TYPE = new PersistentUUIDDataType();
 
     private PersistentUUIDDataType() {}
@@ -41,15 +40,11 @@ public final class PersistentUUIDDataType implements PersistentDataType<int[], U
     }
 
     public static UUID fromIntArray(int[] ints) {
-        Validate.notNull(ints, "The provided integer array cannot be null!");
-        Validate.isTrue(ints.length == 4, "The integer array must have a length of 4.");
-
         return new UUID(ints[0] | ints[1] & 0xFFFFFFFFL, ints[2] | ints[3] & 0xFFFFFFFFL);
     }
 
     public static int[] toIntArray(UUID uuid) {
-        Validate.notNull(uuid, "The provided uuid cannot be null!");
-
+        
         long mostSig = uuid.getMostSignificantBits();
         long leastSig = uuid.getLeastSignificantBits();
         return new int[] { (int) (mostSig >> 32L), (int) mostSig, (int) (leastSig >> 32L), (int) leastSig };

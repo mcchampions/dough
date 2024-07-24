@@ -14,7 +14,6 @@ import io.github.bakedlibs.dough.common.CommonPatterns;
 import io.github.bakedlibs.dough.versions.PrefixedVersion;
 
 public class GitHubBuildsUpdater extends AbstractPluginUpdater<PrefixedVersion> {
-
     private static final String API_URL = "https://thebusybiscuit.github.io/builds/";
 
     private final String repository;
@@ -37,7 +36,6 @@ public class GitHubBuildsUpdater extends AbstractPluginUpdater<PrefixedVersion> 
             URL versionsURL = new URL(API_URL + repository + "/builds.json");
 
             scheduleAsyncUpdateTask(new UpdaterTask<>(this, versionsURL) {
-
                 @Override
                 public UpdateInfo parse(String result) throws MalformedURLException {
                     JsonObject json = (JsonObject) new JsonParser().parse(result);

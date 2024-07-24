@@ -9,7 +9,6 @@ import org.apache.commons.lang.Validate;
  *
  */
 abstract class AbstractNumericVersion implements Version {
-
     /**
      * The version number.
      */

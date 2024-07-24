@@ -16,7 +16,6 @@ import io.github.bakedlibs.dough.skins.nms.PlayerHeadAdapter;
 import io.github.bakedlibs.dough.versions.UnknownServerVersionException;
 
 public final class PlayerHead {
-
     private static final PlayerHeadAdapter adapter = PlayerHeadAdapter.get();
 
     private PlayerHead() {}
@@ -30,8 +29,6 @@ public final class PlayerHead {
      * @return A new Head Item for the specified Player
      */
     public static ItemStack getItemStack(OfflinePlayer player) {
-        Validate.notNull(player, "The player can not be null!");
-
         return getItemStack(meta -> meta.setOwningPlayer(player));
     }
 
@@ -44,8 +41,6 @@ public final class PlayerHead {
      * @return A new Head Item for the specified Player
      */
     public static ItemStack getItemStack(PlayerSkin skin) {
-        Validate.notNull(skin, "The skin can not be null!");
-
         return getItemStack(meta -> {
             try {
                 skin.getProfile().apply(meta);

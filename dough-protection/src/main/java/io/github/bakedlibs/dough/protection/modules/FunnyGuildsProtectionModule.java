@@ -15,7 +15,6 @@ import io.github.bakedlibs.dough.protection.ProtectionModule;
  * @author barpec12 on 05.04.2021
  */
 public class FunnyGuildsProtectionModule implements ProtectionModule {
-
     private final Plugin plugin;
 
     public FunnyGuildsProtectionModule(Plugin plugin) {

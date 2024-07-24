@@ -13,7 +13,6 @@ import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
 public class FactionsUUIDProtectionModule implements ProtectionModule {
-
     private FPlayers api;
     private final Plugin plugin;
 

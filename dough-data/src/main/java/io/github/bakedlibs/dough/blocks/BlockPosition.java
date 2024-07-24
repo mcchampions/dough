@@ -16,7 +16,6 @@ import org.bukkit.block.Block;
  * @author Walshy
  */
 public final class BlockPosition {
-
     /**
      * A {@link WeakReference} to our {@link World}.
      * This allows the Java GC to clear the {@link World} object from
@@ -222,7 +221,6 @@ public final class BlockPosition {
     @Override
     public boolean equals(Object o) {
         if (o instanceof BlockPosition pos) {
-
             if (pos.world.get() == null) {
                 return false;
             }

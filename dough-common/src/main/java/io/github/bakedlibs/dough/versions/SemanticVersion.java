@@ -20,7 +20,6 @@ import io.github.bakedlibs.dough.common.CommonPatterns;
  *
  */
 public class SemanticVersion implements Version {
-
     private final int majorVersion;
     private final int minorVersion;
     private final int patchVersion;
@@ -36,10 +35,6 @@ public class SemanticVersion implements Version {
      *            The patch version
      */
     public SemanticVersion(int major, int minor, int patch) {
-        Validate.isTrue(major >= 0, "Major version must be positive or zero.");
-        Validate.isTrue(minor >= 0, "Minor version must be positive or zero.");
-        Validate.isTrue(patch >= 0, "Patch version must be positive or zero.");
-
         this.majorVersion = major;
         this.minorVersion = minor;
         this.patchVersion = patch;
@@ -248,8 +243,7 @@ public class SemanticVersion implements Version {
      * @return Whether the two versions are equal (ignoring their patch version)
      */
     public boolean equalsIgnorePatch(SemanticVersion version) {
-        Validate.notNull(version, "Version cannot be null.");
-        return equalsIgnorePatch(version.getMajorVersion(), version.getMinorVersion());
+                return equalsIgnorePatch(version.getMajorVersion(), version.getMinorVersion());
     }
 
     /**
@@ -282,8 +276,7 @@ public class SemanticVersion implements Version {
      * @return The resulting {@link SemanticVersion}
      */
     public static SemanticVersion parse(String version) {
-        Validate.notNull(version, "The version should not be null.");
-
+        
         // Create a Matcher from our semver regex
         Matcher matcher = CommonPatterns.SEMANTIC_VERSIONS.matcher(version);
 

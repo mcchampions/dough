@@ -16,7 +16,6 @@ import io.github.bakedlibs.dough.common.CommonPatterns;
  *
  */
 public class MinecraftVersion extends SemanticVersion {
-
     /**
      * This method constructs a new {@link MinecraftVersion} with the given
      * version components.
@@ -55,8 +54,7 @@ public class MinecraftVersion extends SemanticVersion {
      *             This exception is thrown when the {@link Server} version could not be identified
      */
     public static MinecraftVersion of(Server server) throws UnknownServerVersionException {
-        Validate.notNull(server, "Server should not be null!");
-        String bukkitVersion = server.getBukkitVersion();
+                String bukkitVersion = server.getBukkitVersion();
 
         try {
             // Strip away the later "-R0.1-SNAPSHOT" part

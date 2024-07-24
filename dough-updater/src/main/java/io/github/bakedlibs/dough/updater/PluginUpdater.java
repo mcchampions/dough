@@ -8,7 +8,6 @@ import org.bukkit.plugin.Plugin;
 import io.github.bakedlibs.dough.versions.Version;
 
 public interface PluginUpdater<V extends Version> {
-
     Plugin getPlugin();
 
     File getFile();

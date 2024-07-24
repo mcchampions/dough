@@ -17,7 +17,6 @@ import org.bukkit.plugin.Plugin;
  *
  */
 public class TaskQueue {
-
     private TaskNode head;
 
     /**

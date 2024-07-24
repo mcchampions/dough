@@ -13,7 +13,6 @@ import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
 public class LocketteProtectionModule implements ProtectionModule {
-
     private final Plugin plugin;
 
     public LocketteProtectionModule(Plugin plugin) {

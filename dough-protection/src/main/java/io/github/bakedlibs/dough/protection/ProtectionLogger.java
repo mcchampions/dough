@@ -4,7 +4,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 
 public interface ProtectionLogger {
-
     void load();
 
     String getName();

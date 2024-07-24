@@ -25,7 +25,6 @@ import world.bentobox.bentobox.managers.IslandsManager;
  * @author TheBusyBiscuit
  */
 public class BentoBoxProtectionModule implements ProtectionModule {
-
     private IslandsManager manager;
     private IslandWorldManager iwm;
 

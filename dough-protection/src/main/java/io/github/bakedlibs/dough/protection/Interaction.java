@@ -20,7 +20,6 @@ import org.bukkit.inventory.Inventory;
  *
  */
 public enum Interaction {
-
     /**
      * This represents a {@link Player} (posibly offline) trying to break a {@link Block}.
      */

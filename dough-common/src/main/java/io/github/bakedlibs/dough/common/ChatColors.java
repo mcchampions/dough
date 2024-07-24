@@ -9,7 +9,6 @@ import org.bukkit.ChatColor;
  *
  */
 public final class ChatColors {
-
     private ChatColors() {}
 
     /**

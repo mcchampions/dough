@@ -11,7 +11,6 @@ import org.popcraft.bolt.protection.Protection;
 import org.popcraft.bolt.util.Permission;
 
 public class BoltProtectionModule implements ProtectionModule {
-
     private BoltAPI bolt;
     private final Plugin plugin;
 

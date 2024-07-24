@@ -26,7 +26,5 @@ jobs:
         architecture: x64
     - name: Deploy jitpack
       run: curl -s -m 5 https://jitpack.io/com/github/mcchampions/dough/${{ github.sha }}/ || true
-
-
     - name: Build with Maven
       run: mvn package --file pom.xml

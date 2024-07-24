@@ -5,7 +5,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class OptionalPair<P, S> {
-
     private Optional<P> firstValue;
     private Optional<S> secondValue;
 

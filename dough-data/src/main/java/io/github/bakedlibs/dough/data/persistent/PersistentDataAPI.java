@@ -26,7 +26,6 @@ import com.google.gson.JsonObject;
  */
 @ParametersAreNonnullByDefault
 public final class PersistentDataAPI {
-
     private PersistentDataAPI() {
         // This is a utility class, we don't want any instances.
     }

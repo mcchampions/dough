@@ -10,7 +10,6 @@ import org.bukkit.persistence.PersistentDataAdapterContext;
 import org.bukkit.persistence.PersistentDataType;
 
 public final class PersistentYAMLDataType implements PersistentDataType<String, FileConfiguration> {
-
     public static final PersistentYAMLDataType CONFIG = new PersistentYAMLDataType();
 
     private PersistentYAMLDataType() {}

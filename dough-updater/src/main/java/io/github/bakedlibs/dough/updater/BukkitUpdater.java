@@ -15,7 +15,6 @@ import com.google.gson.JsonParser;
 import io.github.bakedlibs.dough.versions.SemanticVersion;
 
 public class BukkitUpdater extends AbstractPluginUpdater<SemanticVersion> {
-
     private static final String API_URL = "https://api.curseforge.com/servermods/files?projectIds=";
 
     private final int projectId;
@@ -37,7 +36,6 @@ public class BukkitUpdater extends AbstractPluginUpdater<SemanticVersion> {
             URL url = new URL(API_URL + projectId);
 
             scheduleAsyncUpdateTask(new UpdaterTask<>(this, url) {
-
                 @Override
                 public UpdateInfo parse(String result) throws MalformedURLException {
                     JsonArray array = (JsonArray) new JsonParser().parse(result);

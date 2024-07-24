@@ -8,7 +8,6 @@ package io.github.bakedlibs.dough.data;
  *
  */
 public interface Dirtyable {
-
     /**
      * This method sets the dirty state.
      * <p>

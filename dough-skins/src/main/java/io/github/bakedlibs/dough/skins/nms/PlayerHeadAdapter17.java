@@ -12,7 +12,6 @@ import io.github.bakedlibs.dough.reflection.ReflectionUtils;
 import io.github.bakedlibs.dough.versions.UnknownServerVersionException;
 
 class PlayerHeadAdapter17 implements PlayerHeadAdapter {
-
     private final Constructor<?> newPosition;
 
     private final Method getHandle;

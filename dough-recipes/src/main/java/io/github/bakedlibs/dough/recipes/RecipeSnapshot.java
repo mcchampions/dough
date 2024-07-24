@@ -27,7 +27,6 @@ import org.bukkit.plugin.Plugin;
  *
  */
 public class RecipeSnapshot {
-
     private final Map<Class<? extends Recipe>, Set<Recipe>> recipes = new HashMap<>();
 
     private final Map<NamespacedKey, Recipe> keyedRecipes = new HashMap<>();

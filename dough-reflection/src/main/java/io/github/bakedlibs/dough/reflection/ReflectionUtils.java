@@ -20,7 +20,6 @@ import io.papermc.lib.PaperLib;
  */
 @SuppressWarnings("java:S3011")
 public final class ReflectionUtils {
-
     private ReflectionUtils() {}
 
     private static String versionSpecificPackage;

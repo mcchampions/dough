@@ -28,7 +28,6 @@ import java.util.stream.StreamSupport;
  *            The Type of values for this Maps
  */
 public class OptionalMap<K, V> implements Iterable<Map.Entry<K, V>>, Streamable<Entry<K, V>> {
-
     private final Map<K, V> internalMap;
 
     /**

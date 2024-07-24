@@ -20,7 +20,6 @@ import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.plugin.Plugin;
 
 class ChatInputListener implements Listener {
-
     private final Plugin plugin;
     protected final Map<UUID, Set<ChatInputHandler>> handlers;
 

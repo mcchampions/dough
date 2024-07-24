@@ -6,7 +6,6 @@ import io.github.bakedlibs.dough.versions.Version;
 
 // TODO: Convert to Java 16 record
 class UpdateInfo {
-
     private final URL url;
     private final Version version;
     private final String checksum;

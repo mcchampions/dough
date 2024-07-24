@@ -22,7 +22,6 @@ import org.bukkit.inventory.meta.ItemMeta;
  *
  */
 public final class ItemStackSnapshot extends ItemStack {
-
     private static final String ERROR_MESSAGE = "ItemStackSnapshots are immutable and not intended for actual usage.";
 
     private final ItemMeta meta;
@@ -113,8 +112,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * @see #wrap(ItemStack)
      */
     public static ItemStackSnapshot forceWrap(ItemStack itemStack) {
-        Validate.notNull(itemStack, "The ItemStack cannot be null!");
-
+        
         return new ItemStackSnapshot(itemStack);
     }
 
@@ -130,8 +128,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * @see #forceWrap(ItemStack)
      */
     public static ItemStackSnapshot wrap(ItemStack itemStack) {
-        Validate.notNull(itemStack, "The ItemStack cannot be null!");
-
+        
         if (itemStack instanceof ItemStackSnapshot) {
             return (ItemStackSnapshot) itemStack;
         }
@@ -148,8 +145,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * @return An {@link ItemStackSnapshot} array
      */
     public static ItemStackSnapshot[] wrapArray(ItemStack[] items) {
-        Validate.notNull(items, "The array must not be null!");
-
+        
         ItemStackSnapshot[] array = new ItemStackSnapshot[items.length];
 
         for (int i = 0; i < items.length; i++) {
@@ -170,8 +166,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * @return An {@link ItemStackSnapshot} array
      */
     public static List<ItemStackSnapshot> wrapList(List<ItemStack> items) {
-        Validate.notNull(items, "The list must not be null!");
-        List<ItemStackSnapshot> list = new ArrayList<>(items.size());
+                List<ItemStackSnapshot> list = new ArrayList<>(items.size());
 
         for (ItemStack item : items) {
             if (item != null) {

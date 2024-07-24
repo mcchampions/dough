@@ -13,7 +13,6 @@ import net.sacredlabyrinth.Phaed.PreciousStones.api.IApi;
 import net.sacredlabyrinth.Phaed.PreciousStones.field.FieldFlag;
 
 public class PreciousStonesProtectionModule implements ProtectionModule {
-
     private IApi api;
     private final Plugin plugin;
 

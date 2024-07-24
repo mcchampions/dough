@@ -24,7 +24,6 @@ import org.bukkit.plugin.Plugin;
 import io.github.bakedlibs.dough.common.DoughLogger;
 
 public class UUIDLookup {
-
     private static final Pattern UUID_PATTERN = Pattern.compile("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})");
     private static final JsonParser JSON_PARSER = new JsonParser();
     private static final String ERROR_TOKEN = "error";
@@ -41,9 +40,7 @@ public class UUIDLookup {
      * @return {@link CompletableFuture} with the {@link UUID }
      */
     public static CompletableFuture<UUID> getUuidFromUsername(Plugin plugin, String name) {
-        Validate.notNull(plugin, "The plugin instance must not be null!");
-        Validate.notNull(name, "The username cannot be null!");
-
+                
         if (!NAME_PATTERN.matcher(name).matches()) {
             throw new IllegalArgumentException("\"" + name + "\" is not a valid Minecraft Username!");
         }
@@ -81,9 +78,7 @@ public class UUIDLookup {
      */
     @Deprecated(since = "1.3.1")
     public static CompletableFuture<UUID> forUsername(Plugin plugin, String name) {
-        Validate.notNull(plugin, "The plugin instance must not be null!");
-        Validate.notNull(name, "The username cannot be null!");
-
+                
         if (!NAME_PATTERN.matcher(name).matches()) {
             throw new IllegalArgumentException("\"" + name + "\" is not a valid Minecraft Username!");
         }

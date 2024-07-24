@@ -9,7 +9,6 @@ import org.bukkit.block.BlockFace;
 
 // TODO: Refactor this
 public final class Vein {
-
     private static final BlockFace[] faces = new BlockFace[] { BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.NORTH_EAST, BlockFace.NORTH_WEST, BlockFace.SOUTH_EAST, BlockFace.SOUTH_WEST };
 
     private Vein() {}

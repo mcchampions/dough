@@ -18,7 +18,6 @@ import io.github.bakedlibs.dough.items.nms.ItemNameAdapter;
  *
  */
 public final class ItemUtils {
-
     private static final ItemNameAdapter adapter = ItemNameAdapter.get();
 
     private ItemUtils() {}

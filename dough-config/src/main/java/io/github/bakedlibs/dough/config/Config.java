@@ -27,7 +27,6 @@ import org.bukkit.plugin.Plugin;
 import io.github.bakedlibs.dough.common.DoughLogger;
 
 public class Config {
-
     private final File file;
 
     private Logger logger;

@@ -16,7 +16,6 @@ import nl.rutgerkok.blocklocker.profile.Profile;
 import nl.rutgerkok.blocklocker.protection.Protection;
 
 public class BlockLockerProtectionModule implements ProtectionModule {
-
     private BlockLockerPlugin api;
     private final Plugin plugin;
 

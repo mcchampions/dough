@@ -7,7 +7,6 @@ package io.github.bakedlibs.dough.versions;
  *
  */
 public class SimpleNumericVersion extends AbstractNumericVersion {
-
     /**
      * This constructs a new {@link SimpleNumericVersion} with the given version number.
      * The version number cannot be negative.

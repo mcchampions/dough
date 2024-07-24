@@ -13,7 +13,6 @@ import org.apache.commons.lang.Validate;
  *
  */
 public class PrefixedVersion extends AbstractNumericVersion {
-
     /**
      * The prefix of this {@link PrefixedVersion}.
      */
@@ -31,8 +30,7 @@ public class PrefixedVersion extends AbstractNumericVersion {
     public PrefixedVersion(String prefix, int version) {
         super(version);
 
-        Validate.notNull(prefix, "The prefix cannot be null.");
-
+        
         this.prefix = prefix;
     }
 

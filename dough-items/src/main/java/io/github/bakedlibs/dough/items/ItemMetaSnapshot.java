@@ -25,7 +25,6 @@ import org.bukkit.persistence.PersistentDataContainer;
  *
  */
 public class ItemMetaSnapshot {
-
     private final Optional<String> displayName;
     private final Optional<List<String>> lore;
     private final OptionalInt customModelData;

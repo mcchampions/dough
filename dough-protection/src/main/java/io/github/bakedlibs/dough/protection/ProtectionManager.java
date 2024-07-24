@@ -41,7 +41,6 @@ import io.github.bakedlibs.dough.protection.modules.WorldGuardProtectionModule;
  *
  */
 public final class ProtectionManager {
-
     private final Set<ProtectionModule> protectionModules = new HashSet<>();
     private final Set<ProtectionLogger> protectionLoggers = new HashSet<>();
     private final Logger logger;

@@ -12,7 +12,6 @@ import io.github.bakedlibs.dough.versions.PrefixedVersion;
 import io.github.bakedlibs.dough.versions.Version;
 
 abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater<V> {
-
     private final Plugin plugin;
     private final File file;
 
@@ -22,10 +21,7 @@ abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater
     protected final CompletableFuture<V> latestVersion = new CompletableFuture<>();
 
     protected AbstractPluginUpdater(Plugin plugin, File file, V currentVersion) {
-        Validate.notNull(plugin, "The plugin cannot be null.");
-        Validate.notNull(file, "The plugin file cannot be null.");
-        Validate.notNull(currentVersion, "The current version cannot be null.");
-
+                        
         this.plugin = plugin;
         this.file = file;
         this.currentVersion = currentVersion;
@@ -46,8 +42,6 @@ abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater
     }
 
     public void setConnectionTimeout(int timeout) {
-        Validate.isTrue(timeout > 0, "Timeout must be positive.");
-
         this.connectionTimeout = timeout;
     }
 

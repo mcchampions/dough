@@ -3,7 +3,6 @@ package io.github.bakedlibs.dough.versions;
 import java.io.Serial;
 
 public class UnknownServerVersionException extends Exception {
-
     @Serial
     private static final long serialVersionUID = -5932282005937704971L;
 

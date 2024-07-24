@@ -8,7 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 class ItemNameAdapter19 implements ItemNameAdapter {
-
     private final Method getCopy;
     private final Method getName;
     private final Method toString;

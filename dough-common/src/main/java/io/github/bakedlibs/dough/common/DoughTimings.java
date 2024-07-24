@@ -11,7 +11,6 @@ import java.util.function.Consumer;
 import java.util.logging.Logger;
 
 public class DoughTimings {
-
     private static final DecimalFormat FORMAT = new DecimalFormat("0.########");
 
     private final String name;
@@ -19,9 +18,7 @@ public class DoughTimings {
     private final Logger logger;
 
     public DoughTimings(Plugin plugin, String name) {
-        Validate.notNull(name, "Name cannot be null");
-        Validate.notNull(plugin, "Plugin cannot be null");
-        this.name = name;
+                        this.name = name;
         this.logger = plugin.getLogger();
     }
 

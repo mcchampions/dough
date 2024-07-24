@@ -9,7 +9,6 @@ package io.github.bakedlibs.dough.versions;
  */
 @FunctionalInterface
 public interface Versioned {
-
     /**
      * This returns the current {@link Version} of this object.
      * 

@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import org.bukkit.block.Block;
 
 public interface PlayerHeadAdapter {
-
     void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws IllegalAccessException, InvocationTargetException, InstantiationException;
 
     static PlayerHeadAdapter get() {

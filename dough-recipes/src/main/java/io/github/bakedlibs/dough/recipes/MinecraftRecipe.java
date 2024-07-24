@@ -18,7 +18,6 @@ import org.bukkit.inventory.*;
 import io.github.bakedlibs.dough.common.DoughLogger;
 
 public class MinecraftRecipe<T extends Recipe> {
-
     private static final Set<MinecraftRecipe<?>> recipeTypes = new HashSet<>();
 
     public static final MinecraftRecipe<ShapedRecipe> SHAPED_CRAFTING;

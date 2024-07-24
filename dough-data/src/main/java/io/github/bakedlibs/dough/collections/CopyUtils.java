@@ -12,7 +12,6 @@ import java.util.function.UnaryOperator;
  * @author md5sha256
  */
 public final class CopyUtils {
-
     private CopyUtils() {}
 
     /**

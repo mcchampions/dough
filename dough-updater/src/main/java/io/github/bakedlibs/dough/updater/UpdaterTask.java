@@ -22,7 +22,6 @@ import com.google.common.hash.Hashing;
 import io.github.bakedlibs.dough.versions.Version;
 
 abstract class UpdaterTask<V extends Version> implements Runnable {
-
     private final Plugin plugin;
     private final File file;
     private final URL url;

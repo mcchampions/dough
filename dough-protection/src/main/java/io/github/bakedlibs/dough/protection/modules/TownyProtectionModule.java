@@ -12,7 +12,6 @@ import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
 public class TownyProtectionModule implements ProtectionModule {
-
     private final Plugin plugin;
 
     public TownyProtectionModule(Plugin plugin) {

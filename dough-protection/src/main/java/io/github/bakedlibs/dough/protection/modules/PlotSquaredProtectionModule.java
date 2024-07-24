@@ -13,7 +13,6 @@ import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
 public class PlotSquaredProtectionModule implements ProtectionModule {
-
     private final Plugin plugin;
 
     public PlotSquaredProtectionModule(Plugin plugin) {

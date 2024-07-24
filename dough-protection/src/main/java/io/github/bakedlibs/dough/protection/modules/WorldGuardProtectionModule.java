@@ -22,7 +22,6 @@ import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
 public class WorldGuardProtectionModule implements ProtectionModule {
-
     private WorldGuardPlugin worldguard;
     private RegionContainer container;
 

@@ -13,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 import io.github.bakedlibs.dough.items.ItemUtils;
 
 public final class InvUtils {
-
     private InvUtils() {}
 
     /**

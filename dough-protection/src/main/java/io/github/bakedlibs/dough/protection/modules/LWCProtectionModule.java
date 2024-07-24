@@ -12,7 +12,6 @@ import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
 public class LWCProtectionModule implements ProtectionModule {
-
     private LWC lwc;
     private final Plugin plugin;
 

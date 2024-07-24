@@ -9,7 +9,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public final class PersistentJsonDataType<T extends JsonElement> implements PersistentDataType<String, T> {
-
     public static final PersistentJsonDataType<JsonObject> JSON_OBJECT = new PersistentJsonDataType<>(JsonObject.class);
     public static final PersistentJsonDataType<JsonArray> JSON_ARRAY = new PersistentJsonDataType<>(JsonArray.class);
 

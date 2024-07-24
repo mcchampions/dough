@@ -13,7 +13,6 @@ import java.net.URL;
 import java.util.logging.Level;
 
 public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
-
     private static final String SITE_URL = "https://blob.build";
     private static final String API_URL = SITE_URL + "/api/builds";
 
@@ -37,7 +36,6 @@ public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
             URL versionsURL = new URI(API_URL + "/" + project + "/" + releaseChannel + "/latest").toURL();
 
             scheduleAsyncUpdateTask(new UpdaterTask<>(this, versionsURL) {
-
                 @Override
                 public UpdateInfo parse(String result) throws MalformedURLException, URISyntaxException {
                     JsonObject json = (JsonObject) JsonParser.parseString(result);

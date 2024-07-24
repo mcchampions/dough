@@ -15,7 +15,6 @@ import br.net.fabiozumbi12.RedProtect.Bukkit.API.RedProtectAPI;
 import javax.annotation.Nonnull;
 
 public class RedProtectProtectionModule implements ProtectionModule {
-
     private RedProtectAPI api;
     private final Plugin plugin;
 

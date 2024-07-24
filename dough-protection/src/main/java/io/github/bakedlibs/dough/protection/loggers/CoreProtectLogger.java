@@ -11,7 +11,6 @@ import net.coreprotect.CoreProtect;
 import net.coreprotect.CoreProtectAPI;
 
 public class CoreProtectLogger implements ProtectionLogger {
-
     private CoreProtectAPI coreprotect;
 
     @Override

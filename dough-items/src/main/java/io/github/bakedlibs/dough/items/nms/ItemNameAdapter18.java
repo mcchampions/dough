@@ -9,7 +9,6 @@ import io.github.bakedlibs.dough.reflection.ReflectionUtils;
 import io.github.bakedlibs.dough.versions.UnknownServerVersionException;
 
 class ItemNameAdapter18 implements ItemNameAdapter {
-
     private final Method getCopy;
     private final Method getName;
     private final Method toString;

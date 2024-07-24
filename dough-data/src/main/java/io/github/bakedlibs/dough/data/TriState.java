@@ -9,7 +9,6 @@ package io.github.bakedlibs.dough.data;
  *
  */
 enum TriState {
-
     /**
      * The {@link TriStateOptional} has not yet been computed.
      */

@@ -10,7 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 class PlayerHeadAdapter18 implements PlayerHeadAdapter {
-
     private final Constructor<?> newPosition;
 
     private final Method getHandle;

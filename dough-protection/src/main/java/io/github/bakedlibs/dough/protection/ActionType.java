@@ -9,7 +9,6 @@ package io.github.bakedlibs.dough.protection;
  * @see Interaction
  */
 public enum ActionType {
-
     /**
      * This constant represents an {@link Interaction} with blocks.
      */

@@ -16,7 +16,6 @@ import org.bukkit.profile.PlayerProfile;
 import org.bukkit.profile.PlayerTextures;
 
 public final class CustomGameProfile extends GameProfile {
-
     /**
      * The player name for this profile.
      * "CS-CoreLib" for historical reasons and backwards compatibility.

@@ -18,7 +18,6 @@ import org.bukkit.World;
  *
  */
 public final class ChunkPosition {
-
     private final WeakReference<World> world;
     private final long position;
 
@@ -138,7 +137,6 @@ public final class ChunkPosition {
     @Override
     public boolean equals(Object o) {
         if (o instanceof ChunkPosition pos) {
-
             if (pos.world.get() == null) {
                 return false;
             }

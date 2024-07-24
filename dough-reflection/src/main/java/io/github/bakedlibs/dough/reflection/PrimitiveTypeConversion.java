@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 final class PrimitiveTypeConversion {
-
     private static final Map<Class<?>, Class<?>> primitiveTypes = new HashMap<>();
 
     static {

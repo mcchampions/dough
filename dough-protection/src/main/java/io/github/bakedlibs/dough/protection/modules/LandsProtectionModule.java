@@ -14,7 +14,6 @@ import io.github.bakedlibs.dough.protection.ProtectionModule;
 import me.angeschossen.lands.api.land.LandWorld;
 
 public class LandsProtectionModule implements ProtectionModule {
-
     private LandsIntegration landsIntegration;
     private final Plugin lands;
     private final Plugin plugin;

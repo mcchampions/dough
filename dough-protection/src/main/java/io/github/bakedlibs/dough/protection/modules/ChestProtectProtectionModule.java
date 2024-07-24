@@ -11,9 +11,7 @@ import io.github.bakedlibs.dough.protection.ActionType;
 import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
-
 public class ChestProtectProtectionModule implements ProtectionModule {
-
     private final Plugin plugin;
     private ChestProtectAPI api;
 

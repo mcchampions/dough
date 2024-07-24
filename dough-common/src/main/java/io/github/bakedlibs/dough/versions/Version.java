@@ -19,7 +19,6 @@ import org.apache.commons.lang.Validate;
  *
  */
 public interface Version extends Comparable<Version> {
-
     /**
      * This method returns whether this {@link Version} is newer than the
      * provided {@link Version}. This also implies that the provided
@@ -77,8 +76,7 @@ public interface Version extends Comparable<Version> {
      * @return This returns whether this is equal to or newer than the given {@link Version}
      */
     default boolean isAtLeast(Version version) {
-        Validate.notNull(version, "The version to compare must not be null.");
-
+        
         return isEqualTo(version) || isNewerThan(version);
     }
 

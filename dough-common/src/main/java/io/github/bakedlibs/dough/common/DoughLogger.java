@@ -18,7 +18,6 @@ import org.bukkit.plugin.PluginLogger;
  *
  */
 public class DoughLogger extends Logger {
-
     public DoughLogger(Server server, String name) {
         super("dough: " + name, null);
 
