@@ -15,8 +15,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import javax.annotation.Nonnull;
-
 /**
  * This Class represents a collection of elements.
  * Each element is given a weight making the randomized selection

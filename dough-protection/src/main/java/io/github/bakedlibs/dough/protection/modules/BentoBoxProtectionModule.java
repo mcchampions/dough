@@ -2,8 +2,6 @@ package io.github.bakedlibs.dough.protection.modules;
 
 import java.util.Optional;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;

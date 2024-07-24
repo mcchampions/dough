@@ -4,8 +4,6 @@ import java.util.Objects;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 
-import javax.annotation.Nonnull;
-
 import org.apache.commons.lang.Validate;
 
 import io.github.bakedlibs.dough.common.CommonPatterns;

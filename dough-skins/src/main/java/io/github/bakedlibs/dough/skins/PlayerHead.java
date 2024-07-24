@@ -3,9 +3,6 @@ package io.github.bakedlibs.dough.skins;
 import java.lang.reflect.InvocationTargetException;
 import java.util.function.Consumer;
 
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;

@@ -3,9 +3,6 @@ package io.github.bakedlibs.dough.skins;
 import java.net.URL;
 import java.util.UUID;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.meta.SkullMeta;
 

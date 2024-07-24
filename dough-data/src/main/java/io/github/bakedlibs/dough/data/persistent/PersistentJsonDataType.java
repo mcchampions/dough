@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.data.persistent;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.persistence.PersistentDataAdapterContext;
 import org.bukkit.persistence.PersistentDataType;
 

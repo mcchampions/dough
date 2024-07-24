@@ -6,8 +6,6 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.logging.Level;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.plugin.Plugin;
 
 import com.google.gson.JsonArray;

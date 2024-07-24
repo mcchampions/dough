@@ -1,8 +1,5 @@
 package io.github.bakedlibs.dough.versions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.apache.commons.lang.Validate;
 
 /**

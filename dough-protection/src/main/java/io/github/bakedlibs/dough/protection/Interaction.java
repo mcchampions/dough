@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.protection;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.block.Block;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Entity;

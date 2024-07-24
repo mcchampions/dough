@@ -3,8 +3,6 @@ package io.github.bakedlibs.dough.blocks;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;

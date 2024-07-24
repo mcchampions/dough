@@ -2,9 +2,6 @@ package io.github.bakedlibs.dough.scheduling;
 
 import java.util.function.IntConsumer;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 

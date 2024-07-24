@@ -6,8 +6,7 @@ import io.github.bakedlibs.dough.versions.MinecraftVersion;
 import io.papermc.lib.PaperLib;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.bukkit.block.Block;
 
 public interface PlayerHeadAdapter {

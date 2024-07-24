@@ -10,8 +10,6 @@ import org.popcraft.bolt.BoltAPI;
 import org.popcraft.bolt.protection.Protection;
 import org.popcraft.bolt.util.Permission;
 
-import javax.annotation.Nonnull;
-
 public class BoltProtectionModule implements ProtectionModule {
 
     private BoltAPI bolt;

@@ -9,8 +9,6 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.Plugin;
 
-import javax.annotation.Nonnull;
-
 /**
  * Provides protection handling for ShopChest
  *

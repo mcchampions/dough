@@ -10,8 +10,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.annotation.Nonnull;
-
 /**
  * This is an infite implementation of {@link Iterator}.
  * When you pass a {@link Collection} or {@link Streamable} to the constructor,

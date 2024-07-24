@@ -1,7 +1,6 @@
 package io.github.bakedlibs.dough.versions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.io.Serial;
 
 /**
  * An {@link IncomparableVersionsException} is thrown when two objects of the type {@link Version}
@@ -17,6 +16,7 @@ import javax.annotation.Nullable;
  */
 public class IncomparableVersionsException extends RuntimeException {
 
+    @Serial
     private static final long serialVersionUID = -4276437450741965941L;
 
     /**

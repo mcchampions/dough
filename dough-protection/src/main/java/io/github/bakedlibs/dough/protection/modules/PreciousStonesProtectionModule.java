@@ -12,8 +12,6 @@ import net.sacredlabyrinth.Phaed.PreciousStones.PreciousStones;
 import net.sacredlabyrinth.Phaed.PreciousStones.api.IApi;
 import net.sacredlabyrinth.Phaed.PreciousStones.field.FieldFlag;
 
-import javax.annotation.Nonnull;
-
 public class PreciousStonesProtectionModule implements ProtectionModule {
 
     private IApi api;

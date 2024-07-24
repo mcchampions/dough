@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;
 

@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.versions;
 
-import javax.annotation.Nonnull;
-
 /**
  * This {@link Version} implementation consists of only one component, the version number.
  * 

@@ -14,8 +14,6 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import javax.annotation.Nonnull;
-
 /**
  * This Class functions similar to {@link Map} but returns an
  * Optional when calling {@link OptionalMap#get(Object)}.

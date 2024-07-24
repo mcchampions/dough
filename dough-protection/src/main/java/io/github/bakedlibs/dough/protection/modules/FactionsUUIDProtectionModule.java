@@ -12,8 +12,6 @@ import com.massivecraft.factions.Faction;
 import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
-import javax.annotation.Nonnull;
-
 public class FactionsUUIDProtectionModule implements ProtectionModule {
 
     private FPlayers api;
