@@ -95,8 +95,8 @@ public class MinecraftVersion extends SemanticVersion {
      * @return Whether the current Server instance is a mock
      */
     public static boolean isMocked(@Nonnull Server server) {
-        /**
-         * We start our search with the current Server class.
+        /*
+          We start our search with the current Server class.
          */
         Class<?> clazz = server.getClass();
 

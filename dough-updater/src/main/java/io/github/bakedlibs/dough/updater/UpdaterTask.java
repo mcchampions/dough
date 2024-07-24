@@ -82,6 +82,7 @@ abstract class UpdaterTask<V extends Version> implements Runnable {
         }
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     private void install(@Nonnull UpdateInfo info) {
         plugin.getLogger().log(Level.INFO, "{0} is outdated!", plugin.getName());
         plugin.getLogger().log(Level.INFO, "Downloading {0}, version: {1}", new Object[] { plugin.getName(), info.getVersion() });

@@ -23,6 +23,6 @@ enum TriState {
     /**
      * The {@link TriStateOptional} has been computed and is not empty.
      */
-    COMPUTED;
+    COMPUTED
 
 }

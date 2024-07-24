@@ -80,7 +80,7 @@ public class ItemMetaSnapshot {
         } else if (snapshot.lore.isPresent() && lore.isPresent()) {
             return lore.get().equals(snapshot.lore.get());
         } else {
-            return !snapshot.lore.isPresent() && !lore.isPresent();
+            return snapshot.lore.isEmpty() && lore.isEmpty();
         }
     }
 
@@ -97,7 +97,7 @@ public class ItemMetaSnapshot {
             if (hasLore && lore.isPresent()) {
                 return lore.get().equals(meta.getLore());
             } else {
-                return !hasLore && !lore.isPresent();
+                return !hasLore && lore.isEmpty();
             }
         }
     }

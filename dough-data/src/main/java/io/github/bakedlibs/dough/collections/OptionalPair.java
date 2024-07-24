@@ -57,8 +57,8 @@ public class OptionalPair<P, S> {
     public int hashCode() {
         final int prime = 59;
         int result = 1;
-        result = result * prime + (!firstValue.isPresent() ? 43 : firstValue.hashCode());
-        result = result * prime + (!secondValue.isPresent() ? 43 : secondValue.hashCode());
+        result = result * prime + (firstValue.isEmpty() ? 43 : firstValue.hashCode());
+        result = result * prime + (secondValue.isEmpty() ? 43 : secondValue.hashCode());
         return result;
     }
 

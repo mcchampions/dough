@@ -126,7 +126,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
 
-            private Iterator<WeightedNode<T>> iterator = internalSet.iterator();
+            private final Iterator<WeightedNode<T>> iterator = internalSet.iterator();
 
             @Override
             public boolean hasNext() {
@@ -393,10 +393,10 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
                 first = false;
             }
 
-            builder.append("(").append(node.getObject().toString()).append(" | " + node.getWeight() + ")");
+            builder.append("(").append(node.getObject()).append(" | ").append(node.getWeight()).append(")");
         }
 
-        return getClass().getSimpleName() + "{" + builder.toString() + "}";
+        return getClass().getSimpleName() + "{" + builder + "}";
     }
 
 }

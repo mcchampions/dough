@@ -19,7 +19,7 @@ public interface ItemNameAdapter {
     @Nonnull
     String getName(ItemStack item) throws IllegalAccessException, InvocationTargetException;
 
-    public static @Nullable ItemNameAdapter get() {
+    static @Nullable ItemNameAdapter get() {
         try {
             if (MinecraftVersion.isMocked()) {
                 // Special case for MockBukkit

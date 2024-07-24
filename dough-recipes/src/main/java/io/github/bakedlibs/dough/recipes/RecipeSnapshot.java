@@ -47,7 +47,7 @@ public class RecipeSnapshot {
         plugin.getLogger().log(Level.INFO, "Collecting Snapshots of all Recipes...");
 
         while (iterator.hasNext()) {
-            Recipe recipe = null;
+            Recipe recipe;
             try {
                 recipe = iterator.next();
                 Set<Recipe> set = recipes.computeIfAbsent(recipe.getClass(), key -> new LinkedHashSet<>());
@@ -61,7 +61,7 @@ public class RecipeSnapshot {
             }
         }
 
-        plugin.getLogger().log(Level.INFO, "Found {0} Recipes!", recipes.entrySet().stream().mapToInt(entry -> entry.getValue().size()).sum());
+        plugin.getLogger().log(Level.INFO, "Found {0} Recipes!", recipes.values().stream().mapToInt(Set::size).sum());
     }
 
     /**
@@ -143,11 +143,7 @@ public class RecipeSnapshot {
     public <T extends Recipe> RecipeChoice[] getRecipeInput(@Nonnull T recipe) {
         Optional<MinecraftRecipe<? super T>> type = MinecraftRecipe.of(recipe);
 
-        if (type.isPresent()) {
-            return getRecipeInput(type.get(), recipe);
-        } else {
-            return new RecipeChoice[0];
-        }
+        return type.map(minecraftRecipe -> getRecipeInput(minecraftRecipe, recipe)).orElseGet(() -> new RecipeChoice[0]);
     }
 
     /**

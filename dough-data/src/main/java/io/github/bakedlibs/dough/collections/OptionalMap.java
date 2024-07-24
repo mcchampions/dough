@@ -31,7 +31,7 @@ import javax.annotation.Nonnull;
  */
 public class OptionalMap<K, V> implements Iterable<Map.Entry<K, V>>, Streamable<Entry<K, V>> {
 
-    private Map<K, V> internalMap;
+    private final Map<K, V> internalMap;
 
     /**
      * An OptionalMap allows you to directly obtain Optionals from a Map.

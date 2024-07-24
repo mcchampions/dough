@@ -44,7 +44,7 @@ public class BukkitUpdater extends AbstractPluginUpdater<SemanticVersion> {
                 public UpdateInfo parse(String result) throws MalformedURLException {
                     JsonArray array = (JsonArray) new JsonParser().parse(result);
 
-                    if (array.size() == 0) {
+                    if (array.isEmpty()) {
                         getLogger().log(Level.WARNING, "The Auto-Updater could not connect to dev.bukkit.org, is it down?");
                         return null;
                     }

@@ -18,6 +18,6 @@ public enum ActionType {
     /**
      * This constant represents an {@link Interaction} with entities.
      */
-    ENTITY;
+    ENTITY
 
 }

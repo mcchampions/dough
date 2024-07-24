@@ -104,7 +104,7 @@ public class CustomItemStack extends ItemStack {
     }
 
     public CustomItemStack(Material type, String name, List<String> lore) {
-        this(new ItemStack(type), name, lore.toArray(new String[lore.size()]));
+        this(new ItemStack(type), name, lore.toArray(new String[0]));
     }
 
     public CustomItemStack(ItemStack item, List<String> list) {

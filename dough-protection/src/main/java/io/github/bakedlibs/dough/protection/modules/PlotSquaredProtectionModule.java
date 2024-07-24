@@ -5,10 +5,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.plotsquared.bukkit.util.BukkitUtil;
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.permissions.Permission;
 import com.plotsquared.core.player.PlotPlayer;

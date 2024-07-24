@@ -21,8 +21,8 @@ import org.bukkit.plugin.Plugin;
 
 class ChatInputListener implements Listener {
 
-    private Plugin plugin;
-    protected Map<UUID, Set<ChatInputHandler>> handlers;
+    private final Plugin plugin;
+    protected final Map<UUID, Set<ChatInputHandler>> handlers;
 
     protected ChatInputListener(Plugin plugin) {
         this.plugin = plugin;

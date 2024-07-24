@@ -26,7 +26,6 @@ import javax.annotation.Nonnull;
 public class WorldGuardProtectionModule implements ProtectionModule {
 
     private WorldGuardPlugin worldguard;
-    private WorldGuardPlatform platform;
     private RegionContainer container;
 
     private final Plugin plugin;
@@ -43,7 +42,7 @@ public class WorldGuardProtectionModule implements ProtectionModule {
     @Override
     public void load() {
         worldguard = WorldGuardPlugin.inst();
-        platform = WorldGuard.getInstance().getPlatform();
+        WorldGuardPlatform platform = WorldGuard.getInstance().getPlatform();
         container = platform.getRegionContainer();
     }
 
