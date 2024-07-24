@@ -14,21 +14,18 @@ import org.bukkit.plugin.PluginManager;
 
 import io.github.bakedlibs.dough.common.DoughLogger;
 import io.github.bakedlibs.dough.protection.loggers.CoreProtectLogger;
-import io.github.bakedlibs.dough.protection.loggers.LogBlockLogger;
 import io.github.bakedlibs.dough.protection.modules.BentoBoxProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.BlockLockerProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.BoltProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.ChestProtectProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.FactionsUUIDProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.FunnyGuildsProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.GriefPreventionProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.LWCProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.LandsProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.LocketteProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.PlotSquaredProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.PreciousStonesProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.ShopChestProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.TownyProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.WorldGuardProtectionModule;
 
 /**
@@ -73,8 +70,6 @@ public final class ProtectionManager {
 
         // We sadly cannot use ModuleName::new as this would load the class into memory prematurely
         registerModule(pm, "WorldGuard", worldGuard -> new WorldGuardProtectionModule(worldGuard));
-        registerModule(pm, "Towny", towny -> new TownyProtectionModule(towny));
-        registerModule(pm, "GriefPrevention", griefPrevention -> new GriefPreventionProtectionModule(griefPrevention));
         registerModule(pm, "LWC", lwc -> new LWCProtectionModule(lwc));
         registerModule(pm, "PreciousStones", preciousStones -> new PreciousStonesProtectionModule(preciousStones));
         registerModule(pm, "Lockette", lockette -> new LocketteProtectionModule(lockette));
@@ -108,9 +103,6 @@ public final class ProtectionManager {
 
         if (pm.isPluginEnabled("CoreProtect")) {
             registerLogger(new CoreProtectLogger());
-        }
-        if (pm.isPluginEnabled("LogBlock")) {
-            registerLogger(new LogBlockLogger());
         }
     }
 
