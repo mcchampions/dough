@@ -32,7 +32,7 @@ public final class PlayerHead {
      * 
      * @return A new Head Item for the specified Player
      */
-    public static @Nonnull ItemStack getItemStack(@Nonnull OfflinePlayer player) {
+    public static ItemStack getItemStack(OfflinePlayer player) {
         Validate.notNull(player, "The player can not be null!");
 
         return getItemStack(meta -> meta.setOwningPlayer(player));
@@ -46,7 +46,7 @@ public final class PlayerHead {
      * 
      * @return A new Head Item for the specified Player
      */
-    public static @Nonnull ItemStack getItemStack(@Nonnull PlayerSkin skin) {
+    public static ItemStack getItemStack(PlayerSkin skin) {
         Validate.notNull(skin, "The skin can not be null!");
 
         return getItemStack(meta -> {
@@ -58,7 +58,7 @@ public final class PlayerHead {
         });
     }
 
-    private static @Nonnull ItemStack getItemStack(@Nonnull Consumer<SkullMeta> consumer) {
+    private static ItemStack getItemStack(Consumer<SkullMeta> consumer) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) item.getItemMeta();
         consumer.accept(meta);
@@ -66,7 +66,6 @@ public final class PlayerHead {
         return item;
     }
 
-    @ParametersAreNonnullByDefault
     public static void setSkin(Block block, PlayerSkin skin, boolean sendBlockUpdate) {
         if (adapter == null) {
             throw new UnsupportedOperationException("Cannot update skin texture, no adapter found");

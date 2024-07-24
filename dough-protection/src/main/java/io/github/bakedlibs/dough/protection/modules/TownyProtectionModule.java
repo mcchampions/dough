@@ -17,7 +17,7 @@ public class TownyProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;
 
-    public TownyProtectionModule(@Nonnull Plugin plugin) {
+    public TownyProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

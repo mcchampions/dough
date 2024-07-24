@@ -14,12 +14,11 @@ class UpdateInfo {
     private final Version version;
     private final String checksum;
 
-    @ParametersAreNonnullByDefault
     UpdateInfo(URL url, Version version) {
         this(url, version, null);
     }
 
-    UpdateInfo(URL url, Version version, @Nullable String checksum) {
+    UpdateInfo(URL url, Version version, String checksum) {
         this.url = url;
         this.version = version;
         this.checksum = checksum;

@@ -25,7 +25,7 @@ public class SimpleNumericVersion extends AbstractNumericVersion {
      * {@inheritDoc}
      */
     @Override
-    public boolean isSimilar(@Nonnull Version version) {
+    public boolean isSimilar(Version version) {
         return version instanceof SimpleNumericVersion;
     }
 
@@ -33,7 +33,7 @@ public class SimpleNumericVersion extends AbstractNumericVersion {
      * {@inheritDoc}
      */
     @Override
-    public @Nonnull String getAsString() {
+    public String getAsString() {
         return String.valueOf(getVersionNumber());
     }
 

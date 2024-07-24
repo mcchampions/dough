@@ -24,7 +24,6 @@ abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater
     protected final V currentVersion;
     protected final CompletableFuture<V> latestVersion = new CompletableFuture<>();
 
-    @ParametersAreNonnullByDefault
     protected AbstractPluginUpdater(Plugin plugin, File file, V currentVersion) {
         Validate.notNull(plugin, "The plugin cannot be null.");
         Validate.notNull(file, "The plugin file cannot be null.");
@@ -55,33 +54,31 @@ abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater
         this.connectionTimeout = timeout;
     }
 
-    public @Nonnull Plugin getPlugin() {
+    public Plugin getPlugin() {
         return plugin;
     }
 
-    public @Nonnull Logger getLogger() {
+    public Logger getLogger() {
         return plugin.getLogger();
     }
 
-    public @Nonnull File getFile() {
+    public File getFile() {
         return file;
     }
 
     @Override
-    public @Nonnull V getCurrentVersion() {
+    public V getCurrentVersion() {
         return currentVersion;
     }
 
-    public @Nonnull CompletableFuture<V> getLatestVersion() {
+    public CompletableFuture<V> getLatestVersion() {
         return latestVersion;
     }
 
-    protected void scheduleAsyncUpdateTask(@Nonnull UpdaterTask<V> task) {
+    protected void scheduleAsyncUpdateTask(UpdaterTask<V> task) {
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, task);
     }
 
-    @ParametersAreNonnullByDefault
-    @Nonnull
     protected static PrefixedVersion extractBuild(String prefix, Plugin plugin) {
         String pluginVersion = plugin.getDescription().getVersion();
 

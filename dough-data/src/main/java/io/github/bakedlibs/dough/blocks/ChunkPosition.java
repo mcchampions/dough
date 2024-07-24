@@ -24,21 +24,21 @@ public final class ChunkPosition {
     private final WeakReference<World> world;
     private final long position;
 
-    public ChunkPosition(@Nonnull World world, long position) {
+    public ChunkPosition(World world, long position) {
         this.world = new WeakReference<>(world);
         this.position = position;
     }
 
-    public ChunkPosition(@Nonnull World world, int x, int z) {
+    public ChunkPosition(World world, int x, int z) {
         this.world = new WeakReference<>(world);
         this.position = getAsLong(x, z);
     }
 
-    public ChunkPosition(@Nonnull Chunk chunk) {
+    public ChunkPosition(Chunk chunk) {
         this(chunk.getWorld(), chunk.getX(), chunk.getZ());
     }
 
-    public ChunkPosition(@Nonnull Location l) {
+    public ChunkPosition(Location l) {
         this(l.getWorld(), l.getBlockX() >> 4, l.getBlockZ() >> 4);
     }
 

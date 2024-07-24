@@ -35,15 +35,15 @@ public class ItemMetaSnapshot {
     private final Set<ItemFlag> itemFlags;
     private final Map<Enchantment, Integer> enchantments;
 
-    public ItemMetaSnapshot(@Nonnull ItemStack item) {
+    public ItemMetaSnapshot(ItemStack item) {
         this(item.getItemMeta());
     }
 
-    public ItemMetaSnapshot(@Nonnull Supplier<ItemMeta> supplier) {
+    public ItemMetaSnapshot(Supplier<ItemMeta> supplier) {
         this(supplier.get());
     }
 
-    public ItemMetaSnapshot(@Nonnull ItemMeta meta) {
+    public ItemMetaSnapshot(ItemMeta meta) {
         this.displayName = meta.hasDisplayName() ? Optional.of(meta.getDisplayName()) : Optional.empty();
         this.lore = meta.hasLore() ? Optional.of(Collections.unmodifiableList(meta.getLore())) : Optional.empty();
         this.customModelData = meta.hasCustomModelData() ? OptionalInt.of(meta.getCustomModelData()) : OptionalInt.empty();
@@ -52,27 +52,27 @@ public class ItemMetaSnapshot {
         this.enchantments = meta.getEnchants();
     }
 
-    public @Nonnull Optional<String> getDisplayName() {
+    public Optional<String> getDisplayName() {
         return displayName;
     }
 
-    public @Nonnull Optional<List<String>> getLore() {
+    public Optional<List<String>> getLore() {
         return lore;
     }
 
-    public @Nonnull OptionalInt getCustomModelData() {
+    public OptionalInt getCustomModelData() {
         return customModelData;
     }
 
-    public @Nonnull Set<ItemFlag> getItemFlags() {
+    public Set<ItemFlag> getItemFlags() {
         return itemFlags;
     }
 
-    public @Nonnull Map<Enchantment, Integer> getEnchantments() {
+    public Map<Enchantment, Integer> getEnchantments() {
         return enchantments;
     }
 
-    public boolean isSimilar(@Nonnull ItemMetaSnapshot snapshot) {
+    public boolean isSimilar(ItemMetaSnapshot snapshot) {
         if (snapshot.displayName.isPresent() != displayName.isPresent()) {
             return false;
         } else if (snapshot.displayName.isPresent() && displayName.isPresent() && !snapshot.displayName.get().equals(displayName.get())) {
@@ -84,7 +84,7 @@ public class ItemMetaSnapshot {
         }
     }
 
-    public boolean isSimilar(@Nonnull ItemMeta meta) {
+    public boolean isSimilar(ItemMeta meta) {
         boolean hasDisplayName = meta.hasDisplayName();
 
         if (hasDisplayName != displayName.isPresent()) {

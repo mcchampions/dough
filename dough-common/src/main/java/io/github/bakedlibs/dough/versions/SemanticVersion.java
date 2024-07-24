@@ -119,7 +119,7 @@ public class SemanticVersion implements Version {
      * {@inheritDoc}
      */
     @Override
-    public boolean isNewerThan(@Nonnull Version version) {
+    public boolean isNewerThan(Version version) {
         if (isSimilar(version)) {
             SemanticVersion semver = (SemanticVersion) version;
             int major = semver.getMajorVersion();
@@ -148,7 +148,7 @@ public class SemanticVersion implements Version {
      * {@inheritDoc}
      */
     @Override
-    public boolean isEqualTo(@Nonnull Version version) {
+    public boolean isEqualTo(Version version) {
         if (isSimilar(version)) {
             SemanticVersion semver = (SemanticVersion) version;
             int major = semver.getMajorVersion();
@@ -173,7 +173,7 @@ public class SemanticVersion implements Version {
      * {@inheritDoc}
      */
     @Override
-    public boolean isOlderThan(@Nonnull Version version) {
+    public boolean isOlderThan(Version version) {
         if (isSimilar(version)) {
             SemanticVersion semver = (SemanticVersion) version;
             int major = semver.getMajorVersion();
@@ -202,7 +202,7 @@ public class SemanticVersion implements Version {
      * {@inheritDoc}
      */
     @Override
-    public @Nonnull String getAsString() {
+    public String getAsString() {
         if (isPatch()) {
             return majorVersion + "." + minorVersion + "." + patchVersion;
         } else {
@@ -249,7 +249,7 @@ public class SemanticVersion implements Version {
      * 
      * @return Whether the two versions are equal (ignoring their patch version)
      */
-    public boolean equalsIgnorePatch(@Nonnull SemanticVersion version) {
+    public boolean equalsIgnorePatch(SemanticVersion version) {
         Validate.notNull(version, "Version cannot be null.");
         return equalsIgnorePatch(version.getMajorVersion(), version.getMinorVersion());
     }
@@ -283,7 +283,7 @@ public class SemanticVersion implements Version {
      * 
      * @return The resulting {@link SemanticVersion}
      */
-    public static @Nonnull SemanticVersion parse(@Nonnull String version) {
+    public static SemanticVersion parse(String version) {
         Validate.notNull(version, "The version should not be null.");
 
         // Create a Matcher from our semver regex

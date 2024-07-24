@@ -23,11 +23,11 @@ final class PrimitiveTypeConversion {
 
     private PrimitiveTypeConversion() {}
 
-    static @Nullable Class<?> convert(@Nonnull Class<?> boxedClassType) {
+    static Class<?> convert(Class<?> boxedClassType) {
         return primitiveTypes.get(boxedClassType);
     }
 
-    static @Nonnull Class<?> convertIfNecessary(@Nonnull Class<?> boxedClassType) {
+    static Class<?> convertIfNecessary(Class<?> boxedClassType) {
         Class<?> primitiveType = convert(boxedClassType);
         return primitiveType != null ? primitiveType : boxedClassType;
     }

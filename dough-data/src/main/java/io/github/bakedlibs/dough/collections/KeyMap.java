@@ -11,7 +11,7 @@ import org.bukkit.NamespacedKey;
 
 public class KeyMap<T extends Keyed> extends OptionalMap<NamespacedKey, T> {
 
-    public KeyMap(@Nonnull Supplier<? extends Map<NamespacedKey, T>> constructor) {
+    public KeyMap(Supplier<? extends Map<NamespacedKey, T>> constructor) {
         super(constructor);
     }
 

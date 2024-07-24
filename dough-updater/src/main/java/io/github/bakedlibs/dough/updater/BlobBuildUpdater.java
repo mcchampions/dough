@@ -21,11 +21,11 @@ public class BlobBuildUpdater extends AbstractPluginUpdater<PrefixedVersion> {
     private final String project;
     private final String releaseChannel;
 
-    public BlobBuildUpdater(@Nonnull Plugin plugin, @Nonnull File file, @Nonnull String project) {
+    public BlobBuildUpdater(Plugin plugin, File file, String project) {
         this(plugin, file, project, "Dev");
     }
 
-    public BlobBuildUpdater(@Nonnull Plugin plugin, @Nonnull File file, @Nonnull String project, @Nonnull String releaseChannel) {
+    public BlobBuildUpdater(Plugin plugin, File file, String project, String releaseChannel) {
         super(plugin, file, extractBuild(releaseChannel + " - ", plugin));
 
         this.project = project;

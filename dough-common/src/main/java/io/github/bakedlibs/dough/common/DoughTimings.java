@@ -19,7 +19,7 @@ public class DoughTimings {
     private final List<Long> steps = new ArrayList<>();
     private final Logger logger;
 
-    public DoughTimings(@Nonnull Plugin plugin, @Nonnull String name) {
+    public DoughTimings(Plugin plugin, String name) {
         Validate.notNull(name, "Name cannot be null");
         Validate.notNull(plugin, "Plugin cannot be null");
         this.name = name;
@@ -30,7 +30,7 @@ public class DoughTimings {
         this.steps.add(System.nanoTime());
     }
 
-    public @Nonnull String buildTimings(boolean clearTimings) {
+    public String buildTimings(boolean clearTimings) {
         final StringBuilder sb = new StringBuilder("-- Timings " + this.name
                 + " (" + this.steps.size() + ") --");
 
@@ -66,11 +66,11 @@ public class DoughTimings {
         this.logTimings(clearTimings, logger::info);
     }
 
-    public void logTimings(boolean clearTimings, @Nonnull CommandSender sender) {
+    public void logTimings(boolean clearTimings, CommandSender sender) {
         this.logTimings(clearTimings, sender::sendMessage);
     }
 
-    private void logTimings(boolean clearTimings, @Nonnull Consumer<String> printer) {
+    private void logTimings(boolean clearTimings, Consumer<String> printer) {
         printer.accept(buildTimings(clearTimings));
     }
 }

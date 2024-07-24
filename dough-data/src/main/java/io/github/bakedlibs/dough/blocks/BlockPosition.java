@@ -40,7 +40,7 @@ public final class BlockPosition {
      * @param position
      *            The {@link BlockPosition} (as a long)
      */
-    public BlockPosition(@Nonnull World world, long position) {
+    public BlockPosition(World world, long position) {
         this.world = new WeakReference<>(world);
         this.position = position;
     }
@@ -57,7 +57,7 @@ public final class BlockPosition {
      * @param z
      *            The z coordinate
      */
-    public BlockPosition(@Nonnull World world, int x, int y, int z) {
+    public BlockPosition(World world, int x, int y, int z) {
         this.world = new WeakReference<>(world);
         this.position = getAsLong(x, y, z);
     }
@@ -68,7 +68,7 @@ public final class BlockPosition {
      * @param b
      *            The {@link Block}
      */
-    public BlockPosition(@Nonnull Block b) {
+    public BlockPosition(Block b) {
         this(b.getWorld(), b.getX(), b.getY(), b.getZ());
     }
 
@@ -78,7 +78,7 @@ public final class BlockPosition {
      * @param l
      *            The {@link Location}
      */
-    public BlockPosition(@Nonnull Location l) {
+    public BlockPosition(Location l) {
         this(l.getWorld(), l.getBlockX(), l.getBlockY(), l.getBlockZ());
     }
 
@@ -89,7 +89,7 @@ public final class BlockPosition {
      *
      * @return The {@link World} for this block.
      */
-    public @Nonnull World getWorld() {
+    public World getWorld() {
         World ref = this.world.get();
 
         if (ref == null) {
@@ -142,7 +142,7 @@ public final class BlockPosition {
      *
      * @return The {@link Block} at this location.
      */
-    public @Nonnull Block getBlock() {
+    public Block getBlock() {
         return getChunk().getBlock((getX() & 0xF), getY(), (getZ() & 0xF));
     }
 
@@ -151,7 +151,7 @@ public final class BlockPosition {
      *
      * @return This blocks {@link Chunk}.
      */
-    public @Nonnull Chunk getChunk() {
+    public Chunk getChunk() {
         World ref = this.world.get();
 
         if (ref == null) {
@@ -184,7 +184,7 @@ public final class BlockPosition {
      *
      * @return A Bukkit {@link Location}.
      */
-    public @Nonnull Location toLocation() {
+    public Location toLocation() {
         return new Location(this.world.get(), getX(), getY(), getZ());
     }
 
@@ -214,7 +214,7 @@ public final class BlockPosition {
      * 
      * @return The compacted {@link Long}, ignoring the {@link World}
      */
-    public static long getAsLong(@Nonnull Location loc) {
+    public static long getAsLong(Location loc) {
         return getAsLong(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
     }
 

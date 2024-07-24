@@ -43,8 +43,7 @@ public class UUIDLookup {
      * @param name username of the player
      * @return {@link CompletableFuture} with the {@link UUID }
      */
-    @ParametersAreNonnullByDefault
-    public static @Nonnull CompletableFuture<UUID> getUuidFromUsername(Plugin plugin, String name) {
+    public static CompletableFuture<UUID> getUuidFromUsername(Plugin plugin, String name) {
         Validate.notNull(plugin, "The plugin instance must not be null!");
         Validate.notNull(name, "The username cannot be null!");
 
@@ -84,8 +83,7 @@ public class UUIDLookup {
      * @deprecated This has been Deprecated since 1.3.1 now use {@link #getUuidFromUsername(Plugin, String)}
      */
     @Deprecated(since = "1.3.1")
-    @ParametersAreNonnullByDefault
-    public static @Nonnull CompletableFuture<UUID> forUsername(Plugin plugin, String name) {
+    public static CompletableFuture<UUID> forUsername(Plugin plugin, String name) {
         Validate.notNull(plugin, "The plugin instance must not be null!");
         Validate.notNull(name, "The username cannot be null!");
 

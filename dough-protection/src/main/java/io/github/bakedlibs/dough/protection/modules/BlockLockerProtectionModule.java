@@ -22,7 +22,7 @@ public class BlockLockerProtectionModule implements ProtectionModule {
     private BlockLockerPlugin api;
     private final Plugin plugin;
 
-    public BlockLockerProtectionModule(@Nonnull Plugin plugin) {
+    public BlockLockerProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

@@ -32,7 +32,7 @@ abstract class UpdaterTask<V extends Version> implements Runnable {
     private final int timeout;
     private final V currentVersion;
 
-    UpdaterTask(@Nonnull PluginUpdater<V> updater, @Nonnull URL url) {
+    UpdaterTask(PluginUpdater<V> updater, URL url) {
         this.plugin = updater.getPlugin();
         this.file = updater.getFile();
         this.url = url;
@@ -40,7 +40,6 @@ abstract class UpdaterTask<V extends Version> implements Runnable {
         this.currentVersion = updater.getCurrentVersion();
     }
 
-    @Nullable
     public abstract UpdateInfo parse(String result) throws MalformedURLException, URISyntaxException;
 
     @Override
@@ -57,8 +56,7 @@ abstract class UpdaterTask<V extends Version> implements Runnable {
         }
     }
 
-    @Nullable
-    private UpdateInfo getLatestVersion(@Nonnull URL url) {
+    private UpdateInfo getLatestVersion(URL url) {
         try {
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(timeout);
@@ -74,7 +72,7 @@ abstract class UpdaterTask<V extends Version> implements Runnable {
         }
     }
 
-    private void validateAndInstall(@Nonnull UpdateInfo updateInfo) {
+    private void validateAndInstall(UpdateInfo updateInfo) {
         if (updateInfo.getVersion().isNewerThan(currentVersion)) {
             install(updateInfo);
         } else {
@@ -83,7 +81,7 @@ abstract class UpdaterTask<V extends Version> implements Runnable {
     }
 
     @SuppressWarnings("UnstableApiUsage")
-    private void install(@Nonnull UpdateInfo info) {
+    private void install(UpdateInfo info) {
         plugin.getLogger().log(Level.INFO, "{0} is outdated!", plugin.getName());
         plugin.getLogger().log(Level.INFO, "Downloading {0}, version: {1}", new Object[] { plugin.getName(), info.getVersion() });
 

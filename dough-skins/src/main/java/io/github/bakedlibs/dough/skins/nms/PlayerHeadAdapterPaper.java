@@ -25,7 +25,6 @@ public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
     }
 
     @Override
-    @ParametersAreNonnullByDefault
     public void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws InvocationTargetException, IllegalAccessException {
         BlockState state = block.getState();
         if (!(state instanceof Skull)) return;

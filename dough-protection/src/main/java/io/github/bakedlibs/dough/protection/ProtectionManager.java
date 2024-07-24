@@ -53,7 +53,7 @@ public final class ProtectionManager {
      * @param plugin
      *            The plugin instance that integrates dough.
      */
-    public ProtectionManager(@Nonnull Plugin plugin) {
+    public ProtectionManager(Plugin plugin) {
         logger = new DoughLogger(plugin.getServer(), "protection");
 
         logger.log(Level.INFO, "Loading Protection Modules...");
@@ -70,7 +70,6 @@ public final class ProtectionManager {
         loadLoggerImplementations(plugin);
     }
 
-    @ParametersAreNonnullByDefault
     @SuppressWarnings("java:S1612")
     private void loadModuleImplementations(Plugin plugin) {
         PluginManager pm = plugin.getServer().getPluginManager();
@@ -107,7 +106,6 @@ public final class ProtectionManager {
         }
     }
 
-    @ParametersAreNonnullByDefault
     private void loadLoggerImplementations(Plugin plugin) {
         PluginManager pm = plugin.getServer().getPluginManager();
 
@@ -119,13 +117,11 @@ public final class ProtectionManager {
         }
     }
 
-    @ParametersAreNonnullByDefault
     public void registerLogger(String name, ProtectionLogger module) {
         protectionLoggers.add(module);
         printModuleLoaded(name);
     }
 
-    @ParametersAreNonnullByDefault
     public void registerModule(PluginManager pm, String pluginName, Function<Plugin, ProtectionModule> constructor) {
         Plugin plugin = pm.getPlugin(pluginName);
 
@@ -134,7 +130,6 @@ public final class ProtectionManager {
         }
     }
 
-    @ParametersAreNonnullByDefault
     private void registerModule(Plugin plugin, Function<Plugin, ProtectionModule> constructor) {
         try {
             ProtectionModule module = constructor.apply(plugin);
@@ -147,7 +142,6 @@ public final class ProtectionManager {
         }
     }
 
-    @ParametersAreNonnullByDefault
     public void registerLogger(ProtectionLogger module) {
         try {
             module.load();
@@ -157,17 +151,14 @@ public final class ProtectionManager {
         }
     }
 
-    @ParametersAreNonnullByDefault
     private void printModuleLoaded(String module) {
         logger.log(Level.INFO, "Loaded Protection Module \"{0}\"", module);
     }
 
-    @ParametersAreNonnullByDefault
     public boolean hasPermission(OfflinePlayer p, Block b, Interaction action) {
         return hasPermission(p, b.getLocation(), action);
     }
 
-    @ParametersAreNonnullByDefault
     public boolean hasPermission(OfflinePlayer p, Location l, Interaction action) {
         for (ProtectionModule module : protectionModules) {
             try {
@@ -184,7 +175,6 @@ public final class ProtectionManager {
         return true;
     }
 
-    @ParametersAreNonnullByDefault
     public void logAction(OfflinePlayer p, Block b, Interaction action) {
         for (ProtectionLogger module : protectionLoggers) {
             try {

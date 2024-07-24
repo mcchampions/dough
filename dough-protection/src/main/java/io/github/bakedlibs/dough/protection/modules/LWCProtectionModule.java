@@ -18,7 +18,7 @@ public class LWCProtectionModule implements ProtectionModule {
     private LWC lwc;
     private final Plugin plugin;
 
-    public LWCProtectionModule(@Nonnull Plugin plugin) {
+    public LWCProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

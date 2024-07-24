@@ -23,33 +23,33 @@ public final class PersistentUUIDDataType implements PersistentDataType<int[], U
     private PersistentUUIDDataType() {}
 
     @Override
-    public @Nonnull Class<int[]> getPrimitiveType() {
+    public Class<int[]> getPrimitiveType() {
         return int[].class;
     }
 
     @Override
-    public @Nonnull Class<UUID> getComplexType() {
+    public Class<UUID> getComplexType() {
         return UUID.class;
     }
 
     @Override
-    public @Nonnull int[] toPrimitive(@Nonnull UUID complex, @Nonnull PersistentDataAdapterContext context) {
+    public int[] toPrimitive(UUID complex, PersistentDataAdapterContext context) {
         return toIntArray(complex);
     }
 
     @Override
-    public @Nonnull UUID fromPrimitive(@Nonnull int[] primitive, @Nonnull PersistentDataAdapterContext context) {
+    public UUID fromPrimitive(int[] primitive, PersistentDataAdapterContext context) {
         return fromIntArray(primitive);
     }
 
-    public static @Nonnull UUID fromIntArray(@Nonnull int[] ints) {
+    public static UUID fromIntArray(int[] ints) {
         Validate.notNull(ints, "The provided integer array cannot be null!");
         Validate.isTrue(ints.length == 4, "The integer array must have a length of 4.");
 
         return new UUID(ints[0] | ints[1] & 0xFFFFFFFFL, ints[2] | ints[3] & 0xFFFFFFFFL);
     }
 
-    public static @Nonnull int[] toIntArray(@Nonnull UUID uuid) {
+    public static int[] toIntArray(UUID uuid) {
         Validate.notNull(uuid, "The provided uuid cannot be null!");
 
         long mostSig = uuid.getMostSignificantBits();

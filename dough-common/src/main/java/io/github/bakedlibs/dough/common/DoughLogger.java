@@ -21,14 +21,14 @@ import org.bukkit.plugin.PluginLogger;
  */
 public class DoughLogger extends Logger {
 
-    public DoughLogger(@Nonnull Server server, @Nonnull String name) {
+    public DoughLogger(Server server, String name) {
         super("dough: " + name, null);
 
         setParent(server.getLogger());
         setLevel(Level.ALL);
     }
 
-    public DoughLogger(@Nonnull String name) {
+    public DoughLogger(String name) {
         this(Bukkit.getServer(), name);
     }
 

@@ -17,7 +17,6 @@ public interface Versioned {
      * 
      * @return The {@link Version} of this object
      */
-    @Nonnull
     Version getVersion();
 
 }

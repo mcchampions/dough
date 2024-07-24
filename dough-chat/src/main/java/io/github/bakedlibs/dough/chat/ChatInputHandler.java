@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 
 public interface ChatInputHandler extends Predicate<String> {
 
-    @ParametersAreNonnullByDefault
     void onChat(Player p, String msg);
 
 }

@@ -40,7 +40,7 @@ public class LoopIterator<T> implements Iterator<T>, Streamable<T> {
      * @param collection
      *            The collection to create a {@link LoopIterator} of
      */
-    public LoopIterator(@Nonnull Collection<T> collection) {
+    public LoopIterator(Collection<T> collection) {
         init(collection);
     }
 
@@ -51,7 +51,7 @@ public class LoopIterator<T> implements Iterator<T>, Streamable<T> {
      * @param streamable
      *            The streamable to create a {@link LoopIterator} of
      */
-    public LoopIterator(@Nonnull Streamable<T> streamable) {
+    public LoopIterator(Streamable<T> streamable) {
         if (streamable instanceof LoopIterator) {
             throw new IllegalArgumentException("Cannot loop-iterate over a LoopIterator");
         }
@@ -93,7 +93,7 @@ public class LoopIterator<T> implements Iterator<T>, Streamable<T> {
      *            The {@link Predicate} to use for this search
      * @return An {@link Optional} describing the result
      */
-    public Optional<T> find(@Nonnull Predicate<T> predicate) {
+    public Optional<T> find(Predicate<T> predicate) {
         if (!hasNext()) {
             return Optional.empty();
         }

@@ -22,13 +22,13 @@ public class BukkitUpdater extends AbstractPluginUpdater<SemanticVersion> {
 
     private final int projectId;
 
-    public BukkitUpdater(@Nonnull Plugin plugin, @Nonnull File file, int id) {
+    public BukkitUpdater(Plugin plugin, File file, int id) {
         super(plugin, file, getVersion(plugin));
 
         this.projectId = id;
     }
 
-    private static @Nonnull SemanticVersion getVersion(@Nonnull Plugin plugin) {
+    private static SemanticVersion getVersion(Plugin plugin) {
         String pluginVersion = plugin.getDescription().getVersion().toLowerCase(Locale.ROOT);
         return SemanticVersion.parse(pluginVersion);
     }

@@ -102,7 +102,7 @@ public final class PersistentDataAPI {
      * @param uuid
      *            The uuid to put in the container
      */
-    public static void setUUID(@Nonnull PersistentDataHolder holder, @Nonnull NamespacedKey key, @Nonnull UUID uuid) {
+    public static void setUUID(PersistentDataHolder holder, NamespacedKey key, UUID uuid) {
         holder.getPersistentDataContainer().set(key, PersistentUUIDDataType.TYPE, uuid);
     }
 
@@ -118,7 +118,6 @@ public final class PersistentDataAPI {
      * @param obj
      *            The object to put in the container
      */
-    @ParametersAreNonnullByDefault
     public static <T, Z> void set(PersistentDataHolder holder, NamespacedKey key, PersistentDataType<T, Z> type, Z obj) {
         holder.getPersistentDataContainer().set(key, type, obj);
     }
@@ -329,7 +328,7 @@ public final class PersistentDataAPI {
      *            The key to check for
      * @return {@code true} if the holder has a {@link PersistentDataContainer} with the specified key.
      */
-    public static boolean hasUUID(@Nonnull PersistentDataHolder holder, @Nonnull NamespacedKey key) {
+    public static boolean hasUUID(PersistentDataHolder holder, NamespacedKey key) {
         return holder.getPersistentDataContainer().has(key, PersistentUUIDDataType.TYPE);
     }
 
@@ -343,7 +342,6 @@ public final class PersistentDataAPI {
      *            The key to check for
      * @return {@code true} if the holder has a {@link PersistentDataContainer} with the specified key.
      */
-    @ParametersAreNonnullByDefault
     public static <T, Z> boolean has(PersistentDataHolder holder, NamespacedKey key, PersistentDataType<T, Z> type) {
         return holder.getPersistentDataContainer().has(key, type);
     }
@@ -963,8 +961,7 @@ public final class PersistentDataAPI {
      *            The key of the data to retrieve
      * @return The UUID associated with this key or null if it doesn't exist
      */
-    @Nullable
-    public static UUID getUUID(@Nonnull PersistentDataHolder holder, @Nonnull NamespacedKey key) {
+    public static UUID getUUID(PersistentDataHolder holder, NamespacedKey key) {
         return holder.getPersistentDataContainer().get(key, PersistentUUIDDataType.TYPE);
     }
 
@@ -980,8 +977,7 @@ public final class PersistentDataAPI {
      *            The key of the data to retrieve
      * @return An {@link Optional} describing the result
      */
-    @Nonnull
-    public static Optional<UUID> getOptionalUUID(@Nonnull PersistentDataHolder holder, @Nonnull NamespacedKey key) {
+    public static Optional<UUID> getOptionalUUID(PersistentDataHolder holder, NamespacedKey key) {
         return Optional.ofNullable(getUUID(holder, key));
     }
 
@@ -994,8 +990,6 @@ public final class PersistentDataAPI {
      *            The key of the data to retrieve
      * @return An object associated with this key or null if it doesn't exist
      */
-    @Nullable
-    @ParametersAreNonnullByDefault
     public static <T, Z> Z get(PersistentDataHolder holder, NamespacedKey key, PersistentDataType<T, Z> type) {
         return holder.getPersistentDataContainer().get(key, type);
     }
@@ -1011,8 +1005,6 @@ public final class PersistentDataAPI {
      *            The default value to use if no key is found
      * @return The object associated with this key or the default value if it doesn't exist
      */
-    @Nonnull
-    @ParametersAreNonnullByDefault
     public static <T, Z> Z get(PersistentDataHolder holder, NamespacedKey key, PersistentDataType<T, Z> type, Z defaultVal) {
         return holder.getPersistentDataContainer().getOrDefault(key, type, defaultVal);
     }
@@ -1041,8 +1033,6 @@ public final class PersistentDataAPI {
      *            The key of the data to retrieve
      * @return An {@link Optional} describing the result
      */
-    @Nonnull
-    @ParametersAreNonnullByDefault
     public static <T, Z> Optional<Z> getOptional(PersistentDataHolder holder, NamespacedKey key, PersistentDataType<T, Z> type) {
         return Optional.ofNullable(get(holder, key, type));
     }

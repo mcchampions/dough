@@ -20,7 +20,7 @@ public class FunnyGuildsProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;
 
-    public FunnyGuildsProtectionModule(@Nonnull Plugin plugin) {
+    public FunnyGuildsProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

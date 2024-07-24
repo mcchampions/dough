@@ -40,7 +40,7 @@ public class MinecraftVersion extends SemanticVersion {
      * @param version
      *            The parsed {@link SemanticVersion}
      */
-    private MinecraftVersion(@Nonnull SemanticVersion version) {
+    private MinecraftVersion(SemanticVersion version) {
         this(version.getMajorVersion(), version.getMinorVersion(), version.getPatchVersion());
     }
 
@@ -56,7 +56,7 @@ public class MinecraftVersion extends SemanticVersion {
      * @throws UnknownServerVersionException
      *             This exception is thrown when the {@link Server} version could not be identified
      */
-    public static @Nonnull MinecraftVersion of(@Nonnull Server server) throws UnknownServerVersionException {
+    public static MinecraftVersion of(Server server) throws UnknownServerVersionException {
         Validate.notNull(server, "Server should not be null!");
         String bukkitVersion = server.getBukkitVersion();
 
@@ -81,7 +81,7 @@ public class MinecraftVersion extends SemanticVersion {
      * @throws UnknownServerVersionException
      *             This exception is thrown when the {@link Server} version could not be identified
      */
-    public static @Nonnull MinecraftVersion get() throws UnknownServerVersionException {
+    public static MinecraftVersion get() throws UnknownServerVersionException {
         return of(Bukkit.getServer());
     }
 
@@ -94,7 +94,7 @@ public class MinecraftVersion extends SemanticVersion {
      * 
      * @return Whether the current Server instance is a mock
      */
-    public static boolean isMocked(@Nonnull Server server) {
+    public static boolean isMocked(Server server) {
         /*
           We start our search with the current Server class.
          */
@@ -139,7 +139,7 @@ public class MinecraftVersion extends SemanticVersion {
      * {@inheritDoc}
      */
     @Override
-    public @Nonnull String getAsString() {
+    public String getAsString() {
         return "Minecraft " + super.getAsString();
     }
 

@@ -15,12 +15,12 @@ class TaskNode {
     private int delay = 0;
     private TaskNode nextNode;
 
-    protected TaskNode(@Nonnull IntConsumer consumer, boolean async) {
+    protected TaskNode(IntConsumer consumer, boolean async) {
         this.runnable = consumer;
         this.asynchronous = async;
     }
 
-    protected TaskNode(@Nonnull IntConsumer consumer, int delay, boolean async) {
+    protected TaskNode(IntConsumer consumer, int delay, boolean async) {
         this.runnable = consumer;
         this.delay = delay;
         this.asynchronous = async;
@@ -30,11 +30,11 @@ class TaskNode {
         return nextNode != null;
     }
 
-    public @Nullable TaskNode getNextNode() {
+    public TaskNode getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(@Nullable TaskNode node) {
+    public void setNextNode(TaskNode node) {
         this.nextNode = node;
     }
 

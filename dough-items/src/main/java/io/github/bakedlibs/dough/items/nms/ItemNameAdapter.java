@@ -15,11 +15,9 @@ import io.github.bakedlibs.dough.versions.MinecraftVersion;
 
 public interface ItemNameAdapter {
 
-    @ParametersAreNonnullByDefault
-    @Nonnull
     String getName(ItemStack item) throws IllegalAccessException, InvocationTargetException;
 
-    static @Nullable ItemNameAdapter get() {
+    static ItemNameAdapter get() {
         try {
             if (MinecraftVersion.isMocked()) {
                 // Special case for MockBukkit

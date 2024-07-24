@@ -63,7 +63,7 @@ public enum Interaction {
      * @param type
      *            The type of action that this should cover.
      */
-    Interaction(@Nonnull ActionType type) {
+    Interaction(ActionType type) {
         this.type = type;
     }
 
@@ -72,7 +72,7 @@ public enum Interaction {
      * 
      * @return Whether this {@link Interaction} involves a {@link Block}
      */
-    public @Nonnull ActionType getType() {
+    public ActionType getType() {
         return type;
     }
 

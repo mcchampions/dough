@@ -30,7 +30,7 @@ public class WorldGuardProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;
 
-    public WorldGuardProtectionModule(@Nonnull Plugin plugin) {
+    public WorldGuardProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

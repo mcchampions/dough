@@ -11,16 +11,12 @@ import io.github.bakedlibs.dough.versions.Version;
 
 public interface PluginUpdater<V extends Version> {
 
-    @Nonnull
     Plugin getPlugin();
 
-    @Nonnull
     File getFile();
 
-    @Nonnull
     V getCurrentVersion();
 
-    @Nonnull
     CompletableFuture<V> getLatestVersion();
 
     int getConnectionTimeout();

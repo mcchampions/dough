@@ -55,7 +55,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      * @param constructor
      *            The Constructor for an implementation of {@link Set}
      */
-    public RandomizedSet(@Nonnull Supplier<Set<WeightedNode<T>>> constructor) {
+    public RandomizedSet(Supplier<Set<WeightedNode<T>>> constructor) {
         internalSet = constructor.get();
     }
 
@@ -69,7 +69,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      * @param collection
      *            A {@link Collection} to pick elements from, each with the weight of 1.
      */
-    public RandomizedSet(@Nonnull Collection<T> collection) {
+    public RandomizedSet(Collection<T> collection) {
         this();
 
         for (T element : collection) {
@@ -112,7 +112,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      *            The element to check for
      * @return Whether the given element is contained in this Set
      */
-    public boolean contains(@Nonnull T obj) {
+    public boolean contains(T obj) {
         for (WeightedNode<T> node : internalSet) {
             if (node.equals(obj)) {
                 return true;
@@ -153,7 +153,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      *            A reference to an Array constructor
      * @return An Array containing all elements in this Set
      */
-    public T[] toArray(@Nonnull IntFunction<T[]> constructor) {
+    public T[] toArray(IntFunction<T[]> constructor) {
         T[] array = constructor.apply(size);
         Iterator<T> iterator = iterator();
         int i = 0;
@@ -176,7 +176,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      *            The associated weight
      * @return Whether the element was added successfully
      */
-    public boolean add(@Nonnull T obj, float weight) {
+    public boolean add(T obj, float weight) {
         if (weight <= 0F) {
             throw new IllegalArgumentException("A Weight may never be less than or equal to zero!");
         }
@@ -200,7 +200,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      * @param weight
      *            The new weight for this element
      */
-    public void setWeight(@Nonnull T obj, float weight) {
+    public void setWeight(T obj, float weight) {
         if (weight <= 0F) {
             throw new IllegalArgumentException("A Weight may never be less than or equal to zero!");
         }
@@ -227,7 +227,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      *            The element to remove
      * @return Whether the element was removed successfully
      */
-    public boolean remove(@Nonnull T obj) {
+    public boolean remove(T obj) {
         Iterator<WeightedNode<T>> iterator = internalSet.iterator();
 
         while (iterator.hasNext()) {
@@ -285,7 +285,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      *            An instance of {@link Random} to be used.
      * @return A random element from this Set
      */
-    public T getRandom(@Nonnull Random random) {
+    public T getRandom(Random random) {
         float goal = random.nextFloat() * totalWeights;
         float i = 0;
 
@@ -336,7 +336,7 @@ public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
      *            The amount of items to draw from this Set.
      * @return A random Subset from this Set.
      */
-    public Set<T> getRandomSubset(@Nonnull Random random, int size) {
+    public Set<T> getRandomSubset(Random random, int size) {
         if (size > size()) {
             throw new IllegalArgumentException("A random Subset may not be larger than the original Set! (" + size + " > " + size() + ")");
         }

@@ -10,10 +10,8 @@ public interface ProtectionLogger {
 
     void load();
 
-    @Nonnull
     String getName();
 
-    @ParametersAreNonnullByDefault
     void logAction(OfflinePlayer p, Block b, Interaction action);
 
 }

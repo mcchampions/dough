@@ -30,7 +30,7 @@ public class PrefixedVersion extends AbstractNumericVersion {
      * @param version
      *            The version number
      */
-    public PrefixedVersion(@Nonnull String prefix, int version) {
+    public PrefixedVersion(String prefix, int version) {
         super(version);
 
         Validate.notNull(prefix, "The prefix cannot be null.");
@@ -42,7 +42,7 @@ public class PrefixedVersion extends AbstractNumericVersion {
      * {@inheritDoc}
      */
     @Override
-    public boolean isSimilar(@Nonnull Version version) {
+    public boolean isSimilar(Version version) {
         return version instanceof PrefixedVersion && prefix.equals(((PrefixedVersion) version).getPrefix());
     }
 
@@ -50,7 +50,7 @@ public class PrefixedVersion extends AbstractNumericVersion {
      * {@inheritDoc}
      */
     @Override
-    public @Nonnull String getAsString() {
+    public String getAsString() {
         return prefix + getVersionNumber();
     }
 
@@ -59,7 +59,7 @@ public class PrefixedVersion extends AbstractNumericVersion {
      * 
      * @return The prefix
      */
-    public final @Nonnull String getPrefix() {
+    public final String getPrefix() {
         return prefix;
     }
 

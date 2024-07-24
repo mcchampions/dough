@@ -15,27 +15,27 @@ public class Pair<P, S> {
         this.secondValue = b;
     }
 
-    public Pair(@Nonnull Map.Entry<P, S> mapEntry) {
+    public Pair(Map.Entry<P, S> mapEntry) {
         this(mapEntry.getKey(), mapEntry.getValue());
     }
 
-    public Pair(@Nonnull OptionalPair<P, S> pair) {
+    public Pair(OptionalPair<P, S> pair) {
         this(pair.getFirstValue().orElse(null), pair.getSecondValue().orElse(null));
     }
 
-    public @Nullable P getFirstValue() {
+    public P getFirstValue() {
         return this.firstValue;
     }
 
-    public @Nullable S getSecondValue() {
+    public S getSecondValue() {
         return this.secondValue;
     }
 
-    public void setFirstValue(@Nullable P firstValue) {
+    public void setFirstValue(P firstValue) {
         this.firstValue = firstValue;
     }
 
-    public void setSecondValue(@Nullable S secondValue) {
+    public void setSecondValue(S secondValue) {
         this.secondValue = secondValue;
     }
 
@@ -61,7 +61,7 @@ public class Pair<P, S> {
         return result;
     }
 
-    public @Nonnull String toString() {
+    public String toString() {
         return "Pair(firstValue=" + firstValue + ", secondValue=" + secondValue + ")";
     }
 }

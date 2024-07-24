@@ -44,7 +44,7 @@ public class Config {
      * @param plugin
      *            The Instance of the Plugin, the config.yml is referring to
      */
-    public Config(@Nonnull Plugin plugin) {
+    public Config(Plugin plugin) {
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
 
@@ -55,7 +55,7 @@ public class Config {
         fileConfig.options().copyDefaults(true);
     }
 
-    public Config(@Nonnull Plugin plugin, @Nonnull String name) {
+    public Config(Plugin plugin, String name) {
         this.logger = plugin.getLogger();
         this.file = new File("plugins/" + plugin.getName().replace(" ", "_"), name);
         this.fileConfig = YamlConfiguration.loadConfiguration(this.file);
@@ -71,7 +71,7 @@ public class Config {
      * @param config
      *            The FileConfiguration
      */
-    public Config(@Nonnull File file, @Nonnull FileConfiguration config) {
+    public Config(File file, FileConfiguration config) {
         this.logger = new DoughLogger("config");
         this.file = file;
 
@@ -85,7 +85,7 @@ public class Config {
      * @param file
      *            The File for which the Config object is created for
      */
-    public Config(@Nonnull File file) {
+    public Config(File file) {
         this(file, YamlConfiguration.loadConfiguration(file));
     }
 
@@ -96,19 +96,19 @@ public class Config {
      * @param path
      *            The path of the File which the Config object is created for
      */
-    public Config(@Nonnull String path) {
+    public Config(String path) {
         this(new File(path));
     }
 
-    public @Nonnull File getFile() {
+    public File getFile() {
         return this.file;
     }
 
-    public @Nullable String getHeader() {
+    public String getHeader() {
         return this.header;
     }
 
-    public void setHeader(@Nullable String header) {
+    public void setHeader(String header) {
         this.header = header;
     }
 
@@ -117,7 +117,7 @@ public class Config {
      *
      * @return The converted FileConfiguration Object
      */
-    public @Nonnull FileConfiguration getConfiguration() {
+    public FileConfiguration getConfiguration() {
         return this.fileConfig;
     }
 
@@ -127,7 +127,7 @@ public class Config {
      * @param logger
      *            Your {@link Logger} instance
      */
-    public void setLogger(@Nonnull Logger logger) {
+    public void setLogger(Logger logger) {
         this.logger = logger;
     }
 
@@ -137,7 +137,7 @@ public class Config {
         }
     }
 
-    protected void store(@Nonnull String path, Object value) {
+    protected void store(String path, Object value) {
         this.fileConfig.set(path, value);
     }
 
@@ -149,7 +149,7 @@ public class Config {
      * @param value
      *            The Value for that path
      */
-    public void setValue(@Nonnull String path, Object value) {
+    public void setValue(String path, Object value) {
         if (value == null) {
             this.store(path, value);
         } else if (value instanceof Optional) {
@@ -197,7 +197,7 @@ public class Config {
      * @param file
      *            The {@link File} you are saving this {@link Config} to
      */
-    public void save(@Nonnull File file) {
+    public void save(File file) {
         try {
             if (header != null) {
                 fileConfig.options().copyHeader(true);
@@ -221,14 +221,14 @@ public class Config {
      * @param value
      *            The Value for that path
      */
-    public void setDefaultValue(@Nonnull String path, @Nullable Object value) {
+    public void setDefaultValue(String path, Object value) {
         if (!contains(path)) {
             setValue(path, value);
         }
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T getOrSetDefault(@Nonnull String path, T value) {
+    public <T> T getOrSetDefault(String path, T value) {
         Object val = getValue(path);
 
         if (value.getClass().isInstance(val)) {
@@ -246,7 +246,7 @@ public class Config {
      *            The path in the Config File
      * @return True/false
      */
-    public boolean contains(@Nonnull String path) {
+    public boolean contains(String path) {
         return fileConfig.contains(path);
     }
 
@@ -258,13 +258,11 @@ public class Config {
      * 
      * @return The Value at that path
      */
-    @Nullable
-    public Object getValue(@Nonnull String path) {
+    public Object getValue(String path) {
         return fileConfig.get(path);
     }
 
-    @Nonnull
-    public <T> Optional<T> getValueAs(@Nonnull Class<T> c, @Nonnull String path) {
+    public <T> Optional<T> getValueAs(Class<T> c, String path) {
         Object obj = getValue(path);
         return c.isInstance(obj) ? Optional.of(c.cast(obj)) : Optional.empty();
     }
@@ -277,8 +275,7 @@ public class Config {
      * 
      * @return The ItemStack at that path
      */
-    @Nullable
-    public ItemStack getItem(@Nonnull String path) {
+    public ItemStack getItem(String path) {
         return fileConfig.getItemStack(path);
     }
 
@@ -290,8 +287,7 @@ public class Config {
      * 
      * @return The String at that path
      */
-    @Nullable
-    public String getString(@Nonnull String path) {
+    public String getString(String path) {
         return fileConfig.getString(path);
     }
 
@@ -303,7 +299,7 @@ public class Config {
      * 
      * @return The Integer at that path
      */
-    public int getInt(@Nonnull String path) {
+    public int getInt(String path) {
         return fileConfig.getInt(path);
     }
 
@@ -315,7 +311,7 @@ public class Config {
      * 
      * @return The Boolean at that path
      */
-    public boolean getBoolean(@Nonnull String path) {
+    public boolean getBoolean(String path) {
         return fileConfig.getBoolean(path);
     }
 
@@ -327,8 +323,7 @@ public class Config {
      * 
      * @return The StringList at that path
      */
-    @Nonnull
-    public List<String> getStringList(@Nonnull String path) {
+    public List<String> getStringList(String path) {
         return fileConfig.getStringList(path);
     }
 
@@ -340,8 +335,7 @@ public class Config {
      * 
      * @return The IntegerList at that path
      */
-    @Nonnull
-    public List<Integer> getIntList(@Nonnull String path) {
+    public List<Integer> getIntList(String path) {
         return fileConfig.getIntegerList(path);
     }
 
@@ -367,7 +361,7 @@ public class Config {
      * 
      * @return The Float at that path
      */
-    public float getFloat(@Nonnull String path) {
+    public float getFloat(String path) {
         return Float.valueOf(String.valueOf(getValue(path)));
     }
 
@@ -379,7 +373,7 @@ public class Config {
      * 
      * @return The Long at that path
      */
-    public long getLong(@Nonnull String path) {
+    public long getLong(String path) {
         return Long.valueOf(String.valueOf(getValue(path)));
     }
 
@@ -391,7 +385,7 @@ public class Config {
      * 
      * @return The Date at that path
      */
-    public Date getDate(@Nonnull String path) {
+    public Date getDate(String path) {
         return new Date(getLong(path));
     }
 
@@ -403,7 +397,7 @@ public class Config {
      * 
      * @return The Chunk at that path
      */
-    public Chunk getChunk(@Nonnull String path) {
+    public Chunk getChunk(String path) {
         return Bukkit.getWorld(getString(path + ".world")).getChunkAt(getInt(path + ".x"), getInt(path + ".z"));
     }
 
@@ -415,7 +409,7 @@ public class Config {
      * 
      * @return The UUID at that path
      */
-    public UUID getUUID(@Nonnull String path) {
+    public UUID getUUID(String path) {
         String value = getString(path);
         return value != null ? UUID.fromString(value) : null;
     }
@@ -428,7 +422,7 @@ public class Config {
      * 
      * @return The World at that path
      */
-    public World getWorld(@Nonnull String path) {
+    public World getWorld(String path) {
         return Bukkit.getWorld(getString(path));
     }
 
@@ -440,7 +434,7 @@ public class Config {
      * 
      * @return The Double at that path
      */
-    public double getDouble(@Nonnull String path) {
+    public double getDouble(String path) {
         return fileConfig.getDouble(path);
     }
 
@@ -452,8 +446,7 @@ public class Config {
      * 
      * @return The Location at that path
      */
-    @Nonnull
-    public Location getLocation(@Nonnull String path) {
+    public Location getLocation(String path) {
         return new Location(Bukkit.getWorld(getString(path + ".world")), getDouble(path + ".x"), getDouble(path + ".y"), getDouble(path + ".z"), getFloat(path + ".yaw"), getFloat(path + ".pitch"));
     }
 
@@ -469,8 +462,7 @@ public class Config {
      * 
      * @return The generated Inventory
      */
-    @Nonnull
-    public Inventory getInventory(@Nonnull String path, int size, @Nonnull String title) {
+    public Inventory getInventory(String path, int size, String title) {
         Inventory inventory = Bukkit.createInventory(null, size, ChatColor.translateAlternateColorCodes('&', title));
         for (int i = 0; i < size; i++) {
             inventory.setItem(i, getItem(path + "." + i));
@@ -488,8 +480,7 @@ public class Config {
      * 
      * @return The generated Inventory
      */
-    @Nonnull
-    public Inventory getInventory(@Nonnull String path, @Nonnull String title) {
+    public Inventory getInventory(String path, String title) {
         int size = getInt(path + ".size");
         Inventory inventory = Bukkit.createInventory(null, size, ChatColor.translateAlternateColorCodes('&', title));
 
@@ -505,7 +496,6 @@ public class Config {
      *
      * @return All paths in this Config
      */
-    @Nonnull
     public Set<String> getKeys() {
         return fileConfig.getKeys(false);
     }
@@ -518,8 +508,7 @@ public class Config {
      * 
      * @return All sub-paths of the specified path
      */
-    @Nonnull
-    public Set<String> getKeys(@Nonnull String path) {
+    public Set<String> getKeys(String path) {
         ConfigurationSection section = fileConfig.getConfigurationSection(path);
         return section == null ? new HashSet<>() : section.getKeys(false);
     }

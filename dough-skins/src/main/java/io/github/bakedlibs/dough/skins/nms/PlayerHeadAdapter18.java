@@ -27,8 +27,7 @@ class PlayerHeadAdapter18 implements PlayerHeadAdapter {
         getTileEntity = ReflectionUtils.getNMSClass("level.WorldServer").getMethod("getBlockEntity", blockPosition, boolean.class);
     }
 
-    @ParametersAreNonnullByDefault
-    private @Nullable Object getTileEntity(Block block) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+    private Object getTileEntity(Block block) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         Object world = getHandle.invoke(block.getWorld());
 
         Object position = newPosition.newInstance(block.getX(), block.getY(), block.getZ());
@@ -36,7 +35,6 @@ class PlayerHeadAdapter18 implements PlayerHeadAdapter {
     }
 
     @Override
-    @ParametersAreNonnullByDefault
     public void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         Object tileEntity = getTileEntity(block);
         if (tileEntity == null) return;

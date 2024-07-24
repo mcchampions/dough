@@ -23,7 +23,7 @@ public class GriefPreventionProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;
 
-    public GriefPreventionProtectionModule(@Nonnull Plugin plugin) {
+    public GriefPreventionProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 
@@ -77,7 +77,7 @@ public class GriefPreventionProtectionModule implements ProtectionModule {
         return checkLegacy(claim, (Player) p, action, l);
     }
 
-    private boolean checkPermission(@Nonnull Claim claim, @Nonnull OfflinePlayer offline, @Nonnull Interaction action) {
+    private boolean checkPermission(Claim claim, OfflinePlayer offline, Interaction action) {
         // Do our best to translate Interaction to ClaimPermission.
         ClaimPermission permission;
         if (action == Interaction.INTERACT_BLOCK || action == Interaction.ATTACK_ENTITY) {
@@ -97,7 +97,7 @@ public class GriefPreventionProtectionModule implements ProtectionModule {
         return claim.checkPermission(offline.getUniqueId(), permission, null) == null;
     }
 
-    private boolean checkLegacy(@Nonnull Claim claim, @Nonnull Player player, @Nonnull Interaction action, @Nonnull Location location) {
+    private boolean checkLegacy(Claim claim, Player player, Interaction action, Location location) {
         switch (action) {
             case INTERACT_BLOCK:
                 return claim.allowContainers(player) == null;

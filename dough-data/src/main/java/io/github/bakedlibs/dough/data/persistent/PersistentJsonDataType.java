@@ -18,7 +18,7 @@ public final class PersistentJsonDataType<T extends JsonElement> implements Pers
     private final Class<T> jsonClass;
     private final JsonParser parser = new JsonParser();
 
-    public PersistentJsonDataType(@Nonnull Class<T> jsonClass) {
+    public PersistentJsonDataType(Class<T> jsonClass) {
         this.jsonClass = jsonClass;
     }
 

@@ -25,7 +25,7 @@ public final class PlayerList {
      * 
      * @return A Stream of online Players
      */
-    public static @Nonnull Stream<Player> stream() {
+    public static Stream<Player> stream() {
         return Bukkit.getOnlinePlayers().stream().map(Player.class::cast);
     }
 
@@ -37,7 +37,7 @@ public final class PlayerList {
      *            The name of the Player
      * @return An Optional describing the player (or an empty Optional)
      */
-    public static @Nonnull Optional<Player> findByName(@Nonnull String name) {
+    public static Optional<Player> findByName(String name) {
         return stream().filter(p -> p.getName().equalsIgnoreCase(name)).findAny();
     }
 
@@ -49,7 +49,7 @@ public final class PlayerList {
      *            The permission the Players should have
      * @return A Set of Players
      */
-    public static @Nonnull Set<Player> findPermitted(@Nonnull String permission) {
+    public static Set<Player> findPermitted(String permission) {
         return stream().filter(p -> p.hasPermission(permission)).collect(Collectors.toSet());
     }
 
@@ -61,7 +61,7 @@ public final class PlayerList {
      *            The Name of the Player
      * @return Whether the Player is online
      */
-    public static boolean isOnline(@Nonnull String name) {
+    public static boolean isOnline(String name) {
         return findByName(name).isPresent();
     }
 

@@ -22,7 +22,6 @@ public class ItemNameAdapter21 implements ItemNameAdapter {
     }
 
     @Override
-    @ParametersAreNonnullByDefault
     public String getName(ItemStack item) throws IllegalAccessException, InvocationTargetException {
         Object instance = getCopy.invoke(null, item);
         return (String) toString.invoke(getName.invoke(instance));

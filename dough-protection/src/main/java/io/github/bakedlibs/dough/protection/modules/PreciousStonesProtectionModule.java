@@ -19,7 +19,7 @@ public class PreciousStonesProtectionModule implements ProtectionModule {
     private IApi api;
     private final Plugin plugin;
 
-    public PreciousStonesProtectionModule(@Nonnull Plugin plugin) {
+    public PreciousStonesProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

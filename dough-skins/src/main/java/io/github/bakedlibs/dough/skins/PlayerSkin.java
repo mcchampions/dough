@@ -31,16 +31,15 @@ public class PlayerSkin {
 
     private final CustomGameProfile profile;
 
-    PlayerSkin(@Nonnull UUID uuid, @Nullable String base64skinTexture, @Nonnull URL url) {
+    PlayerSkin(UUID uuid, String base64skinTexture, URL url) {
         this.profile = new CustomGameProfile(uuid, base64skinTexture, url);
     }
 
-    public final @Nonnull CustomGameProfile getProfile() {
+    public final CustomGameProfile getProfile() {
         return profile;
     }
     
-    @ParametersAreNonnullByDefault
-    public static @Nonnull PlayerSkin fromBase64(UUID uuid, String base64skinTexture, URL url) {
+    public static PlayerSkin fromBase64(UUID uuid, String base64skinTexture, URL url) {
         return new PlayerSkin(uuid, base64skinTexture, url);
     }
 
@@ -48,8 +47,7 @@ public class PlayerSkin {
      * @deprecated use {@link #fromBase64(UUID, String, URL)}
      */
     @Deprecated
-    @ParametersAreNonnullByDefault
-    public static @Nonnull PlayerSkin fromBase64(UUID uuid, String base64skinTexture) {
+    public static PlayerSkin fromBase64(UUID uuid, String base64skinTexture) {
         String base64decode = new String(Base64.getDecoder().decode(base64skinTexture));
         JsonObject jsonObject = new JsonParser().parse(base64decode).getAsJsonObject();
         String url = jsonObject.getAsJsonObject("textures").getAsJsonObject("SKIN").get("url").getAsString();
@@ -62,14 +60,12 @@ public class PlayerSkin {
         return new PlayerSkin(uuid, base64skinTexture, skinUrl);
     }
 
-    @ParametersAreNonnullByDefault
-    public static @Nonnull PlayerSkin fromBase64(String base64skinTexture) {
+    public static PlayerSkin fromBase64(String base64skinTexture) {
         UUID uuid = UUID.nameUUIDFromBytes(base64skinTexture.getBytes(StandardCharsets.UTF_8));
         return fromBase64(uuid, base64skinTexture);
     }
 
-    @ParametersAreNonnullByDefault
-    public static @Nonnull PlayerSkin fromURL(UUID uuid, String url) {
+    public static PlayerSkin fromURL(UUID uuid, String url) {
         String value = "{\"textures\":{\"SKIN\":{\"url\":\"" + url + "\"}}}";
         String base64skinTexture = Base64.getEncoder().encodeToString(value.getBytes(StandardCharsets.UTF_8));
         URL skinUrl;
@@ -81,25 +77,21 @@ public class PlayerSkin {
         return fromBase64(uuid, base64skinTexture, skinUrl);
     }
 
-    @ParametersAreNonnullByDefault
-    public static @Nonnull PlayerSkin fromURL(String url) {
+    public static PlayerSkin fromURL(String url) {
         UUID uuid = UUID.nameUUIDFromBytes(url.getBytes(StandardCharsets.UTF_8));
         return fromURL(uuid, url);
     }
 
-    @ParametersAreNonnullByDefault
-    public static @Nonnull PlayerSkin fromHashCode(UUID uuid, String hashCode) {
+    public static PlayerSkin fromHashCode(UUID uuid, String hashCode) {
         return fromURL(uuid, "http://textures.minecraft.net/texture/" + hashCode);
     }
 
-    @ParametersAreNonnullByDefault
-    public static @Nonnull PlayerSkin fromHashCode(String hashCode) {
+    public static PlayerSkin fromHashCode(String hashCode) {
         UUID uuid = UUID.nameUUIDFromBytes(hashCode.getBytes(StandardCharsets.UTF_8));
         return fromHashCode(uuid, hashCode);
     }
 
-    @ParametersAreNonnullByDefault
-    public static @Nonnull CompletableFuture<PlayerSkin> fromPlayerUUID(Plugin plugin, UUID uuid) {
+    public static CompletableFuture<PlayerSkin> fromPlayerUUID(Plugin plugin, UUID uuid) {
         CompletableFuture<PlayerSkin> future = new CompletableFuture<>();
         DoughLogger logger = new DoughLogger(plugin.getServer(), "skins");
 

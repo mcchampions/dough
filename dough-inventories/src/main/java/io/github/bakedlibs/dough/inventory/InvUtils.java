@@ -26,7 +26,7 @@ public final class InvUtils {
      * 
      * @return Whether an empty slot exists
      */
-    public static boolean hasEmptySlot(@Nonnull Inventory inv) {
+    public static boolean hasEmptySlot(Inventory inv) {
         return inv.firstEmpty() != 1;
     }
 
@@ -38,7 +38,7 @@ public final class InvUtils {
      * 
      * @return Whether that {@link Inventory} is empty
      */
-    public static boolean isEmpty(@Nonnull Inventory inv) {
+    public static boolean isEmpty(Inventory inv) {
         // Sadly Inventory#isEmpty() is not available everywhere
 
         for (ItemStack item : inv) {
@@ -65,7 +65,7 @@ public final class InvUtils {
      * 
      * @return Whether the maxStackSizes allow for these items to stack
      */
-    public static boolean isValidStackSize(@Nonnull ItemStack stack, @Nonnull ItemStack item, @Nonnull Inventory inv) {
+    public static boolean isValidStackSize(ItemStack stack, ItemStack item, Inventory inv) {
         int newStackSize = stack.getAmount() + item.getAmount();
         return newStackSize <= stack.getMaxStackSize() && newStackSize <= inv.getMaxStackSize();
     }
@@ -80,7 +80,7 @@ public final class InvUtils {
      * 
      * @return Whether the given {@link InventoryType} allows this {@link Material} to be stored within
      */
-    public static boolean isItemAllowed(@Nonnull Material itemType, @Nonnull InventoryType inventoryType) {
+    public static boolean isItemAllowed(Material itemType, InventoryType inventoryType) {
         switch (inventoryType) {
             case LECTERN:
                 // Lecterns only allow written books or writable books
@@ -108,7 +108,7 @@ public final class InvUtils {
      * 
      * @return Whether the slots have space for the {@link ItemStack}
      */
-    public static boolean fits(@Nonnull Inventory inv, @Nonnull ItemStack item, int... slots) {
+    public static boolean fits(Inventory inv, ItemStack item, int... slots) {
         if (!isItemAllowed(item.getType(), inv.getType())) {
             return false;
         }
@@ -147,7 +147,7 @@ public final class InvUtils {
      * 
      * @return Whether the slots have space for the given {@link ItemStack ItemStacks}
      */
-    public static boolean fitAll(@Nonnull Inventory inv, @Nonnull ItemStack[] items, int... slots) {
+    public static boolean fitAll(Inventory inv, ItemStack[] items, int... slots) {
         if (slots.length == 0) {
             slots = IntStream.range(0, inv.getSize()).toArray();
         }
@@ -204,7 +204,7 @@ public final class InvUtils {
      *            The Predicate that tests the item
      * @return Whether the operation was successful
      */
-    public static boolean removeItem(@Nonnull Inventory inv, int amount, boolean replaceConsumables, @Nonnull Predicate<ItemStack> predicate) {
+    public static boolean removeItem(Inventory inv, int amount, boolean replaceConsumables, Predicate<ItemStack> predicate) {
         int removed = 0;
         for (int slot = 0; slot < inv.getSize(); slot++) {
             ItemStack item = inv.getItem(slot);

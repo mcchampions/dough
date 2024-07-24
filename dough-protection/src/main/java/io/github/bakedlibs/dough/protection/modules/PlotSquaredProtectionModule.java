@@ -19,7 +19,7 @@ public class PlotSquaredProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;
 
-    public PlotSquaredProtectionModule(@Nonnull Plugin plugin) {
+    public PlotSquaredProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 
@@ -46,7 +46,6 @@ public class PlotSquaredProtectionModule implements ProtectionModule {
         return plot == null || plot.isAdded(p.getUniqueId()) || check(p, action);
     }
 
-    @ParametersAreNonnullByDefault
     private boolean check(OfflinePlayer p, Interaction action) {
         PlotPlayer<OfflinePlayer> player = PlotPlayer.from(p);
 

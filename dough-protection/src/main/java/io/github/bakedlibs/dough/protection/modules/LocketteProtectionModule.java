@@ -18,7 +18,7 @@ public class LocketteProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;
 
-    public LocketteProtectionModule(@Nonnull Plugin plugin) {
+    public LocketteProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

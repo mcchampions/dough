@@ -34,7 +34,7 @@ public final class CustomGameProfile extends GameProfile {
     private final URL skinUrl;
     private final String texture;
 
-    CustomGameProfile(@Nonnull UUID uuid, @Nullable String texture, @Nonnull URL url) {
+    CustomGameProfile(UUID uuid, String texture, URL url) {
         super(uuid, PLAYER_NAME);
         this.skinUrl = url;
         this.texture = texture;
@@ -44,7 +44,7 @@ public final class CustomGameProfile extends GameProfile {
         }
     }
 
-    void apply(@Nonnull SkullMeta meta) throws NoSuchFieldException, IllegalAccessException, UnknownServerVersionException {
+    void apply(SkullMeta meta) throws NoSuchFieldException, IllegalAccessException, UnknownServerVersionException {
         // setOwnerProfile was added in 1.18, but getOwningPlayer throws a NullPointerException since 1.20.2
         if (MinecraftVersion.get().isAtLeast(MinecraftVersion.parse("1.20"))) {
             PlayerProfile playerProfile = Bukkit.createPlayerProfile(this.getId(), PLAYER_NAME);
@@ -69,7 +69,6 @@ public final class CustomGameProfile extends GameProfile {
      *
      * @return the base64 encoded texture.
      */
-    @Nullable
     public String getBase64Texture() {
         return this.texture;
     }

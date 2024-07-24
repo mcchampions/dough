@@ -21,23 +21,19 @@ public final class TriStateOptional<T> {
         this.value = value;
     }
 
-    @Nonnull
     public static <T> TriStateOptional<T> empty() {
         return new TriStateOptional<>(TriState.EMPTY);
     }
 
-    @Nonnull
     public static <T> TriStateOptional<T> createNew() {
         return new TriStateOptional<>(TriState.NOT_COMPUTED);
     }
 
-    @Nonnull
-    public static <T> TriStateOptional<T> of(@Nonnull T value) {
+    public static <T> TriStateOptional<T> of(T value) {
         return new TriStateOptional<>(value);
     }
 
-    @Nonnull
-    public static <T> TriStateOptional<T> ofNullable(@Nullable T value) {
+    public static <T> TriStateOptional<T> ofNullable(T value) {
         if (value == null) {
             return empty();
         } else {
@@ -57,13 +53,13 @@ public final class TriStateOptional<T> {
         return state == TriState.COMPUTED;
     }
 
-    public void ifPresent(@Nonnull Consumer<T> consumer) {
+    public void ifPresent(Consumer<T> consumer) {
         if (isPresent()) {
             consumer.accept(value);
         }
     }
 
-    public void compute(@Nullable T value) {
+    public void compute(T value) {
         if (isComputed()) {
             throw new IllegalStateException("This Optional has already been computed.");
         }
@@ -76,11 +72,10 @@ public final class TriStateOptional<T> {
         }
     }
 
-    public void compute(@Nonnull Supplier<T> supplier) {
+    public void compute(Supplier<T> supplier) {
         compute(supplier.get());
     }
 
-    @Nonnull
     public T get() {
         if (!isPresent()) {
             throw new IllegalAccessError("This Optional has no value! Check .isPresent() first!");
@@ -89,8 +84,7 @@ public final class TriStateOptional<T> {
         return value;
     }
 
-    @Nullable
-    public T getOrElse(@Nullable T value) {
+    public T getOrElse(T value) {
         if (!isComputed()) {
             throw new IllegalStateException("This Optional has not yet been computed!");
         }
@@ -98,7 +92,6 @@ public final class TriStateOptional<T> {
         return isPresent() ? this.value : value;
     }
 
-    @Nonnull
     public Optional<T> getAsOptional() {
         if (!isComputed()) {
             throw new IllegalStateException("This Optional has not yet been computed!");

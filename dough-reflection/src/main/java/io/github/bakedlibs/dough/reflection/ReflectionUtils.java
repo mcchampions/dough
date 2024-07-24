@@ -43,7 +43,7 @@ public final class ReflectionUtils {
      * @throws UnknownServerVersionException
      *             If the {@link MinecraftVersion} could not be determined successfully
      */
-    private static @Nonnull String getVersionSpecificPackage(boolean checkMinecraftVersion) throws UnknownServerVersionException {
+    private static String getVersionSpecificPackage(boolean checkMinecraftVersion) throws UnknownServerVersionException {
         if (checkMinecraftVersion) {
             MinecraftVersion version = MinecraftVersion.get();
 
@@ -77,7 +77,7 @@ public final class ReflectionUtils {
      *            The Method you are looking for
      * @return The found Method
      */
-    public static @Nullable Method getMethod(@Nonnull Class<?> c, @Nonnull String method) {
+    public static Method getMethod(Class<?> c, String method) {
         for (Method m : c.getMethods()) {
             if (m.getName().equals(method)) {
                 return m;
@@ -98,7 +98,7 @@ public final class ReflectionUtils {
      *            The alternative Method you are looking for
      * @return The found Method
      */
-    public static @Nullable Method getMethodOrAlternative(@Nonnull Class<?> c, @Nonnull String method, @Nonnull String alternative) {
+    public static Method getMethodOrAlternative(Class<?> c, String method, String alternative) {
         Method mainMethod = getMethod(c, method);
         return mainMethod != null ? mainMethod : getMethod(c, alternative);
     }
@@ -114,7 +114,7 @@ public final class ReflectionUtils {
      *            The Types of the Parameters
      * @return The found Method
      */
-    public static @Nullable Method getMethod(@Nonnull Class<?> c, @Nonnull String method, Class<?>... paramTypes) {
+    public static Method getMethod(Class<?> c, String method, Class<?>... paramTypes) {
         Class<?>[] expectParamTypes = toPrimitiveTypeArray(paramTypes);
 
         for (Method m : c.getMethods()) {
@@ -140,7 +140,7 @@ public final class ReflectionUtils {
      * @throws NoSuchFieldException
      *             If the field could not be found.
      */
-    public static @Nonnull Field getField(@Nonnull Class<?> c, @Nonnull String field) throws NoSuchFieldException {
+    public static Field getField(Class<?> c, String field) throws NoSuchFieldException {
         return c.getDeclaredField(field);
     }
 
@@ -163,7 +163,7 @@ public final class ReflectionUtils {
      * @throws IllegalAccessException
      *             If the field could not be modified.
      */
-    public static <T> void setFieldValue(@Nonnull T object, @Nonnull Class<?> c, @Nonnull String field, @Nullable Object value) throws NoSuchFieldException, IllegalAccessException {
+    public static <T> void setFieldValue(T object, Class<?> c, String field, Object value) throws NoSuchFieldException, IllegalAccessException {
         Field f = getField(c, field);
         f.setAccessible(true);
         f.set(object, value);
@@ -186,7 +186,7 @@ public final class ReflectionUtils {
      * @throws IllegalAccessException
      *             If the field could not be modified.
      */
-    public static <T> void setFieldValue(@Nonnull T object, @Nonnull String field, @Nullable Object value) throws NoSuchFieldException, IllegalAccessException {
+    public static <T> void setFieldValue(T object, String field, Object value) throws NoSuchFieldException, IllegalAccessException {
         setFieldValue(object, object.getClass(), field, value);
     }
 
@@ -205,8 +205,7 @@ public final class ReflectionUtils {
      * 
      * @return The Value of a Field
      */
-    @ParametersAreNonnullByDefault
-    public static @Nullable <T> T getFieldValue(Object object, Class<T> fieldType, String field) throws NoSuchFieldException, IllegalAccessException {
+    public static <T> T getFieldValue(Object object, Class<T> fieldType, String field) throws NoSuchFieldException, IllegalAccessException {
         Field f = getField(object.getClass(), field);
         f.setAccessible(true);
         return fieldType.cast(f.get(object));
@@ -221,7 +220,7 @@ public final class ReflectionUtils {
      * 
      * @return An Array of primitive Types
      */
-    public static @Nonnull Class<?>[] toPrimitiveTypeArray(@Nonnull Class<?>[] classes) {
+    public static Class<?>[] toPrimitiveTypeArray(Class<?>[] classes) {
         int size = classes.length;
         Class<?>[] types = new Class[size];
 
@@ -245,7 +244,7 @@ public final class ReflectionUtils {
      * @return The Constructor for that Class
      */
     @SuppressWarnings("unchecked")
-    public static @Nullable <T> Constructor<T> getConstructor(@Nonnull Class<T> c, Class<?>... paramTypes) {
+    public static <T> Constructor<T> getConstructor(Class<T> c, Class<?>... paramTypes) {
         Class<?>[] expectedParamTypes = toPrimitiveTypeArray(paramTypes);
 
         for (Constructor<?> constructor : c.getConstructors()) {
@@ -275,7 +274,7 @@ public final class ReflectionUtils {
      * @throws UnknownServerVersionException
      *             If the {@link MinecraftVersion} was unable to be determined
      */
-    public static @Nonnull Class<?> getInnerNMSClass(@Nonnull String name, @Nonnull String subname) throws ClassNotFoundException, UnknownServerVersionException {
+    public static Class<?> getInnerNMSClass(String name, String subname) throws ClassNotFoundException, UnknownServerVersionException {
         return getNMSClass(name + '$' + subname);
     }
 
@@ -290,7 +289,7 @@ public final class ReflectionUtils {
      * @throws UnknownServerVersionException
      *             If the {@link MinecraftVersion} was unable to be determined
      */
-    public static @Nonnull Class<?> getNetMinecraftClass(@Nonnull String name) throws ClassNotFoundException, UnknownServerVersionException {
+    public static Class<?> getNetMinecraftClass(String name) throws ClassNotFoundException, UnknownServerVersionException {
         return Class.forName("net.minecraft." + getVersionSpecificPackage(true) + name);
     }
 
@@ -307,7 +306,7 @@ public final class ReflectionUtils {
      * @throws UnknownServerVersionException
      *             If the {@link MinecraftVersion} was not able to be determined.
      */
-    public static @Nonnull Class<?> getNMSClass(@Nonnull String name) throws ClassNotFoundException, UnknownServerVersionException {
+    public static Class<?> getNMSClass(String name) throws ClassNotFoundException, UnknownServerVersionException {
         return Class.forName("net.minecraft.server." + getVersionSpecificPackage(true) + name);
     }
 
@@ -324,8 +323,7 @@ public final class ReflectionUtils {
      * 
      * @return The Class in your specified Class
      */
-    @ParametersAreNonnullByDefault
-    public static @Nonnull Class<?> getInnerOBCClass(String name, String subname) throws ClassNotFoundException {
+    public static Class<?> getInnerOBCClass(String name, String subname) throws ClassNotFoundException {
         return getOBCClass(name + '$' + subname);
     }
 
@@ -340,7 +338,7 @@ public final class ReflectionUtils {
      * 
      * @return The Class in that Package
      */
-    public static @Nonnull Class<?> getOBCClass(@Nonnull String name) throws ClassNotFoundException {
+    public static Class<?> getOBCClass(String name) throws ClassNotFoundException {
         try {
             return Class.forName("org.bukkit.craftbukkit." + getVersionSpecificPackage(false) + name);
         } catch (UnknownServerVersionException e) {
@@ -358,7 +356,7 @@ public final class ReflectionUtils {
      * 
      * @return Whether they equal each other
      */
-    private static boolean equalsTypeArray(@Nonnull Class<?>[] a, Class<?>[] b) {
+    private static boolean equalsTypeArray(Class<?>[] a, Class<?>[] b) {
         if (a.length != b.length) {
             return false;
         }
@@ -382,7 +380,7 @@ public final class ReflectionUtils {
      * 
      * @return An ArrayList of all Enum Constants in that Enum
      */
-    public static @Nonnull <T extends Enum<T>> List<T> getEnumConstants(@Nonnull Class<T> c) {
+    public static <T extends Enum<T>> List<T> getEnumConstants(Class<T> c) {
         return Arrays.asList(c.getEnumConstants());
     }
 
@@ -398,8 +396,7 @@ public final class ReflectionUtils {
      * 
      * @return The found Enum Constant
      */
-    @ParametersAreNonnullByDefault
-    public static @Nullable <T extends Enum<T>> T getEnumConstant(Class<T> c, String name) {
+    public static <T extends Enum<T>> T getEnumConstant(Class<T> c, String name) {
         for (T field : c.getEnumConstants()) {
             if (field.toString().equals(name)) {
                 return field;

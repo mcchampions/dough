@@ -108,8 +108,7 @@ public class MinecraftRecipe<T extends Recipe> {
         SMITHING = findRecipeType(logger, "SMITHING_TABLE", type -> new MinecraftRecipe<>(type, SmithingRecipe.class, recipe -> recipe.length == 2, recipe -> new RecipeChoice[] { recipe.getBase(), recipe.getAddition() }, (input, stream) -> stream.filter(recipe -> recipe.getBase().test(input[0]) && recipe.getAddition().test(input[1])).findAny().map(SmithingRecipe::getResult)));
     }
 
-    @ParametersAreNonnullByDefault
-    private static <T extends Recipe> @Nullable MinecraftRecipe<T> findRecipeType(Logger logger, String type, Function<String, MinecraftRecipe<T>> supplier) {
+    private static <T extends Recipe> MinecraftRecipe<T> findRecipeType(Logger logger, String type, Function<String, MinecraftRecipe<T>> supplier) {
         try {
             return supplier.apply(type);
         } catch (Exception | LinkageError x) {
@@ -125,7 +124,6 @@ public class MinecraftRecipe<T extends Recipe> {
     private Function<T, RecipeChoice[]> inputFunction;
     private BiFunction<ItemStack[], Stream<T>, Optional<ItemStack>> outputFunction;
 
-    @ParametersAreNonnullByDefault
     private MinecraftRecipe(String material, Class<T> recipeClass, Predicate<ItemStack[]> predicate, Function<T, RecipeChoice[]> inputFunction, BiFunction<ItemStack[], Stream<T>, Optional<ItemStack>> outputFunction) {
         try {
             this.machine = Material.valueOf(material);
@@ -140,34 +138,34 @@ public class MinecraftRecipe<T extends Recipe> {
         }
     }
 
-    protected boolean validate(@Nonnull ItemStack[] inputs) {
+    protected boolean validate(ItemStack[] inputs) {
         return predicate.test(inputs);
     }
 
-    public @Nonnull Material getMachine() {
+    public Material getMachine() {
         return machine;
     }
 
-    public @Nonnull Class<T> getRecipeClass() {
+    public Class<T> getRecipeClass() {
         return recipeClass;
     }
 
-    public @Nonnull RecipeChoice[] getInputs(@Nonnull T recipe) {
+    public RecipeChoice[] getInputs(T recipe) {
         return inputFunction.apply(recipe);
     }
 
-    public @Nonnull Optional<ItemStack> getOutput(@Nonnull Stream<T> stream, @Nonnull ItemStack[] inputs) {
+    public Optional<ItemStack> getOutput(Stream<T> stream, ItemStack[] inputs) {
         return outputFunction.apply(inputs, stream);
     }
 
     @SuppressWarnings("unchecked")
-    public static <T extends Recipe> Optional<MinecraftRecipe<? super T>> of(@Nonnull T recipe) {
+    public static <T extends Recipe> Optional<MinecraftRecipe<? super T>> of(T recipe) {
         Class<?> recipeClass = recipe.getClass();
 
         return recipeTypes.stream().filter(type -> type.getRecipeClass().isAssignableFrom(recipeClass)).findAny().map(type -> (MinecraftRecipe<? super T>) type);
     }
 
-    public static @Nonnull Stream<MinecraftRecipe<?>> stream() {
+    public static Stream<MinecraftRecipe<?>> stream() {
         return recipeTypes.stream();
     }
 

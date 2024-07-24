@@ -23,7 +23,7 @@ public final class ChatColors {
      * 
      * @return The colored String
      */
-    public static @Nonnull String color(@Nonnull String input) {
+    public static String color(String input) {
         return ChatColor.translateAlternateColorCodes('&', input);
     }
 
@@ -39,7 +39,7 @@ public final class ChatColors {
      * 
      * @return The colored String
      */
-    public static @Nonnull String alternating(@Nonnull String text, ChatColor... colors) {
+    public static String alternating(String text, ChatColor... colors) {
         int i = 0;
         StringBuilder builder = new StringBuilder(text.length() * 3);
 

@@ -34,7 +34,7 @@ public final class CopyUtils {
      *            The type of elements in the collections
      *
      */
-    public static <T> void deepCopy(@Nonnull Collection<T> source, @Nonnull UnaryOperator<T> cloningFunction, @Nonnull Collection<T> sink) {
+    public static <T> void deepCopy(Collection<T> source, UnaryOperator<T> cloningFunction, Collection<T> sink) {
         for (T original : source) {
             T cloned = cloningFunction.apply(original);
             sink.add(cloned);
@@ -62,7 +62,7 @@ public final class CopyUtils {
      *            The type of the returned collection
      *
      */
-    public static @Nonnull <T, C extends Collection<T>> C deepCopy(@Nonnull Collection<T> source, @Nonnull UnaryOperator<T> cloningFunction, @Nonnull IntFunction<C> sinkSupplier) {
+    public static <T, C extends Collection<T>> C deepCopy(Collection<T> source, UnaryOperator<T> cloningFunction, IntFunction<C> sinkSupplier) {
         C sink = sinkSupplier.apply(source.size());
         deepCopy(source, cloningFunction, sink);
         return sink;
@@ -87,7 +87,7 @@ public final class CopyUtils {
      *            The type of values in the maps
      *
      */
-    public static <K, V> void deepCopy(@Nonnull Map<K, V> source, @Nonnull UnaryOperator<V> cloningFunction, @Nonnull Map<K, V> sink) {
+    public static <K, V> void deepCopy(Map<K, V> source, UnaryOperator<V> cloningFunction, Map<K, V> sink) {
         for (Map.Entry<K, V> entry : source.entrySet()) {
             V original = entry.getValue();
             V cloned = cloningFunction.apply(original);
@@ -117,7 +117,7 @@ public final class CopyUtils {
      *            The type of the returned map
      *
      */
-    public static @Nonnull <K, V, M extends Map<K, V>> M deepCopy(@Nonnull Map<K, V> source, @Nonnull UnaryOperator<V> cloningFunction, @Nonnull Supplier<M> sinkSupplier) {
+    public static <K, V, M extends Map<K, V>> M deepCopy(Map<K, V> source, UnaryOperator<V> cloningFunction, Supplier<M> sinkSupplier) {
         M sink = sinkSupplier.get();
         deepCopy(source, cloningFunction, sink);
         return sink;
@@ -139,7 +139,7 @@ public final class CopyUtils {
      *            The type of values in the map
      *
      */
-    public static <K, V> void deepCopy(@Nonnull Map<K, V> source, @Nonnull UnaryOperator<V> cloningFunction) {
+    public static <K, V> void deepCopy(Map<K, V> source, UnaryOperator<V> cloningFunction) {
         for (Map.Entry<K, V> entry : source.entrySet()) {
             V original = entry.getValue();
             V cloned = cloningFunction.apply(original);
@@ -163,7 +163,7 @@ public final class CopyUtils {
      *            The type of elements in the arrays
      *
      */
-    public static <T> void deepCopy(@Nonnull T[] source, @Nonnull UnaryOperator<T> cloningFunction, @Nonnull T[] sink) {
+    public static <T> void deepCopy(T[] source, UnaryOperator<T> cloningFunction, T[] sink) {
         if (source.length > sink.length) {
             throw new IllegalArgumentException("Length of sink must be greater than or equal to that of the source!");
         }
@@ -189,7 +189,7 @@ public final class CopyUtils {
      *            The type of elements in the arrays
      *
      */
-    public static @Nonnull <T> T[] deepCopy(@Nonnull T[] source, @Nonnull UnaryOperator<T> cloningFunction, @Nonnull IntFunction<T[]> sinkSupplier) {
+    public static <T> T[] deepCopy(T[] source, UnaryOperator<T> cloningFunction, IntFunction<T[]> sinkSupplier) {
         T[] sink = sinkSupplier.apply(source.length);
         deepCopy(source, cloningFunction, sink);
         return sink;

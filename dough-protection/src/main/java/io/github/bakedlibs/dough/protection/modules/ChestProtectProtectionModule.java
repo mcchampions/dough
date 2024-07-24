@@ -19,7 +19,7 @@ public class ChestProtectProtectionModule implements ProtectionModule {
     private final Plugin plugin;
     private ChestProtectAPI api;
 
-    public ChestProtectProtectionModule(@Nonnull Plugin plugin) {
+    public ChestProtectProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

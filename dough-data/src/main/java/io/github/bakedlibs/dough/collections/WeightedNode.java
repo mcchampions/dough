@@ -10,7 +10,7 @@ public class WeightedNode<T> {
 
     private T object;
 
-    public WeightedNode(float weight, @Nonnull T object) {
+    public WeightedNode(float weight, T object) {
         Validate.notNull(object, "Object cannot be null");
 
         this.weight = weight;
@@ -21,7 +21,7 @@ public class WeightedNode<T> {
         return this.weight;
     }
 
-    public @Nonnull T getObject() {
+    public T getObject() {
         return this.object;
     }
 
@@ -29,7 +29,7 @@ public class WeightedNode<T> {
         this.weight = weight;
     }
 
-    public void setObject(@Nonnull T object) {
+    public void setObject(T object) {
         Validate.notNull(object, "Object cannot be null");
         this.object = object;
     }

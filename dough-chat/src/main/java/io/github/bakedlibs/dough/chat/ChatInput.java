@@ -26,7 +26,7 @@ public final class ChatInput {
      * @param handler
      *            A callback to invoke when the Player has entered some text
      */
-    public static void waitForPlayer(@Nonnull Plugin plugin, @Nonnull Player p, @Nonnull Consumer<String> handler) {
+    public static void waitForPlayer(Plugin plugin, Player p, Consumer<String> handler) {
         waitForPlayer(plugin, p, s -> true, handler);
     }
 
@@ -45,7 +45,7 @@ public final class ChatInput {
      * @param handler
      *            A callback to invoke when the Player has entered some text
      */
-    public static void waitForPlayer(@Nonnull Plugin plugin, @Nonnull Player p, @Nonnull Predicate<String> predicate, @Nonnull Consumer<String> handler) {
+    public static void waitForPlayer(Plugin plugin, Player p, Predicate<String> predicate, Consumer<String> handler) {
         queue(plugin, p, new ChatInputHandler() {
 
             @Override
@@ -72,7 +72,7 @@ public final class ChatInput {
      * @param handler
      *            A callback to invoke when the Player has entered some text
      */
-    public static void waitForPlayer(@Nonnull Plugin plugin, @Nonnull Player p, @Nonnull BiConsumer<Player, String> handler) {
+    public static void waitForPlayer(Plugin plugin, Player p, BiConsumer<Player, String> handler) {
         waitForPlayer(plugin, p, s -> true, handler);
     }
 
@@ -91,7 +91,7 @@ public final class ChatInput {
      * @param handler
      *            A callback to invoke when the Player has entered some text
      */
-    public static void waitForPlayer(@Nonnull Plugin plugin, @Nonnull Player p, @Nonnull Predicate<String> predicate, @Nonnull BiConsumer<Player, String> handler) {
+    public static void waitForPlayer(Plugin plugin, Player p, Predicate<String> predicate, BiConsumer<Player, String> handler) {
         queue(plugin, p, new ChatInputHandler() {
 
             @Override
@@ -107,7 +107,7 @@ public final class ChatInput {
         });
     }
 
-    public static void queue(@Nonnull Plugin plugin, @Nonnull Player p, @Nonnull ChatInputHandler callback) {
+    public static void queue(Plugin plugin, Player p, ChatInputHandler callback) {
         if (listener == null) {
             listener = new ChatInputListener(plugin);
         }

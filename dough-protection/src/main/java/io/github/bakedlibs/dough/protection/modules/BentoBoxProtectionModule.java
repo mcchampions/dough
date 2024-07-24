@@ -33,7 +33,7 @@ public class BentoBoxProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;
 
-    public BentoBoxProtectionModule(@Nonnull Plugin plugin) {
+    public BentoBoxProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

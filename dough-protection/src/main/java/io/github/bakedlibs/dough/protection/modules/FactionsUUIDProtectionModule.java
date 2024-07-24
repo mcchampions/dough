@@ -19,7 +19,7 @@ public class FactionsUUIDProtectionModule implements ProtectionModule {
     private FPlayers api;
     private final Plugin plugin;
 
-    public FactionsUUIDProtectionModule(@Nonnull Plugin plugin) {
+    public FactionsUUIDProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

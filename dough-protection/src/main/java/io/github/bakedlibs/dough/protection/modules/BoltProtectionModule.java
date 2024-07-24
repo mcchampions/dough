@@ -17,7 +17,7 @@ public class BoltProtectionModule implements ProtectionModule {
     private BoltAPI bolt;
     private final Plugin plugin;
 
-    public BoltProtectionModule(@Nonnull Plugin plugin) {
+    public BoltProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

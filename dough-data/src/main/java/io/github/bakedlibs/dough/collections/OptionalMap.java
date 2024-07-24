@@ -43,7 +43,7 @@ public class OptionalMap<K, V> implements Iterable<Map.Entry<K, V>>, Streamable<
      * @param constructor
      *            A Constructor reference to an existing Map implementation
      */
-    public OptionalMap(@Nonnull Supplier<? extends Map<K, V>> constructor) {
+    public OptionalMap(Supplier<? extends Map<K, V>> constructor) {
         internalMap = constructor.get();
 
         if (internalMap == null) {
@@ -181,7 +181,7 @@ public class OptionalMap<K, V> implements Iterable<Map.Entry<K, V>>, Streamable<
         return StreamSupport.stream(spliterator(), false);
     }
 
-    public @Nonnull Map<K, V> getInternalMap() {
+    public Map<K, V> getInternalMap() {
         return internalMap;
     }
 

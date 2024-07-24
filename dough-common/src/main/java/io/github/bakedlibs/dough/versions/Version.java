@@ -36,7 +36,7 @@ public interface Version extends Comparable<Version> {
      * 
      * @return Whether this {@link Version} is newer than the provided one.
      */
-    boolean isNewerThan(@Nonnull Version version);
+    boolean isNewerThan(Version version);
 
     /**
      * This method returns whether this {@link Version} is equal to the given
@@ -50,7 +50,7 @@ public interface Version extends Comparable<Version> {
      * 
      * @return Whether the given {@link Version} is equal to this {@link Version}.
      */
-    boolean isEqualTo(@Nonnull Version version);
+    boolean isEqualTo(Version version);
 
     /**
      * This method returns whether this {@link Version} is older than the
@@ -65,7 +65,7 @@ public interface Version extends Comparable<Version> {
      * 
      * @return Whether this {@link Version} is older than the provided one.
      */
-    boolean isOlderThan(@Nonnull Version version);
+    boolean isOlderThan(Version version);
 
     /**
      * This method returns whether this {@link Version} is equal to or newer
@@ -79,7 +79,7 @@ public interface Version extends Comparable<Version> {
      * 
      * @return This returns whether this is equal to or newer than the given {@link Version}
      */
-    default boolean isAtLeast(@Nonnull Version version) {
+    default boolean isAtLeast(Version version) {
         Validate.notNull(version, "The version to compare must not be null.");
 
         return isEqualTo(version) || isNewerThan(version);
@@ -95,7 +95,7 @@ public interface Version extends Comparable<Version> {
      * 
      * @return Whether the two {@link Version}s can be compared.
      */
-    boolean isSimilar(@Nonnull Version version);
+    boolean isSimilar(Version version);
 
     /**
      * This method returns this {@link Version} as a human-readable format.
@@ -103,14 +103,13 @@ public interface Version extends Comparable<Version> {
      * 
      * @return A human-readable {@link String} representation of this {@link Version}
      */
-    @Nonnull
     String getAsString();
 
     /**
      * {@inheritDoc}
      */
     @Override
-    default int compareTo(@Nullable Version version) {
+    default int compareTo(Version version) {
         if (version == null) {
             // Following Java convention x.compareTo(null) throws a NullPointerException
             throw new NullPointerException("Cannot compare a version that is null");

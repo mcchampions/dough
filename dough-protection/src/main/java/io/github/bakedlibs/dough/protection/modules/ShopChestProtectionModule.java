@@ -20,7 +20,7 @@ public class ShopChestProtectionModule implements ProtectionModule {
     private ShopChest shopChest;
     private final Plugin plugin;
 
-    public ShopChestProtectionModule(@Nonnull Plugin plugin) {
+    public ShopChestProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

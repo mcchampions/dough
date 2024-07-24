@@ -31,7 +31,7 @@ public final class ItemStackSnapshot extends ItemStack {
     private final int amount;
     private final boolean hasItemMeta;
 
-    private ItemStackSnapshot(@Nonnull ItemStack item) {
+    private ItemStackSnapshot(ItemStack item) {
         super(item.getType());
 
         amount = item.getAmount();
@@ -114,7 +114,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * @return Returns an {@link ItemStackSnapshot} of the passed {@link ItemStack}
      * @see #wrap(ItemStack)
      */
-    public static @Nonnull ItemStackSnapshot forceWrap(@Nonnull ItemStack itemStack) {
+    public static ItemStackSnapshot forceWrap(ItemStack itemStack) {
         Validate.notNull(itemStack, "The ItemStack cannot be null!");
 
         return new ItemStackSnapshot(itemStack);
@@ -131,7 +131,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * @return Returns an {@link ItemStackSnapshot} of the passed {@link ItemStack}
      * @see #forceWrap(ItemStack)
      */
-    public static @Nonnull ItemStackSnapshot wrap(@Nonnull ItemStack itemStack) {
+    public static ItemStackSnapshot wrap(ItemStack itemStack) {
         Validate.notNull(itemStack, "The ItemStack cannot be null!");
 
         if (itemStack instanceof ItemStackSnapshot) {
@@ -149,7 +149,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * 
      * @return An {@link ItemStackSnapshot} array
      */
-    public static @Nonnull ItemStackSnapshot[] wrapArray(@Nonnull ItemStack[] items) {
+    public static ItemStackSnapshot[] wrapArray(ItemStack[] items) {
         Validate.notNull(items, "The array must not be null!");
 
         ItemStackSnapshot[] array = new ItemStackSnapshot[items.length];
@@ -171,7 +171,7 @@ public final class ItemStackSnapshot extends ItemStack {
      * 
      * @return An {@link ItemStackSnapshot} array
      */
-    public static @Nonnull List<ItemStackSnapshot> wrapList(@Nonnull List<ItemStack> items) {
+    public static List<ItemStackSnapshot> wrapList(List<ItemStack> items) {
         Validate.notNull(items, "The list must not be null!");
         List<ItemStackSnapshot> list = new ArrayList<>(items.size());
 

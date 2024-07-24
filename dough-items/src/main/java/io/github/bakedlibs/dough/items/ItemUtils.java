@@ -36,7 +36,7 @@ public final class ItemUtils {
      * 
      * @return The formatted Item Name
      */
-    public static @Nonnull String getItemName(@Nullable ItemStack item) {
+    public static String getItemName(ItemStack item) {
         if (item == null) {
             return "null";
         } else if (item.hasItemMeta()) {
@@ -68,7 +68,7 @@ public final class ItemUtils {
      *            {@link ItemStack} Two
      * @return Whether the two instances of {@link ItemStack} are similiar and can be stacked.
      */
-    public static boolean canStack(@Nullable ItemStack a, @Nullable ItemStack b) {
+    public static boolean canStack(ItemStack a, ItemStack b) {
         if (a == null || b == null) {
             return false;
         }
@@ -160,7 +160,7 @@ public final class ItemUtils {
      * @param ignoreEnchantments
      *            Whether the Unbreaking Enchantment should be ignored
      */
-    public static void damageItem(@Nonnull ItemStack item, boolean ignoreEnchantments) {
+    public static void damageItem(ItemStack item, boolean ignoreEnchantments) {
         damageItem(item, 1, ignoreEnchantments);
     }
 
@@ -175,7 +175,7 @@ public final class ItemUtils {
      * @param ignoreEnchantments
      *            Whether the Unbreaking Enchantment should be ignored
      */
-    public static void damageItem(@Nonnull ItemStack item, int damage, boolean ignoreEnchantments) {
+    public static void damageItem(ItemStack item, int damage, boolean ignoreEnchantments) {
         if (item.getType() != Material.AIR && item.getAmount() > 0) {
             int remove = damage;
 
@@ -211,7 +211,7 @@ public final class ItemUtils {
      *            Whether Consumable Items should be replaced with their "empty" version, see
      *            {@link ItemUtils#consumeItem(ItemStack, int, boolean)}
      */
-    public static void consumeItem(@Nonnull ItemStack item, boolean replaceConsumables) {
+    public static void consumeItem(ItemStack item, boolean replaceConsumables) {
         consumeItem(item, 1, replaceConsumables);
     }
 
@@ -235,7 +235,7 @@ public final class ItemUtils {
      * @param replaceConsumables
      *            Whether Items should be replaced with their "empty" version
      */
-    public static void consumeItem(@Nonnull ItemStack item, int amount, boolean replaceConsumables) {
+    public static void consumeItem(ItemStack item, int amount, boolean replaceConsumables) {
         if (item.getType() != Material.AIR && item.getAmount() > 0) {
             if (replaceConsumables) {
                 switch (item.getType()) {

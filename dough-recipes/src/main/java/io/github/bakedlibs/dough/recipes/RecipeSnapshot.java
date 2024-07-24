@@ -41,7 +41,7 @@ public class RecipeSnapshot {
      * @param plugin
      *            The Plugin running on the Server that serves as the Snapshot's source.
      */
-    public RecipeSnapshot(@Nonnull Plugin plugin) {
+    public RecipeSnapshot(Plugin plugin) {
         Iterator<Recipe> iterator = plugin.getServer().recipeIterator();
 
         plugin.getLogger().log(Level.INFO, "Collecting Snapshots of all Recipes...");
@@ -69,7 +69,6 @@ public class RecipeSnapshot {
      * 
      * @return A Stream of all Recipes in this Snapshot
      */
-    @Nonnull
     public Stream<Recipe> streamAllRecipes() {
         return recipes.values().stream().flatMap(Set::stream);
     }
@@ -85,8 +84,7 @@ public class RecipeSnapshot {
      * 
      * @return A {@link Set} of Recipes of the given Type.
      */
-    @Nonnull
-    public <T extends Recipe> Set<T> getRecipes(@Nonnull Class<T> recipeClass) {
+    public <T extends Recipe> Set<T> getRecipes(Class<T> recipeClass) {
         return stream(recipeClass).collect(Collectors.toSet());
     }
 
@@ -101,8 +99,7 @@ public class RecipeSnapshot {
      * 
      * @return A {@link Stream} of Recipes of the given Type.
      */
-    @Nonnull
-    public <T extends Recipe> Stream<T> stream(@Nonnull Class<T> recipeClass) {
+    public <T extends Recipe> Stream<T> stream(Class<T> recipeClass) {
         return recipes.entrySet().stream().filter(entry -> recipeClass.isAssignableFrom(entry.getKey())).flatMap(entry -> entry.getValue().stream()).map(recipeClass::cast);
     }
 
@@ -119,8 +116,7 @@ public class RecipeSnapshot {
      * 
      * @return The Inputs for the given Recipe
      */
-    @Nonnull
-    public <T extends Recipe> RecipeChoice[] getRecipeInput(@Nonnull MinecraftRecipe<? super T> recipeType, @Nonnull T recipe) {
+    public <T extends Recipe> RecipeChoice[] getRecipeInput(MinecraftRecipe<? super T> recipeType, T recipe) {
         return recipeType.getInputs(recipe);
     }
 
@@ -139,8 +135,7 @@ public class RecipeSnapshot {
      * 
      * @return The Inputs for the given Recipe
      */
-    @Nonnull
-    public <T extends Recipe> RecipeChoice[] getRecipeInput(@Nonnull T recipe) {
+    public <T extends Recipe> RecipeChoice[] getRecipeInput(T recipe) {
         Optional<MinecraftRecipe<? super T>> type = MinecraftRecipe.of(recipe);
 
         return type.map(minecraftRecipe -> getRecipeInput(minecraftRecipe, recipe)).orElseGet(() -> new RecipeChoice[0]);
@@ -161,8 +156,7 @@ public class RecipeSnapshot {
      * 
      * @return An {@link Optional} describing the output of the Recipe matching your type and inputs
      */
-    @Nonnull
-    public <T extends Recipe> Optional<ItemStack> getRecipeOutput(@Nonnull MinecraftRecipe<T> recipeType, ItemStack... inputs) {
+    public <T extends Recipe> Optional<ItemStack> getRecipeOutput(MinecraftRecipe<T> recipeType, ItemStack... inputs) {
         if (recipeType.validate(inputs)) {
             return recipeType.getOutput(stream(recipeType.getRecipeClass()), inputs);
         } else {
@@ -178,8 +172,7 @@ public class RecipeSnapshot {
      * 
      * @return A Set of Recipes matching your filter.
      */
-    @Nonnull
-    public Set<Recipe> getRecipes(@Nonnull Predicate<Recipe> predicate) {
+    public Set<Recipe> getRecipes(Predicate<Recipe> predicate) {
         return streamAllRecipes().filter(predicate).collect(Collectors.toSet());
     }
 
@@ -192,8 +185,7 @@ public class RecipeSnapshot {
      * 
      * @return A {@link Set} of Recipes resulting in an {@link ItemStack} with the given {@link Material}
      */
-    @Nonnull
-    public Set<Recipe> getRecipesFor(@Nonnull Material type) {
+    public Set<Recipe> getRecipesFor(Material type) {
         return getRecipes(recipe -> recipe.getResult().getType() == type);
     }
 
@@ -205,8 +197,7 @@ public class RecipeSnapshot {
      * 
      * @return A {@link Set} of Recipes resulting in the given {@link ItemStack}
      */
-    @Nonnull
-    public Set<Recipe> getRecipesFor(@Nonnull ItemStack item) {
+    public Set<Recipe> getRecipesFor(ItemStack item) {
         return getRecipes(recipe -> recipe.getResult().isSimilar(item));
     }
 
@@ -220,8 +211,7 @@ public class RecipeSnapshot {
      * 
      * @return A {@link Set} of Recipes that include the given {@link ItemStack} as an input.
      */
-    @Nonnull
-    public Set<Recipe> getRecipesWith(@Nonnull ItemStack item) {
+    public Set<Recipe> getRecipesWith(ItemStack item) {
         return getRecipes(recipe -> Arrays.stream(getRecipeInput(recipe)).anyMatch(choice -> choice.test(item)));
     }
 
@@ -237,8 +227,7 @@ public class RecipeSnapshot {
      * 
      * @return The corresponding {@link Recipe} or null
      */
-    @Nullable
-    public Recipe getRecipe(@Nonnull NamespacedKey key) {
+    public Recipe getRecipe(NamespacedKey key) {
         return keyedRecipes.get(key);
     }
 

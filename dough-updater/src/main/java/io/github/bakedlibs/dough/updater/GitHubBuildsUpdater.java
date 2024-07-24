@@ -22,11 +22,11 @@ public class GitHubBuildsUpdater extends AbstractPluginUpdater<PrefixedVersion> 
     private final String repository;
     private final String prefix;
 
-    public GitHubBuildsUpdater(@Nonnull Plugin plugin, @Nonnull File file, @Nonnull String repo) {
+    public GitHubBuildsUpdater(Plugin plugin, File file, String repo) {
         this(plugin, file, repo, "DEV - ");
     }
 
-    public GitHubBuildsUpdater(@Nonnull Plugin plugin, @Nonnull File file, @Nonnull String repo, @Nonnull String prefix) {
+    public GitHubBuildsUpdater(Plugin plugin, File file, String repo, String prefix) {
         super(plugin, file, extractBuild(prefix, plugin));
 
         this.repository = repo;

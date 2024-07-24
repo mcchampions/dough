@@ -12,10 +12,9 @@ import org.bukkit.block.Block;
 
 public interface PlayerHeadAdapter {
 
-    @ParametersAreNonnullByDefault
     void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws IllegalAccessException, InvocationTargetException, InstantiationException;
 
-    static @Nullable PlayerHeadAdapter get() {
+    static PlayerHeadAdapter get() {
         try {
             MinecraftVersion version = MinecraftVersion.get();
 

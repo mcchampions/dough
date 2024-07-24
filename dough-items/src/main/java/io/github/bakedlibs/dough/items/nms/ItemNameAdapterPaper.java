@@ -9,7 +9,6 @@ import java.lang.reflect.InvocationTargetException;
 
 public class ItemNameAdapterPaper implements ItemNameAdapter {
     @Override
-    @ParametersAreNonnullByDefault
     public String getName(ItemStack item) throws IllegalAccessException, InvocationTargetException {
         return PlainTextComponentSerializer.plainText().serialize(Bukkit.getItemFactory().displayName(item));
     }

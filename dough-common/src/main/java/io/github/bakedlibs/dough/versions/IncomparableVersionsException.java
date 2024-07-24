@@ -27,7 +27,7 @@ public class IncomparableVersionsException extends RuntimeException {
      * @param version2
      *            {@link Version} 2
      */
-    IncomparableVersionsException(@Nonnull Version version1, @Nullable Version version2) {
+    IncomparableVersionsException(Version version1, Version version2) {
         super("Unable to compare " + toString(version1) + " with " + toString(version2));
     }
 
@@ -39,7 +39,7 @@ public class IncomparableVersionsException extends RuntimeException {
      * 
      * @return A verbose {@link String} representation of this {@link Version}
      */
-    private static @Nonnull String toString(@Nullable Version version) {
+    private static String toString(Version version) {
         if (version == null) {
             return "<null>";
         } else {

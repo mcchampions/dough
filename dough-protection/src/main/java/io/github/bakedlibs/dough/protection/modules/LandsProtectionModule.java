@@ -22,7 +22,7 @@ public class LandsProtectionModule implements ProtectionModule {
     private final Plugin lands;
     private final Plugin plugin;
 
-    public LandsProtectionModule(@Nonnull Plugin lands, @Nonnull Plugin plugin) {
+    public LandsProtectionModule(Plugin lands, Plugin plugin) {
         this.lands = lands;
         this.plugin = plugin;
     }
@@ -39,12 +39,12 @@ public class LandsProtectionModule implements ProtectionModule {
 
     @Override
     public boolean hasPermission(OfflinePlayer p, Location l, Interaction action) {
-        @Nullable LandWorld landWorld = landsIntegration.getWorld(l.getWorld()); // landWorld is used for permission checks, since flags can be toggled in wilderness as well
+        LandWorld landWorld = landsIntegration.getWorld(l.getWorld()); // landWorld is used for permission checks, since flags can be toggled in wilderness as well
         if (landWorld == null) {
             return true; // this is not a claim world
         }
 
-        @Nullable LandPlayer landPlayer = landsIntegration.getLandPlayer(p.getUniqueId()); // null if the player is offline
+        LandPlayer landPlayer = landsIntegration.getLandPlayer(p.getUniqueId()); // null if the player is offline
         if (landPlayer == null) { // if the player is offline, check against UUID without bypass permissions
             return landWorld.hasRoleFlag(p.getUniqueId(), l, convert(action));
         } else { // if online, check against online player with bypass permissions
@@ -52,7 +52,7 @@ public class LandsProtectionModule implements ProtectionModule {
         }
     }
 
-    private @Nonnull RoleFlag convert(@Nonnull Interaction protectableAction) {
+    private RoleFlag convert(Interaction protectableAction) {
         switch (protectableAction) {
             case PLACE_BLOCK:
                 return Flags.BLOCK_PLACE;
