@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.collections;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;

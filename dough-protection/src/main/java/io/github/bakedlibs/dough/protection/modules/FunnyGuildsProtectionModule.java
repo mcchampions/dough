@@ -9,8 +9,6 @@ import org.bukkit.plugin.Plugin;
 import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
-import javax.annotation.Nonnull;
-
 /**
  * Provides protection handling for FunnyGuilds
  *

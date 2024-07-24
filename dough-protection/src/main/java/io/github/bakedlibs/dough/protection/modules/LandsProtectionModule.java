@@ -1,8 +1,5 @@
 package io.github.bakedlibs.dough.protection.modules;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import me.angeschossen.lands.api.LandsIntegration;
 import me.angeschossen.lands.api.flags.type.Flags;
 import me.angeschossen.lands.api.flags.type.RoleFlag;

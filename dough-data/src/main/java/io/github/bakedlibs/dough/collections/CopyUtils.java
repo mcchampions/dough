@@ -6,8 +6,6 @@ import java.util.function.IntFunction;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-import javax.annotation.Nonnull;
-
 /**
  * Utilities for deep-copying collections, maps and arrays
  *

@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.common;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.ChatColor;
 
 /**

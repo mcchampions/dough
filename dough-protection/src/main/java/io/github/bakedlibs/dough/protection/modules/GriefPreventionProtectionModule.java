@@ -14,8 +14,6 @@ import me.ryanhamshire.GriefPrevention.ClaimPermission;
 import me.ryanhamshire.GriefPrevention.Claim;
 import me.ryanhamshire.GriefPrevention.GriefPrevention;
 
-import javax.annotation.Nonnull;
-
 public class GriefPreventionProtectionModule implements ProtectionModule {
 
     private GriefPrevention griefPrevention;

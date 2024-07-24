@@ -12,8 +12,6 @@ import io.github.bakedlibs.dough.protection.ActionType;
 import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
-import javax.annotation.Nonnull;
-
 public class LocketteProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;

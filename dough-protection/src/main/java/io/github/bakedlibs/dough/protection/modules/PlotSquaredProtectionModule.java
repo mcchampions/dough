@@ -1,8 +1,5 @@
 package io.github.bakedlibs.dough.protection.modules;
 
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.plugin.Plugin;

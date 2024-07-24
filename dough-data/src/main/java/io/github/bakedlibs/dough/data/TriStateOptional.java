@@ -4,9 +4,6 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 public final class TriStateOptional<T> {
 
     private TriState state;

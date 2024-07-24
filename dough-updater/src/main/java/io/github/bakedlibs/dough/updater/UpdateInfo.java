@@ -2,9 +2,6 @@ package io.github.bakedlibs.dough.updater;
 
 import java.net.URL;
 
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import io.github.bakedlibs.dough.versions.Version;
 
 // TODO: Convert to Java 16 record

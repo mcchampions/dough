@@ -6,10 +6,6 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import org.bukkit.Bukkit;
 
 import io.github.bakedlibs.dough.versions.MinecraftVersion;

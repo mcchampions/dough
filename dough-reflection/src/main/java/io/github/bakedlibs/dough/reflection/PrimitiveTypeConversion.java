@@ -3,9 +3,6 @@ package io.github.bakedlibs.dough.reflection;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 final class PrimitiveTypeConversion {
 
     private static final Map<Class<?>, Class<?>> primitiveTypes = new HashMap<>();

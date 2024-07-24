@@ -3,10 +3,6 @@ package io.github.bakedlibs.dough.items.nms;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import io.papermc.lib.PaperLib;
 import org.bukkit.inventory.ItemStack;
 

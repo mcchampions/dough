@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.protection.modules;
 
-import javax.annotation.Nonnull;
-
 import me.angeschossen.chestprotect.api.ChestProtectAPI;
 import me.angeschossen.chestprotect.api.protection.block.BlockProtection;
 import me.angeschossen.chestprotect.api.protection.world.ProtectionWorld;

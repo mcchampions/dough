@@ -3,8 +3,6 @@ package io.github.bakedlibs.dough.items.nms;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import org.bukkit.inventory.ItemStack;
 
 import io.github.bakedlibs.dough.reflection.ReflectionUtils;

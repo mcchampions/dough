@@ -11,8 +11,6 @@ import com.palmergames.bukkit.towny.utils.PlayerCacheUtil;
 import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.protection.ProtectionModule;
 
-import javax.annotation.Nonnull;
-
 public class TownyProtectionModule implements ProtectionModule {
 
     private final Plugin plugin;

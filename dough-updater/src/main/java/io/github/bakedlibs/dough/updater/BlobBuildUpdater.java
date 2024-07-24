@@ -5,7 +5,6 @@ import com.google.gson.JsonParser;
 import io.github.bakedlibs.dough.versions.PrefixedVersion;
 import org.bukkit.plugin.Plugin;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;

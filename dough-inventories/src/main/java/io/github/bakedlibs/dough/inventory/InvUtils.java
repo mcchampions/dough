@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -81,16 +79,15 @@ public final class InvUtils {
      * @return Whether the given {@link InventoryType} allows this {@link Material} to be stored within
      */
     public static boolean isItemAllowed(Material itemType, InventoryType inventoryType) {
-        switch (inventoryType) {
-            case LECTERN:
+        return switch (inventoryType) {
+            case LECTERN ->
                 // Lecterns only allow written books or writable books
-                return itemType == Material.WRITABLE_BOOK || itemType == Material.WRITTEN_BOOK;
-            case SHULKER_BOX:
+                    itemType == Material.WRITABLE_BOOK || itemType == Material.WRITTEN_BOOK;
+            case SHULKER_BOX ->
                 // Shulker Boxes do not allow Shulker boxes
-                return itemType != Material.SHULKER_BOX && !itemType.name().endsWith("_SHULKER_BOX");
-            default:
-                return true;
-        }
+                    itemType != Material.SHULKER_BOX && !itemType.name().endsWith("_SHULKER_BOX");
+            default -> true;
+        };
     }
 
     /**
@@ -160,15 +157,14 @@ public final class InvUtils {
 
         Map<Integer, ItemStack> cache = new HashMap<>();
 
-        for (int i = 0; i < items.length; i++) {
-            ItemStack item = items[i];
+        for (ItemStack item : items) {
             boolean resolved = false;
 
             for (int slot : slots) {
                 ItemStack stack = cache.getOrDefault(slot, inv.getItem(slot));
 
                 if (stack == null || stack.getType() == Material.AIR) {
-                    cache.put(slot, items[i]);
+                    cache.put(slot, item);
                     resolved = true;
                 } else if (isValidStackSize(stack, item, inv) && ItemUtils.canStack(stack, item)) {
                     ItemStack clone = stack.clone();
