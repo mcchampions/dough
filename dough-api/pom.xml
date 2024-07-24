@@ -240,6 +240,20 @@
             </exclusions>
         </dependency>
 
+        <!-- RedProtect -->
+        <dependency>
+            <groupId>br.net.fabiozumbi12.RedProtect</groupId>
+            <artifactId>RedProtect-Core</artifactId>
+            <version>7.7.3</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>br.net.fabiozumbi12.RedProtect</groupId>
+            <artifactId>RedProtect-Spigot</artifactId>
+            <version>7.7.3</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- BentoBox -->
         <dependency>
             <groupId>world.bentobox</groupId>
@@ -285,6 +299,14 @@
                     <artifactId>LocaleLib</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- HuskTowns -->
+        <dependency>
+            <groupId>com.github.WiIIiam278</groupId>
+            <artifactId>HuskTowns</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
         </dependency>
         
         <!-- ShopChest -->
