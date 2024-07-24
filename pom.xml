@@ -11,44 +11,13 @@
     <packaging>pom</packaging>
 
     <name>Dough</name>
-    <url>https://github.com/baked-libs/dough</url>
-    <description>Dough is a powerful library for the everyday Spigot developer</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-
-        <sonar.projectKey>baked-libs_dough</sonar.projectKey>
-        <sonar.organization>baked-libs</sonar.organization>
-        <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.log.level>DEBUG</sonar.log.level>
-        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-
-        <!-- Update dough here and all modules will have this version -->
-        <!-- No need to update all of them -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <revision>1.3.1-SNAPSHOT</revision>
     </properties>
-
-    <issueManagement>
-        <system>GitHub Issues</system>
-        <url>https://github.com/baked-libs/dough/issues</url>
-    </issueManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub StarWishsama Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/StarWishsama/dough</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>github</id>
-            <name>GitHub StarWishsama Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/StarWishsama/dough</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <licenses>
         <license>
@@ -57,21 +26,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <developers>
-        <developer>
-            <name>TheBusyBiscuit</name>
-            <url>https://github.com/TheBusyBiscuit</url>
-        </developer>
-        <developer>
-            <name>WalshyDev</name>
-            <url>https://github.com/WalshyDev</url>
-        </developer>
-        <developer>
-            <name>md5sha256</name>
-            <url>https://github.com/md5sha256</url>
-        </developer>
-    </developers>
 
     <modules>
         <!-- Shared base modules -->
@@ -94,68 +48,6 @@
         <module>dough-api</module>
     </modules>
 
-    <profiles>
-        <profile>
-            <id>release</id>
-
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>3.3.0</version>
-
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <phase>package</phase>
-
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.5.0</version>
-
-                        <configuration>
-                            <includeDependencySources>false</includeDependencySources>
-
-                            <links>
-                                <link>https://hub.spigotmc.org/javadocs/spigot/</link>
-                            </links>
-                        </configuration>
-
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-release-plugin</artifactId>
-                        <version>2.5.3</version>
-
-                        <configuration>
-                            <autoVersionSubmodules>true</autoVersionSubmodules>
-                            <goals>deploy</goals>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <build>
         <plugins>
             <plugin>
@@ -171,54 +63,6 @@
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.6.1</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.9.1.2184</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-
-                <configuration>
-                    <junitArtifactName>org.junit.jupiter:junit-jupiter</junitArtifactName>
-                    <trimStackTrace>false</trimStackTrace>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.11</version>
-
-                <executions>
-                    <execution>
-                        <id>prepare</id>
-
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
@@ -257,34 +101,6 @@
             <artifactId>jsr305</artifactId>
             <version>3.0.2</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.9.3</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>4.11.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.seeseemelk</groupId>
-            <artifactId>MockBukkit-v1.18</artifactId>
-            <version>1.26.1</version>
-            <scope>test</scope>
-
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jetbrains</groupId>
-                    <artifactId>annotations</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 </project>
