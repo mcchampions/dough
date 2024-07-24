@@ -26,12 +26,7 @@ jobs:
         architecture: x64
     - name: Deploy jitpack
       run: curl -s -m 5 https://jitpack.io/com/github/mcchampions/dough/${{ github.sha }}/ || true
-    - name: Cache Maven packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
+
 
     - name: Build with Maven
       run: mvn package --file pom.xml
