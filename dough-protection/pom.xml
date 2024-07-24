@@ -283,32 +283,6 @@
             </exclusions>
         </dependency>
 
-        <!-- RedProtect -->
-        <dependency>
-            <groupId>br.net.fabiozumbi12.RedProtect</groupId>
-            <artifactId>RedProtect-Core</artifactId>
-            <version>7.7.3</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>bukkit</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>br.net.fabiozumbi12.RedProtect</groupId>
-            <artifactId>RedProtect-Spigot</artifactId>
-            <version>7.7.3</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>bukkit</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
         <!-- BentoBox -->
         <dependency>
             <groupId>world.bentobox</groupId>
@@ -384,33 +358,6 @@
             </exclusions>
         </dependency>
 
-        <!-- HuskTowns -->
-        <dependency>
-            <groupId>net.william278.husktowns</groupId>
-            <artifactId>husktowns-bukkit</artifactId>
-            <version>3.0-988161b</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>bukkit</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- HuskClaims -->
-        <dependency>
-            <groupId>net.william278.huskclaims</groupId>
-            <artifactId>huskclaims-bukkit</artifactId>
-            <version>1.0.2-e60150d</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>bukkit</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
       
         <!-- ShopChest -->
         <dependency>
