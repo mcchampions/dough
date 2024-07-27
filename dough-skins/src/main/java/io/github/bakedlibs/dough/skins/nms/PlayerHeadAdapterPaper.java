@@ -34,7 +34,7 @@ public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
         PlayerProfile paperPlayerProfile = Bukkit.createProfile(profile.getId(), profile.getName());
 
         // Old authlib check
-        if (getName != null && getValue != null && getSignature != null) {
+        if (getName != null) {
             paperPlayerProfile.setProperty(new ProfileProperty((String) getName.invoke(property), (String) getValue.invoke(property), (String) getSignature.invoke(property)));
         } else {
             paperPlayerProfile.setProperty(new ProfileProperty(property.name(), property.value(), property.signature()));
