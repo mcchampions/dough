@@ -49,10 +49,6 @@ public class LoopIterator<T> implements Iterator<T>, Streamable<T> {
      *            The streamable to create a {@link LoopIterator} of
      */
     public LoopIterator(Streamable<T> streamable) {
-        if (streamable instanceof LoopIterator) {
-            throw new IllegalArgumentException("Cannot loop-iterate over a LoopIterator");
-        }
-
         init(streamable.stream().collect(Collectors.toList()));
     }
 
