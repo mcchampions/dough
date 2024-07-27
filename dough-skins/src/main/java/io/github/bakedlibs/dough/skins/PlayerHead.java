@@ -58,16 +58,6 @@ public final class PlayerHead {
     }
 
     public static void setSkin(Block block, PlayerSkin skin, boolean sendBlockUpdate) {
-        if (adapter == null) {
-            throw new UnsupportedOperationException("Cannot update skin texture, no adapter found");
-        }
-
-        Material material = block.getType();
-
-        if (material != Material.PLAYER_HEAD && material != Material.PLAYER_WALL_HEAD) {
-            throw new IllegalArgumentException("Cannot update a head texture. Expected a Player Head, received: " + material);
-        }
-
         try {
             GameProfile profile = skin.getProfile();
             adapter.setGameProfile(block, profile, sendBlockUpdate);

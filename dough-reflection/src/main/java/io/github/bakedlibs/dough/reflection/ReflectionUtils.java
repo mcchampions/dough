@@ -111,7 +111,6 @@ public final class ReflectionUtils {
      */
     public static Method getMethod(Class<?> c, String method, Class<?>... paramTypes) {
         Class<?>[] expectParamTypes = toPrimitiveTypeArray(paramTypes);
-
         for (Method m : c.getMethods()) {
             Class<?>[] methodParameters = toPrimitiveTypeArray(m.getParameterTypes());
 

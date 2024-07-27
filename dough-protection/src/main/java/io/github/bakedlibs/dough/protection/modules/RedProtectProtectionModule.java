@@ -12,13 +12,11 @@ import br.net.fabiozumbi12.RedProtect.Bukkit.RedProtect;
 import br.net.fabiozumbi12.RedProtect.Bukkit.Region;
 import br.net.fabiozumbi12.RedProtect.Bukkit.API.RedProtectAPI;
 
-import javax.annotation.Nonnull;
-
 public class RedProtectProtectionModule implements ProtectionModule {
     private RedProtectAPI api;
     private final Plugin plugin;
 
-    public RedProtectProtectionModule(@Nonnull Plugin plugin) {
+    public RedProtectProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 

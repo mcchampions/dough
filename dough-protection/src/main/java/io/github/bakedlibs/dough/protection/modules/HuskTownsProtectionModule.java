@@ -9,8 +9,6 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.Plugin;
 
-import javax.annotation.Nonnull;
-
 /**
  * Protection handling module for HuskTowns
  *
@@ -20,7 +18,7 @@ public class HuskTownsProtectionModule implements ProtectionModule {
     private BukkitHuskTownsAPI huskTownsAPI;
     private final Plugin plugin;
 
-    public HuskTownsProtectionModule(@Nonnull Plugin plugin) {
+    public HuskTownsProtectionModule(Plugin plugin) {
         this.plugin = plugin;
     }
 
@@ -55,7 +53,7 @@ public class HuskTownsProtectionModule implements ProtectionModule {
      * @param doughAction The dough {@link Interaction}
      * @return The corresponding HuskTowns {@link OperationType}
      */
-    public static @Nonnull OperationType getHuskTownsAction(@Nonnull Interaction doughAction) {
+    public static OperationType getHuskTownsAction(Interaction doughAction) {
         return switch (doughAction) {
             case BREAK_BLOCK -> OperationType.BLOCK_BREAK;
             case PLACE_BLOCK -> OperationType.BLOCK_PLACE;

@@ -72,7 +72,7 @@ public class ItemMetaSnapshot {
     public boolean isSimilar(ItemMetaSnapshot snapshot) {
         if (snapshot.displayName.isPresent() != displayName.isPresent()) {
             return false;
-        } else if (snapshot.displayName.isPresent() && displayName.isPresent() && !snapshot.displayName.get().equals(displayName.get())) {
+        } else if (snapshot.displayName.isPresent() && !snapshot.displayName.get().equals(displayName.get())) {
             return false;
         } else if (snapshot.lore.isPresent() && lore.isPresent()) {
             return lore.get().equals(snapshot.lore.get());
