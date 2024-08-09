@@ -26,12 +26,8 @@ public interface PlayerHeadAdapter {
             } else if (version.isAtLeast(1, 18)) {
                 // 1.18 mappings
                 return new PlayerHeadAdapter18();
-            } else if (version.isAtLeast(1, 17)) {
-                // 1.17 mappings
-                return new PlayerHeadAdapter17();
             } else {
-                // Old mappings
-                return new PlayerHeadAdapterBefore17();
+                throw new RuntimeException("不支持的MC版本");
             }
         } catch (Exception x) {
             DoughLogger logger = new DoughLogger("skins");
