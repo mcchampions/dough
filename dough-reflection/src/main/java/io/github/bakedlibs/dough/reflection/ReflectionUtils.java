@@ -42,7 +42,7 @@ public final class ReflectionUtils {
         if (checkMinecraftVersion) {
             MinecraftVersion version = MinecraftVersion.get();
 
-            if (version.isAtLeast(1, 17)) {
+            if (version.isAtLeast(1, 18)) {
                 return "";
             }
         }

@@ -14,11 +14,6 @@ public interface ItemNameAdapter {
 
     static ItemNameAdapter get() {
         try {
-            if (MinecraftVersion.isMocked()) {
-                // Special case for MockBukkit
-                return new ItemNameAdapterMockBukkit();
-            }
-
             if (PaperLib.isPaper()) {
                 return new ItemNameAdapterPaper();
             }
@@ -36,12 +31,8 @@ public interface ItemNameAdapter {
             } else if (version.isAtLeast(1, 18)) {
                 // 1.18+ mappings
                 return new ItemNameAdapter18();
-            } else if (version.isAtLeast(1, 17)) {
-                // 1.17+ mappings
-                return new ItemNameAdapter17();
             } else {
-                // Old mappings
-                return new ItemNameAdapterBefore17();
+                throw new RuntimeException("不支持的MC版本");
             }
         } catch (Exception x) {
             DoughLogger logger = new DoughLogger("items");
