@@ -2,14 +2,10 @@ package io.github.bakedlibs.dough.config;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -27,6 +23,7 @@ import org.bukkit.plugin.Plugin;
 import io.github.bakedlibs.dough.common.DoughLogger;
 
 public class Config {
+    private static final Pattern PATTERN = Pattern.compile("\\n");
     private final File file;
 
     private Logger logger;
@@ -196,10 +193,10 @@ public class Config {
     public void save(File file) {
         try {
             if (header != null) {
-                fileConfig.options().copyHeader(true);
-                fileConfig.options().header(header);
+                fileConfig.options().parseComments(true);
+                fileConfig.options().setHeader(Arrays.asList(PATTERN.split(header)));
             } else {
-                fileConfig.options().copyHeader(false);
+                fileConfig.options().parseComments(false);
             }
 
             fileConfig.save(file);
