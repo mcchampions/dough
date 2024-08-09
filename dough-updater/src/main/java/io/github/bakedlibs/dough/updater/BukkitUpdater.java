@@ -15,14 +15,8 @@ import com.google.gson.JsonParser;
 import io.github.bakedlibs.dough.versions.SemanticVersion;
 
 public class BukkitUpdater extends AbstractPluginUpdater<SemanticVersion> {
-    private static final String API_URL = "https://api.curseforge.com/servermods/files?projectIds=";
-
-    private final int projectId;
-
     public BukkitUpdater(Plugin plugin, File file, int id) {
         super(plugin, file, getVersion(plugin));
-
-        this.projectId = id;
     }
 
     private static SemanticVersion getVersion(Plugin plugin) {
@@ -31,35 +25,5 @@ public class BukkitUpdater extends AbstractPluginUpdater<SemanticVersion> {
     }
 
     @Override
-    public void start() {
-        try {
-            URL url = new URL(API_URL + projectId);
-
-            scheduleAsyncUpdateTask(new UpdaterTask<>(this, url) {
-                @Override
-                public UpdateInfo parse(String result) throws MalformedURLException {
-                    JsonArray array = (JsonArray) new JsonParser().parse(result);
-
-                    if (array.isEmpty()) {
-                        getLogger().log(Level.WARNING, "The Auto-Updater could not connect to dev.bukkit.org, is it down?");
-                        return null;
-                    }
-
-                    JsonObject latest = array.get(array.size() - 1).getAsJsonObject();
-
-                    URL download = new URL(latest.get("downloadUrl").getAsString());
-                    String remoteVersion = latest.getAsJsonObject().get("name").getAsString();
-                    remoteVersion = remoteVersion.toLowerCase(Locale.ROOT);
-                    SemanticVersion latestVersion = SemanticVersion.parse(remoteVersion);
-                    getLatestVersion().complete(latestVersion);
-
-                    return new UpdateInfo(download, latestVersion);
-                }
-
-            });
-        } catch (MalformedURLException e) {
-            getLogger().log(Level.SEVERE, "Auto-Updater URL is malformed", e);
-        }
-    }
-
+    public void start() {}
 }

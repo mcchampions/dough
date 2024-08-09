@@ -20,20 +20,9 @@ abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater
     protected final CompletableFuture<V> latestVersion = new CompletableFuture<>();
 
     protected AbstractPluginUpdater(Plugin plugin, File file, V currentVersion) {
-                        
         this.plugin = plugin;
         this.file = file;
         this.currentVersion = currentVersion;
-
-        prepareUpdateFolder();
-    }
-
-    private static void prepareUpdateFolder() {
-        File dir = new File("plugins/" + Bukkit.getUpdateFolder());
-
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
     }
 
     public int getConnectionTimeout() {
@@ -65,13 +54,8 @@ abstract class AbstractPluginUpdater<V extends Version> implements PluginUpdater
         return latestVersion;
     }
 
-    protected void scheduleAsyncUpdateTask(UpdaterTask<V> task) {
-        plugin.getServer().getScheduler().runTaskAsynchronously(plugin, task);
-    }
-
     protected static PrefixedVersion extractBuild(String prefix, Plugin plugin) {
         String pluginVersion = plugin.getDescription().getVersion();
-
         if (pluginVersion.startsWith(prefix)) {
             int version = Integer.parseInt(pluginVersion.substring(prefix.length()).split(" ")[0], 10);
             return new PrefixedVersion(prefix, version);
