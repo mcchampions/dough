@@ -411,7 +411,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-      
+
         <!-- ShopChest -->
         <dependency>
             <groupId>de.epiceric</groupId>
