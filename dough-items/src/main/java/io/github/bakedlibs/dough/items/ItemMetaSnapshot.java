@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -26,7 +27,8 @@ import org.bukkit.persistence.PersistentDataContainer;
  *
  */
 public class ItemMetaSnapshot {
-    private final Optional<String> displayName;
+    @SuppressWarnings("OptionalAssignedToNull")
+    private Optional<String> displayName = null;
     private final Optional<Component> displayNameC;
     private final Optional<List<String>> lore;
     private final OptionalInt customModelData;
@@ -43,7 +45,6 @@ public class ItemMetaSnapshot {
     }
 
     public ItemMetaSnapshot(ItemMeta meta) {
-        this.displayName = meta.hasDisplayName() ? Optional.of(meta.getDisplayName()) : Optional.empty();
         this.lore = meta.hasLore() ? Optional.of(Collections.unmodifiableList(meta.getLore())) : Optional.empty();
         this.customModelData = meta.hasCustomModelData() ? OptionalInt.of(meta.getCustomModelData()) : OptionalInt.empty();
         this.displayNameC = meta.hasDisplayName() ? Optional.of(meta.displayName()) : Optional.empty();
@@ -53,6 +54,14 @@ public class ItemMetaSnapshot {
     }
 
     public Optional<String> getDisplayName() {
+        //noinspection OptionalAssignedToNull
+        if (displayName == null) {
+            if (displayNameC.isEmpty()) {
+                displayName = Optional.empty();
+                return displayName;
+            }
+            this.displayName = Optional.of(LegacyComponentSerializer.legacySection().serialize(displayNameC.get()));
+        }
         return displayName;
     }
 
