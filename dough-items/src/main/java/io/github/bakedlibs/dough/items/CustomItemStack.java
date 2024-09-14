@@ -3,6 +3,8 @@ package io.github.bakedlibs.dough.items;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -82,6 +84,31 @@ public class CustomItemStack extends ItemStack {
         });
     }
 
+    public CustomItemStack(ItemStack item, Component name, List<Component> lore) {
+        this(item, im -> {
+            if (name != null) {
+                im.displayName(name);
+            }
+            im.lore(lore);
+        });
+    }
+
+    public CustomItemStack(ItemStack item, Color color, Component name, List<Component> lore) {
+        this(item, im -> {
+            if (name != null) {
+                im.displayName(name);
+            }
+            im.lore(lore);
+
+            if (im instanceof LeatherArmorMeta) {
+                ((LeatherArmorMeta) im).setColor(color);
+            }
+            if (im instanceof PotionMeta) {
+                ((PotionMeta) im).setColor(color);
+            }
+        });
+    }
+
     public CustomItemStack addFlags(ItemFlag... flags) {
         ItemMeta im = getItemMeta();
         im.addItemFlags(flags);
@@ -105,7 +132,7 @@ public class CustomItemStack extends ItemStack {
     public CustomItemStack(Material type, String name, List<String> lore) {
         this(new ItemStack(type), name, lore.toArray(new String[0]));
     }
-
+    
     public CustomItemStack(ItemStack item, List<String> list) {
         this(item, list.get(0), list.subList(1, list.size()).toArray(new String[0]));
     }
