@@ -7,8 +7,10 @@ import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.util.regex.Pattern;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -22,11 +24,11 @@ import org.bukkit.persistence.PersistentDataContainer;
  * a field of this immutable copy.
  * <p>
  * This does not support {@link PersistentDataContainer} at the moment.
- * 
- * @author TheBusyBiscuit
  *
+ * @author TheBusyBiscuit
  */
 public class ItemMetaSnapshot {
+    private static final Pattern PATTERN = Pattern.compile("§([A-Z])");
     @SuppressWarnings("OptionalAssignedToNull")
     private Optional<String> displayName = null;
     private final Optional<Component> displayNameC;
@@ -60,7 +62,7 @@ public class ItemMetaSnapshot {
                 displayName = Optional.empty();
                 return displayName;
             }
-            this.displayName = Optional.of(LegacyComponentSerializer.legacySection().serialize(displayNameC.get()));
+            this.displayName = Optional.of(PATTERN.matcher(LegacyComponentSerializer.legacySection().serialize(displayNameC.get())).replaceAll(m -> m.group().toLowerCase()));
         }
         return displayName;
     }
@@ -104,16 +106,16 @@ public class ItemMetaSnapshot {
             return false;
         } else //noinspection DataFlowIssue
             if (hasDisplayName && !meta.displayName().equals(displayNameC.get())) {
-            return false;
-        } else {
-            boolean hasLore = meta.hasLore();
-
-            if (hasLore && lore.isPresent()) {
-                return lore.get().equals(meta.getLore());
+                return false;
             } else {
-                return !hasLore && lore.isEmpty();
+                boolean hasLore = meta.hasLore();
+
+                if (hasLore && lore.isPresent()) {
+                    return lore.get().equals(meta.getLore());
+                } else {
+                    return !hasLore && lore.isEmpty();
+                }
             }
-        }
     }
 
 }
