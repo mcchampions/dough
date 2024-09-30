@@ -142,15 +142,12 @@ public class SemanticVersion implements Version {
     public boolean isEqualTo(Version version) {
         if (isSimilar(version)) {
             SemanticVersion semver = (SemanticVersion) version;
-            int major = semver.majorVersion;
 
-            if (major != majorVersion) {
+            if (semver.majorVersion != majorVersion) {
                 return false;
             }
 
-            int minor = semver.minorVersion;
-
-            if (minor != minorVersion) {
+            if (semver.minorVersion != minorVersion) {
                 return false;
             }
 

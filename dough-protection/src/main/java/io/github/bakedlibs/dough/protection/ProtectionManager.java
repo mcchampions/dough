@@ -69,6 +69,7 @@ public final class ProtectionManager {
         loadLoggerImplementations(plugin);
     }
 
+    @SuppressWarnings("Convert2MethodRef")
     private void loadModuleImplementations(Plugin plugin) {
         PluginManager pm = plugin.getServer().getPluginManager();
 

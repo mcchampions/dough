@@ -149,8 +149,9 @@ public class Config {
             this.store(path, ((Optional<?>) value).orElse(null));
         } else if (value instanceof Inventory) {
             this.store(path + ".size", ((Inventory) value).getSize());
+            StringBuilder sb = new StringBuilder(path);
             for (int i = 0; i < ((Inventory) value).getSize(); i++) {
-                this.store(path + "." + i, ((Inventory) value).getItem(i));
+                this.store(sb.append(".").append(i).toString(), ((Inventory) value).getItem(i));
             }
         } else if (value instanceof Date) {
             this.store(path, String.valueOf(((Date) value).getTime()));
@@ -457,8 +458,9 @@ public class Config {
      */
     public Inventory getInventory(String path, int size, String title) {
         Inventory inventory = Bukkit.createInventory(null, size, ChatColor.translateAlternateColorCodes('&', title));
+        StringBuilder stringBuilder = new StringBuilder(path);
         for (int i = 0; i < size; i++) {
-            inventory.setItem(i, getItem(path + "." + i));
+            inventory.setItem(i, getItem(stringBuilder.append(".").append(i).toString()));
         }
         return inventory;
     }
@@ -477,8 +479,9 @@ public class Config {
         int size = getInt(path + ".size");
         Inventory inventory = Bukkit.createInventory(null, size, ChatColor.translateAlternateColorCodes('&', title));
 
+        StringBuilder stringBuilder = new StringBuilder(path);
         for (int i = 0; i < size; i++) {
-            inventory.setItem(i, getItem(path + "." + i));
+            inventory.setItem(i, getItem(stringBuilder.append(".").append(i).toString()));
         }
 
         return inventory;

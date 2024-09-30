@@ -75,7 +75,6 @@ public class WorldGuardProtectionModule implements ProtectionModule {
             case INTERACT_BLOCK, INTERACT_ENTITY -> Flags.USE;
             case BREAK_BLOCK -> Flags.BLOCK_BREAK;
             case PLACE_BLOCK -> Flags.BLOCK_PLACE;
-            default -> Flags.BUILD;
         };
     }
 }

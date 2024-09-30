@@ -42,7 +42,6 @@ public class PreciousStonesProtectionModule implements ProtectionModule {
                     !api.flagAppliesToPlayer((Player) p, FieldFlag.PREVENT_ENTITY_INTERACT, l);
             case BREAK_BLOCK -> api.canBreak((Player) p, l);
             case INTERACT_BLOCK, PLACE_BLOCK -> api.canPlace((Player) p, l);
-            default -> false;
         };
     }
 }
