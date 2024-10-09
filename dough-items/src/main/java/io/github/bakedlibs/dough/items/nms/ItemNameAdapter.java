@@ -16,7 +16,8 @@ public interface ItemNameAdapter {
         try {
             MinecraftVersion version = MinecraftVersion.get();
 
-            if (version.isAtLeast(1, 20, 4) && PaperLib.isPaper()) {
+            if (version.isAtLeast(1, 19, 4) && PaperLib.isPaper()) {
+
                 return new ItemNameAdapterPaper();
             }
 
