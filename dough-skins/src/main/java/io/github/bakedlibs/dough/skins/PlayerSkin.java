@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.logging.Level;
 
 import org.bukkit.plugin.Plugin;
 
@@ -18,8 +17,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import io.github.bakedlibs.dough.common.DoughLogger;
 
 public class PlayerSkin {
     private static final String ERROR_TOKEN = "error";
@@ -88,8 +85,6 @@ public class PlayerSkin {
 
     public static CompletableFuture<PlayerSkin> fromPlayerUUID(Plugin plugin, UUID uuid) {
         CompletableFuture<PlayerSkin> future = new CompletableFuture<>();
-        DoughLogger logger = new DoughLogger(plugin.getServer(), "skins");
-
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
             String targetUrl = "https://sessionserver.mojang.com/session/minecraft/profile/" + uuid.toString().replace("-", "") + "?unsigned=false";
 
@@ -118,11 +113,8 @@ public class PlayerSkin {
                     }
 
                 }
-            } catch (MalformedURLException e) {
-                logger.log(Level.SEVERE, "Malformed sessions url: {0}", targetUrl);
-                future.completeExceptionally(e);
             } catch (IOException e) {
-                logger.log(Level.SEVERE, "Exception while requesting skin: {0}", targetUrl);
+                e.printStackTrace();
                 future.completeExceptionally(e);
             }
         });
