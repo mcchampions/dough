@@ -20,10 +20,7 @@ import java.util.function.Consumer;
  * @author md5sha256
  */
 public final class ItemStackUtil {
-
-    private ItemStackUtil() {
-        throw new IllegalStateException("Static utility class cannot be instantiated");
-    }
+    private ItemStackUtil() {}
 
     /**
      * Curries a {@link Consumer} which sets the display name to the given {@link String}.
