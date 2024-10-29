@@ -132,5 +132,4 @@ public class ItemStackEditor {
             ItemStackUtil.editMeta(itemStack, this.metaTransform);
         }
     }
-
 }
