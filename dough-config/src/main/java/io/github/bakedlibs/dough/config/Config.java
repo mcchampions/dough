@@ -3,7 +3,6 @@ package io.github.bakedlibs.dough.config;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -20,13 +19,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import io.github.bakedlibs.dough.common.DoughLogger;
-
 public class Config {
     private static final Pattern PATTERN = Pattern.compile("\\n");
     private final File file;
 
-    private Logger logger;
     private String header;
     protected FileConfiguration fileConfig;
 
@@ -41,7 +37,6 @@ public class Config {
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
 
-        this.logger = plugin.getLogger();
         this.file = new File("plugins/" + plugin.getName().replace(" ", "_"), "config.yml");
 
         this.fileConfig = YamlConfiguration.loadConfiguration(this.file);
@@ -49,7 +44,6 @@ public class Config {
     }
 
     public Config(Plugin plugin, String name) {
-        this.logger = plugin.getLogger();
         this.file = new File("plugins/" + plugin.getName().replace(" ", "_"), name);
         this.fileConfig = YamlConfiguration.loadConfiguration(this.file);
 
@@ -65,7 +59,6 @@ public class Config {
      *            The FileConfiguration
      */
     public Config(File file, FileConfiguration config) {
-        this.logger = new DoughLogger("config");
         this.file = file;
 
         this.fileConfig = config;
@@ -120,9 +113,7 @@ public class Config {
      * @param logger
      *            Your {@link Logger} instance
      */
-    public void setLogger(Logger logger) {
-        this.logger = logger;
-    }
+    public void setLogger(Logger logger) {}
 
     public void clear() {
         for (String key : getKeys()) {
@@ -202,7 +193,7 @@ public class Config {
 
             fileConfig.save(file);
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Exception while saving a Config file", e);
+            e.printStackTrace();
         }
     }
 
@@ -342,7 +333,7 @@ public class Config {
         try {
             return this.file.createNewFile();
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Exception while creating a Config file", e);
+            e.printStackTrace();
             return false;
         }
     }
