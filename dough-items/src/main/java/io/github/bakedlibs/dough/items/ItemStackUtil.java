@@ -1,5 +1,6 @@
 package io.github.bakedlibs.dough.items;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.inventory.ItemFlag;
@@ -10,7 +11,6 @@ import org.bukkit.inventory.meta.PotionMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -20,7 +20,8 @@ import java.util.function.Consumer;
  * @author md5sha256
  */
 public final class ItemStackUtil {
-    private ItemStackUtil() {}
+    private ItemStackUtil() {
+    }
 
     /**
      * Curries a {@link Consumer} which sets the display name to the given {@link String}.
@@ -30,11 +31,11 @@ public final class ItemStackUtil {
      * @return Returns a {@link Consumer}
      */
     public static Consumer<ItemMeta> editDisplayName(String name) {
-        return (meta) -> {
-            if (name != null) {
-                meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
-            }
-        };
+        return (meta) -> meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+    }
+
+    public static Consumer<ItemMeta> editDisplayNameWithComponent(Component name) {
+        return (meta) -> meta.displayName(name);
     }
 
     /**
@@ -58,14 +59,14 @@ public final class ItemStackUtil {
      */
     public static Consumer<ItemMeta> editLore(List<String> lore) {
         return (meta) -> {
-            if (lore.isEmpty()) {
-                meta.setLore(Collections.emptyList());
-                return;
-            }
             List<String> newLore = new ArrayList<>(lore);
             newLore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
             meta.setLore(newLore);
         };
+    }
+
+    public static Consumer<ItemMeta> editLoreWithComponent(List<Component> lore) {
+        return (meta) -> meta.lore(lore);
     }
 
     /**

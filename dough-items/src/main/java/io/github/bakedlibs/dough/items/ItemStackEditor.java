@@ -1,5 +1,6 @@
 package io.github.bakedlibs.dough.items;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -78,8 +79,21 @@ public class ItemStackEditor {
         return andMetaConsumer(ItemStackUtil.editLore(list));
     }
 
+    public ItemStackEditor setLoreWithComponent(Component... lore) {
+        return setLoreWithComponent(Arrays.asList(lore));
+    }
+
+    public ItemStackEditor setLoreWithComponent(List<Component> list) {
+        return andMetaConsumer(ItemStackUtil.editLoreWithComponent(list));
+    }
+
+
     public ItemStackEditor setDisplayName(String name) {
         return andMetaConsumer(ItemStackUtil.editDisplayName(name));
+    }
+
+    public ItemStackEditor setDisplayNameWitchComponent(Component name) {
+        return andMetaConsumer(ItemStackUtil.editDisplayNameWithComponent(name));
     }
 
     public ItemStackEditor andMetaConsumer(Consumer<ItemMeta> consumer) {
