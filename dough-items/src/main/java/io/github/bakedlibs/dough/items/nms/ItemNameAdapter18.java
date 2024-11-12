@@ -20,6 +20,10 @@ class ItemNameAdapter18 implements ItemNameAdapter {
         // Spigot has re-obf'd names however you can get mapped jar... so we do this
         getName = ReflectionUtils.getMethodOrAlternative(ReflectionUtils.getNetMinecraftClass("world.item.ItemStack"), "getDisplayName", "G");
         toString = ReflectionUtils.getMethod(ReflectionUtils.getNetMinecraftClass("network.chat.IChatBaseComponent"), "getString");
+
+        getCopy.setAccessible(true);
+        getName.setAccessible(true);
+        toString.setAccessible(true);
     }
 
     @Override

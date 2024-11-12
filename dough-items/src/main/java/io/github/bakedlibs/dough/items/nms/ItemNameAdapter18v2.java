@@ -19,6 +19,9 @@ class ItemNameAdapter18v2 implements ItemNameAdapter {
         // Spigot has changed the obf again for 1.18.2, so we have to adapt with it.
         getName = ReflectionUtils.getMethodOrAlternative(ReflectionUtils.getNetMinecraftClass("world.item.ItemStack"), "getDisplayName", "H");
         toString = ReflectionUtils.getMethod(ReflectionUtils.getNetMinecraftClass("network.chat.IChatBaseComponent"), "getString");
+        getCopy.setAccessible(true);
+        getName.setAccessible(true);
+        toString.setAccessible(true);
     }
 
     @Override

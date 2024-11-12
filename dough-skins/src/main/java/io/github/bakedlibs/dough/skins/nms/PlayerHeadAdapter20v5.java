@@ -20,14 +20,18 @@ class PlayerHeadAdapter20v5 implements PlayerHeadAdapter {
     PlayerHeadAdapter20v5() throws NoSuchMethodException, SecurityException, ClassNotFoundException, UnknownServerVersionException {
         Class<?> resolvableProfile = ReflectionUtils.getNetMinecraftClass("world.item.component.ResolvableProfile");
         newResolvableProfile = ReflectionUtils.getConstructor(resolvableProfile, GameProfile.class);
+        newResolvableProfile.setAccessible(true);
 
         setOwner = ReflectionUtils.getNetMinecraftClass("world.level.block.entity.TileEntitySkull").getMethod("a", resolvableProfile);
+        setOwner.setAccessible(true);
         getHandle = ReflectionUtils.getOBCClass("CraftWorld").getMethod("getHandle");
+        getHandle.setAccessible(true);
 
         Class<?> blockPosition = ReflectionUtils.getNetMinecraftClass("core.BlockPosition");
         newPosition = ReflectionUtils.getConstructor(blockPosition, int.class, int.class, int.class);
-
+        newPosition.setAccessible(true);
         getTileEntity = ReflectionUtils.getNMSClass("level.WorldServer").getMethod("getBlockEntity", blockPosition, boolean.class);
+        getTileEntity.setAccessible(true);
     }
 
     private Object getTileEntity(Block block) throws IllegalAccessException, InvocationTargetException, InstantiationException {

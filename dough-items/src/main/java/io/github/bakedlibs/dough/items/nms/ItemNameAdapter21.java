@@ -18,6 +18,9 @@ public class ItemNameAdapter21 implements ItemNameAdapter {
         getCopy = ReflectionUtils.getOBCClass("inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class);
         getName = ReflectionUtils.getMethodOrAlternative(ReflectionUtils.getNetMinecraftClass("world.item.ItemStack"), "getDisplayName", "F");
         toString = ReflectionUtils.getMethod(ReflectionUtils.getNetMinecraftClass("network.chat.IChatBaseComponent"), "getString");
+        getCopy.setAccessible(true);
+        getName.setAccessible(true);
+        toString.setAccessible(true);
     }
 
     @Override
