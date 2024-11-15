@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class CustomItemStack extends ItemStack {
+public class CustomItemStack extends ItemStack {
     public CustomItemStack(ItemStack item) {
         super(item.getType(), item.getAmount());
 
