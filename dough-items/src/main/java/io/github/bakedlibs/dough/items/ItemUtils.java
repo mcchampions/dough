@@ -1,7 +1,7 @@
 package io.github.bakedlibs.dough.items;
 
+import io.github.bakedlibs.dough.items.nms.ItemNameAdapter;
 import java.util.List;
-
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
@@ -9,8 +9,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-
-import io.github.bakedlibs.dough.items.nms.ItemNameAdapter;
 
 /**
  * A utility class providing some methods to handle {@link ItemStack}s.
@@ -174,6 +172,10 @@ public final class ItemUtils {
      */
     public static void damageItem(ItemStack item, int damage, boolean ignoreEnchantments) {
         if (item.getType() != Material.AIR && item.getAmount() > 0) {
+            if (item.getItemMeta() != null && item.getItemMeta().isUnbreakable()) {
+                return;
+            }
+
             int remove = damage;
 
             if (!ignoreEnchantments && item.getEnchantments().containsKey(Registry.ENCHANTMENT.get(NamespacedKey.minecraft("unbreaking")))) {
