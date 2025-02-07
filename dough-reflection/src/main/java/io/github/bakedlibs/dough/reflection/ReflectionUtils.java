@@ -3,6 +3,7 @@ package io.github.bakedlibs.dough.reflection;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.invoke.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,13 +15,13 @@ import io.papermc.lib.PaperLib;
 
 /**
  * This class provides some useful static methods to perform reflection.
- * 
- * @author TheBusyBiscuit
  *
+ * @author TheBusyBiscuit
  */
 @SuppressWarnings("java:S3011")
 public final class ReflectionUtils {
-    private ReflectionUtils() {}
+    private ReflectionUtils() {
+    }
 
     private static String versionSpecificPackage;
 
@@ -29,14 +30,10 @@ public final class ReflectionUtils {
      * <br>
      * If the minecraft version check is enabled, then this will return an empty
      * {@link String} for Minecraft versions 1.17 or later.
-     * 
-     * @param checkMinecraftVersion
-     *            Whether the {@link MinecraftVersion} should be checked
-     * 
+     *
+     * @param checkMinecraftVersion Whether the {@link MinecraftVersion} should be checked
      * @return The version-specific package name
-     * 
-     * @throws UnknownServerVersionException
-     *             If the {@link MinecraftVersion} could not be determined successfully
+     * @throws UnknownServerVersionException If the {@link MinecraftVersion} could not be determined successfully
      */
     private static String getVersionSpecificPackage(boolean checkMinecraftVersion) throws UnknownServerVersionException {
         if (checkMinecraftVersion) {
@@ -49,7 +46,7 @@ public final class ReflectionUtils {
 
         if (versionSpecificPackage == null) {
             String packageName = Bukkit.getServer().getClass().getPackage().getName();
-            
+
             // Paper are no longer relocating CB to live under the version in the package name
             // This means org.bukkit.craftbukkit.v1_20_R1.CraftWorld is now org.bukkit.craftbukkit.CraftWorld
             // So we check that it is Paper and does NOT have the _v1 in the package name and just return an empty string
@@ -66,10 +63,8 @@ public final class ReflectionUtils {
     /**
      * Returns a certain Method in the specified Class
      *
-     * @param c
-     *            The Class in which the Method is in
-     * @param method
-     *            The Method you are looking for
+     * @param c      The Class in which the Method is in
+     * @param method The Method you are looking for
      * @return The found Method
      */
     public static Method getMethod(Class<?> c, String method) {
@@ -85,12 +80,9 @@ public final class ReflectionUtils {
     /**
      * Returns a certain Method in the specified Class
      *
-     * @param c
-     *            The Class in which the Method is in
-     * @param method
-     *            The Method you are looking for
-     * @param alternative
-     *            The alternative Method you are looking for
+     * @param c           The Class in which the Method is in
+     * @param method      The Method you are looking for
+     * @param alternative The alternative Method you are looking for
      * @return The found Method
      */
     public static Method getMethodOrAlternative(Class<?> c, String method, String alternative) {
@@ -101,12 +93,9 @@ public final class ReflectionUtils {
     /**
      * Returns the Method with certain Parameters
      *
-     * @param c
-     *            The Class in which the Method is in
-     * @param method
-     *            The Method you are looking for
-     * @param paramTypes
-     *            The Types of the Parameters
+     * @param c          The Class in which the Method is in
+     * @param method     The Method you are looking for
+     * @param paramTypes The Types of the Parameters
      * @return The found Method
      */
     public static Method getMethod(Class<?> c, String method, Class<?>... paramTypes) {
@@ -125,14 +114,10 @@ public final class ReflectionUtils {
     /**
      * Returns the Field of a Class
      *
-     * @param c
-     *            The Class conating this Field
-     * @param field
-     *            The name of the Field you are looking for
+     * @param c     The Class conating this Field
+     * @param field The name of the Field you are looking for
      * @return The found Field
-     *
-     * @throws NoSuchFieldException
-     *             If the field could not be found.
+     * @throws NoSuchFieldException If the field could not be found.
      */
     public static Field getField(Class<?> c, String field) throws NoSuchFieldException {
         return c.getDeclaredField(field);
@@ -141,21 +126,13 @@ public final class ReflectionUtils {
     /**
      * Modifies a Field in an Object
      *
-     * @param <T>
-     *            The type of the specified field
-     * @param object
-     *            The Object containing the Field
-     * @param c
-     *            The Class in which we are looking for this field
-     * @param field
-     *            The Name of that Field
-     * @param value
-     *            The Value for that Field
-     * 
-     * @throws NoSuchFieldException
-     *             If the field could not be found.
-     * @throws IllegalAccessException
-     *             If the field could not be modified.
+     * @param <T>    The type of the specified field
+     * @param object The Object containing the Field
+     * @param c      The Class in which we are looking for this field
+     * @param field  The Name of that Field
+     * @param value  The Value for that Field
+     * @throws NoSuchFieldException   If the field could not be found.
+     * @throws IllegalAccessException If the field could not be modified.
      */
     public static <T> void setFieldValue(T object, Class<?> c, String field, Object value) throws NoSuchFieldException, IllegalAccessException {
         Field f = getField(c, field);
@@ -166,19 +143,12 @@ public final class ReflectionUtils {
     /**
      * Modifies a Field in an Object
      *
-     * @param <T>
-     *            The type of the specified field
-     * @param object
-     *            The Object containing the Field
-     * @param field
-     *            The Name of that Field
-     * @param value
-     *            The Value for that Field
-     * 
-     * @throws NoSuchFieldException
-     *             If the field could not be found.
-     * @throws IllegalAccessException
-     *             If the field could not be modified.
+     * @param <T>    The type of the specified field
+     * @param object The Object containing the Field
+     * @param field  The Name of that Field
+     * @param value  The Value for that Field
+     * @throws NoSuchFieldException   If the field could not be found.
+     * @throws IllegalAccessException If the field could not be modified.
      */
     public static <T> void setFieldValue(T object, String field, Object value) throws NoSuchFieldException, IllegalAccessException {
         setFieldValue(object, object.getClass(), field, value);
@@ -187,17 +157,11 @@ public final class ReflectionUtils {
     /**
      * Returns the Value of a Field in an Object
      *
-     * @param object
-     *            The Object containing the Field
-     * @param field
-     *            The Name of that Field
-     * 
-     * @throws NoSuchFieldException
-     *             If the field could not be found.
-     * @throws IllegalAccessException
-     *             If the field could not be queried.
-     * 
+     * @param object The Object containing the Field
+     * @param field  The Name of that Field
      * @return The Value of a Field
+     * @throws NoSuchFieldException   If the field could not be found.
+     * @throws IllegalAccessException If the field could not be queried.
      */
     public static <T> T getFieldValue(Object object, Class<T> fieldType, String field) throws NoSuchFieldException, IllegalAccessException {
         Field f = getField(object.getClass(), field);
@@ -209,9 +173,7 @@ public final class ReflectionUtils {
      * Converts the Classes to a Primitive Type Array
      * in order to be used as paramaters
      *
-     * @param classes
-     *            The Types you want to convert
-     * 
+     * @param classes The Types you want to convert
      * @return An Array of primitive Types
      */
     public static Class<?>[] toPrimitiveTypeArray(Class<?>[] classes) {
@@ -228,13 +190,9 @@ public final class ReflectionUtils {
     /**
      * Returns the Constructor of a Class with the specified Parameters
      *
-     * @param <T>
-     *            The Type argument for the class of this constructor
-     * @param c
-     *            The Class containing the Constructor
-     * @param paramTypes
-     *            The Parameters for that Constructor
-     * 
+     * @param <T>        The Type argument for the class of this constructor
+     * @param c          The Class containing the Constructor
+     * @param paramTypes The Parameters for that Constructor
      * @return The Constructor for that Class
      */
     @SuppressWarnings("unchecked")
@@ -255,18 +213,11 @@ public final class ReflectionUtils {
     /**
      * Returns an NMS Class inside a Class
      *
-     * @param name
-     *            The Name of the Class your Inner class is located in
-     * @param subname
-     *            The Name of the inner Class you are looking for
-     * 
-     * @throws ClassNotFoundException
-     *             If the class could not be found.
-     * 
+     * @param name    The Name of the Class your Inner class is located in
+     * @param subname The Name of the inner Class you are looking for
      * @return The Class in your specified Class
-     * 
-     * @throws UnknownServerVersionException
-     *             If the {@link MinecraftVersion} was unable to be determined
+     * @throws ClassNotFoundException        If the class could not be found.
+     * @throws UnknownServerVersionException If the {@link MinecraftVersion} was unable to be determined
      */
     public static Class<?> getInnerNMSClass(String name, String subname) throws ClassNotFoundException, UnknownServerVersionException {
         return getNMSClass(name + '$' + subname);
@@ -275,13 +226,10 @@ public final class ReflectionUtils {
     /**
      * Returns a `net.minecraft` class via Reflection.
      *
-     * @param name
-     *            The class name of which to fetch
+     * @param name The class name of which to fetch
      * @return The `net.minecraft` class.
-     * @throws ClassNotFoundException
-     *             If the class does not exist
-     * @throws UnknownServerVersionException
-     *             If the {@link MinecraftVersion} was unable to be determined
+     * @throws ClassNotFoundException        If the class does not exist
+     * @throws UnknownServerVersionException If the {@link MinecraftVersion} was unable to be determined
      */
     public static Class<?> getNetMinecraftClass(String name) throws ClassNotFoundException, UnknownServerVersionException {
         return Class.forName("net.minecraft." + getVersionSpecificPackage(true) + name);
@@ -290,15 +238,10 @@ public final class ReflectionUtils {
     /**
      * Returns an NMS Class via Reflection
      *
-     * @param name
-     *            The Name of the Class you are looking for
-     * 
+     * @param name The Name of the Class you are looking for
      * @return The Class in that Package
-     * 
-     * @throws ClassNotFoundException
-     *             If the class could not be found.
-     * @throws UnknownServerVersionException
-     *             If the {@link MinecraftVersion} was not able to be determined.
+     * @throws ClassNotFoundException        If the class could not be found.
+     * @throws UnknownServerVersionException If the {@link MinecraftVersion} was not able to be determined.
      */
     public static Class<?> getNMSClass(String name) throws ClassNotFoundException, UnknownServerVersionException {
         return Class.forName("net.minecraft.server." + getVersionSpecificPackage(true) + name);
@@ -307,15 +250,10 @@ public final class ReflectionUtils {
     /**
      * Returns an OBC Class inside a Class
      *
-     * @param name
-     *            The Name of the Class your Inner class is located in
-     * @param subname
-     *            The Name of the inner Class you are looking for
-     * 
-     * @throws ClassNotFoundException
-     *             If the class could not be found.
-     * 
+     * @param name    The Name of the Class your Inner class is located in
+     * @param subname The Name of the inner Class you are looking for
      * @return The Class in your specified Class
+     * @throws ClassNotFoundException If the class could not be found.
      */
     public static Class<?> getInnerOBCClass(String name, String subname) throws ClassNotFoundException {
         return getOBCClass(name + '$' + subname);
@@ -324,13 +262,9 @@ public final class ReflectionUtils {
     /**
      * Returns an OBC Class via Reflection
      *
-     * @param name
-     *            The Name of the Class you are looking for
-     * 
-     * @throws ClassNotFoundException
-     *             If the class could not be found.
-     * 
+     * @param name The Name of the Class you are looking for
      * @return The Class in that Package
+     * @throws ClassNotFoundException If the class could not be found.
      */
     public static Class<?> getOBCClass(String name) throws ClassNotFoundException {
         try {
@@ -343,11 +277,8 @@ public final class ReflectionUtils {
     /**
      * Compares multiple Type Arrays
      *
-     * @param a
-     *            The first Array for comparison
-     * @param b
-     *            All following Array you want to compare
-     * 
+     * @param a The first Array for comparison
+     * @param b All following Array you want to compare
      * @return Whether they equal each other
      */
     private static boolean equalsTypeArray(Class<?>[] a, Class<?>[] b) {
@@ -367,11 +298,8 @@ public final class ReflectionUtils {
     /**
      * Returns all Enum Constants in an Enum
      *
-     * @param <T>
-     *            The Type argument of the enum we are querying
-     * @param c
-     *            The Enum you are targeting
-     * 
+     * @param <T> The Type argument of the enum we are querying
+     * @param c   The Enum you are targeting
      * @return An ArrayList of all Enum Constants in that Enum
      */
     public static <T extends Enum<T>> List<T> getEnumConstants(Class<T> c) {
@@ -381,13 +309,9 @@ public final class ReflectionUtils {
     /**
      * Returns a specific Enum Constant in an Enum
      *
-     * @param <T>
-     *            The Type argument of the enum we are querying
-     * @param c
-     *            The Enum you are targeting
-     * @param name
-     *            The Name of the Constant you are targeting
-     * 
+     * @param <T>  The Type argument of the enum we are querying
+     * @param c    The Enum you are targeting
+     * @param name The Name of the Constant you are targeting
      * @return The found Enum Constant
      */
     public static <T extends Enum<T>> T getEnumConstant(Class<T> c, String name) {
@@ -398,5 +322,26 @@ public final class ReflectionUtils {
         }
 
         return null;
+    }
+
+    public static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
+
+    public static final MethodType GETTER_METHOD_TYPE = MethodType.methodType(Object.class, Object.class);
+
+    public static ReflectionGetterMethodFunction createGetterFunction(Method method) {
+        try {
+            MethodHandle methodHandle = LOOKUP.unreflect(method);
+            CallSite callSite = LambdaMetafactory.metafactory(
+                    LOOKUP,
+                    "invoke",
+                    MethodType.methodType(ReflectionGetterMethodFunction.class),
+                    GETTER_METHOD_TYPE,
+                    methodHandle,
+                    methodHandle.type()
+            );
+            return (ReflectionGetterMethodFunction) callSite.getTarget().invoke();
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
     }
 }
