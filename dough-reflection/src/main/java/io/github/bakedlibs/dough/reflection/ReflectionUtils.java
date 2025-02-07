@@ -328,6 +328,8 @@ public final class ReflectionUtils {
 
     public static final MethodType GETTER_METHOD_TYPE = MethodType.methodType(Object.class, Object.class);
 
+    public static final MethodType SETTER_METHOD_TYPE = MethodType.methodType(void.class, Object.class, Object.class);
+
     public static ReflectionGetterMethodFunction createGetterFunction(Method method) {
         try {
             MethodHandle methodHandle = LOOKUP.unreflect(method);
@@ -340,6 +342,40 @@ public final class ReflectionUtils {
                     methodHandle.type()
             );
             return (ReflectionGetterMethodFunction) callSite.getTarget().invoke();
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ReflectionSetterMethodFunction createSetterFunction(Method method) {
+        try {
+            MethodHandle methodHandle = LOOKUP.unreflect(method);
+            CallSite callSite = LambdaMetafactory.metafactory(
+                    LOOKUP,
+                    "invoke",
+                    MethodType.methodType(ReflectionSetterMethodFunction.class),
+                    SETTER_METHOD_TYPE,
+                    methodHandle,
+                    methodHandle.type()
+            );
+            return (ReflectionSetterMethodFunction) callSite.getTarget().invoke();
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ReflectionReturnableStaticMethodFunction createReturnableStaticFunction(Method method) {
+        try {
+            MethodHandle methodHandle = LOOKUP.unreflect(method);
+            CallSite callSite = LambdaMetafactory.metafactory(
+                    LOOKUP,
+                    "invoke",
+                    MethodType.methodType(ReflectionReturnableStaticMethodFunction.class),
+                    GETTER_METHOD_TYPE,
+                    methodHandle,
+                    methodHandle.type()
+            );
+            return (ReflectionReturnableStaticMethodFunction) callSite.getTarget().invoke();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

@@ -4,32 +4,36 @@ import com.destroystokyo.paper.profile.PlayerProfile;
 import com.destroystokyo.paper.profile.ProfileProperty;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import io.github.bakedlibs.dough.reflection.ReflectionGetterMethodFunction;
 import io.github.bakedlibs.dough.reflection.ReflectionUtils;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Skull;
 
+import java.lang.reflect.Method;
+
 public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
-    private final Method getName;
-    private final Method getValue;
-    private final Method getSignature;
+    private final ReflectionGetterMethodFunction getName;
+    private final ReflectionGetterMethodFunction getValue;
+    private final ReflectionGetterMethodFunction getSignature;
 
     PlayerHeadAdapterPaper() {
-        getName = ReflectionUtils.getMethod(Property.class, "getName");
-        getValue = ReflectionUtils.getMethod(Property.class, "getValue");
-        getSignature = ReflectionUtils.getMethod(Property.class, "getSignature");
+        Method getName = ReflectionUtils.getMethod(Property.class, "getName");
+        Method getValue = ReflectionUtils.getMethod(Property.class, "getValue");
+        Method getSignature = ReflectionUtils.getMethod(Property.class, "getSignature");
         if (getName != null) {
             getValue.setAccessible(true);
             getName.setAccessible(true);
             getSignature.setAccessible(true);
         }
+        this.getName = ReflectionUtils.createGetterFunction(getName);
+        this.getValue = ReflectionUtils.createGetterFunction(getValue);
+        this.getSignature = ReflectionUtils.createGetterFunction(getSignature);
     }
 
     @Override
-    public void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws InvocationTargetException, IllegalAccessException {
+    public void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) {
         BlockState state = block.getState(false);
         if (!(state instanceof Skull skull)) return;
 

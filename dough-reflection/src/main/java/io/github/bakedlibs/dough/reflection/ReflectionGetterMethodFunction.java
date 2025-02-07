@@ -2,5 +2,5 @@ package io.github.bakedlibs.dough.reflection;
 
 @FunctionalInterface
 public interface ReflectionGetterMethodFunction {
-    Object invoke(Object object);
+    Object invoke(Object instance);
 }
