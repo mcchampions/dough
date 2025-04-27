@@ -6,6 +6,7 @@ import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import io.github.bakedlibs.dough.protection.modules.*;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
@@ -15,24 +16,6 @@ import org.bukkit.plugin.PluginManager;
 import io.github.bakedlibs.dough.common.DoughLogger;
 import io.github.bakedlibs.dough.protection.loggers.CoreProtectLogger;
 import io.github.bakedlibs.dough.protection.loggers.LogBlockLogger;
-import io.github.bakedlibs.dough.protection.modules.BentoBoxProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.BlockLockerProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.BoltProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.ChestProtectProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.FactionsUUIDProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.FunnyGuildsProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.GriefPreventionProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.HuskTownsProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.HuskClaimsProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.LWCProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.LandsProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.LocketteProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.PlotSquaredProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.PreciousStonesProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.RedProtectProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.ShopChestProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.TownyProtectionModule;
-import io.github.bakedlibs.dough.protection.modules.WorldGuardProtectionModule;
 
 /**
  * This Class provides a nifty API for plugins to query popular protection plugins.
@@ -92,7 +75,7 @@ public final class ProtectionManager {
         registerModule(pm, "ShopChest", var -> new ShopChestProtectionModule(var));
         registerModule(pm, "HuskClaims", var -> new HuskClaimsProtectionModule(var));
         registerModule(pm, "Bolt", var -> new BoltProtectionModule(var));
-
+        registerModule(pm, "Dominion", var -> new DominionProtectionModule(var));
         /*
          * The following Plugins work by utilising one of the above listed
          * Plugins in the background.
