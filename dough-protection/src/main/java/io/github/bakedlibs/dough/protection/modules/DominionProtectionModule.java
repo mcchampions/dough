@@ -73,8 +73,7 @@ public class DominionProtectionModule implements ProtectionModule {
         if (dominion == null) {
             return true;
         }
-        if (flag instanceof PriFlag) {
-            PriFlag preFlag = (PriFlag) flag;
+        if (flag instanceof PriFlag preFlag) {
             return api.checkPrivilegeFlag(dominion, preFlag, player);
         } else {
             EnvFlag envFlag = (EnvFlag) flag;
@@ -83,17 +82,12 @@ public class DominionProtectionModule implements ProtectionModule {
     }
 
     private @Nullable Flag getDominionFlagFromInteraction(@Nonnull Interaction action) {
-        switch (action) {
-            case BREAK_BLOCK:
-                return Flags.BREAK_BLOCK;
-            case PLACE_BLOCK:
-                return Flags.PLACE;
-            case INTERACT_BLOCK:
-                return Flags.CONTAINER;
-            case ATTACK_PLAYER:
-                return Flags.PVP;
-            default:
-                return null;
-        }
+        return switch (action) {
+            case BREAK_BLOCK -> Flags.BREAK_BLOCK;
+            case PLACE_BLOCK -> Flags.PLACE;
+            case INTERACT_BLOCK -> Flags.CONTAINER;
+            case ATTACK_PLAYER -> Flags.PVP;
+            default -> null;
+        };
     }
 }
