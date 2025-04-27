@@ -223,6 +223,12 @@
             <groupId>com.github.fubira</groupId>
             <artifactId>Lockette</artifactId>
             <version>9dac96e8f8</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>bukkit</artifactId>
+                    <groupId>*</groupId>
+                </exclusion>
+            </exclusions>
             <scope>provided</scope>
         </dependency>
 
@@ -322,6 +328,14 @@
             <groupId>org.popcraft</groupId>
             <artifactId>bolt-bukkit</artifactId>
             <version>1.0.580</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Dominion -->
+        <dependency>
+            <groupId>cn.lunadeer</groupId>
+            <artifactId>DominionAPI</artifactId>
+            <version>4.3</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
