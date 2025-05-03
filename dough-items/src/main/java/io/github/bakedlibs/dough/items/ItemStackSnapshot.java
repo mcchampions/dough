@@ -35,17 +35,7 @@ public final class ItemStackSnapshot extends ItemStack {
 
     @Override
     public ItemMeta getItemMeta() {
-        /*
-         * This method normally always does a .clone() operation which can be very slow.
-         * Since this class is immutable, we can simply let the super class create one copy
-         * and then store that instead of creating a clone everytime.
-         * This will significantly speed up any loop comparisons if used correctly.
-         */
-        if (meta == null) {
-            throw new UnsupportedOperationException("This ItemStack has no ItemMeta! Make sure to check ItemStack#hasItemMeta() before accessing this method!");
-        } else {
-            return meta;
-        }
+        return meta;
     }
 
     @Override
@@ -99,7 +89,6 @@ public final class ItemStackSnapshot extends ItemStack {
      * @see #wrap(ItemStack)
      */
     public static ItemStackSnapshot forceWrap(ItemStack itemStack) {
-        
         return new ItemStackSnapshot(itemStack);
     }
 
@@ -115,11 +104,9 @@ public final class ItemStackSnapshot extends ItemStack {
      * @see #forceWrap(ItemStack)
      */
     public static ItemStackSnapshot wrap(ItemStack itemStack) {
-        
         if (itemStack instanceof ItemStackSnapshot) {
             return (ItemStackSnapshot) itemStack;
         }
-
         return new ItemStackSnapshot(itemStack);
     }
 
@@ -132,15 +119,12 @@ public final class ItemStackSnapshot extends ItemStack {
      * @return An {@link ItemStackSnapshot} array
      */
     public static ItemStackSnapshot[] wrapArray(ItemStack[] items) {
-        
         ItemStackSnapshot[] array = new ItemStackSnapshot[items.length];
-
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null) {
                 array[i] = wrap(items[i]);
             }
         }
-
         return array;
     }
 
@@ -154,7 +138,6 @@ public final class ItemStackSnapshot extends ItemStack {
      */
     public static List<ItemStackSnapshot> wrapList(List<ItemStack> items) {
                 List<ItemStackSnapshot> list = new ArrayList<>(items.size());
-
         for (ItemStack item : items) {
             if (item != null) {
                 list.add(wrap(item));
@@ -162,8 +145,6 @@ public final class ItemStackSnapshot extends ItemStack {
                 list.add(null);
             }
         }
-
         return list;
     }
-
 }
