@@ -81,7 +81,7 @@ public class DominionProtectionModule implements ProtectionModule {
         }
     }
 
-    private @Nullable Flag getDominionFlagFromInteraction(@Nonnull Interaction action) {
+    private static @Nullable Flag getDominionFlagFromInteraction(@Nonnull Interaction action) {
         return switch (action) {
             case BREAK_BLOCK -> Flags.BREAK_BLOCK;
             case PLACE_BLOCK -> Flags.PLACE;
