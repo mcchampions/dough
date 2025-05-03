@@ -1,7 +1,10 @@
 package io.github.bakedlibs.dough.items;
 
 import io.github.bakedlibs.dough.items.nms.ItemNameAdapter;
+
 import java.util.List;
+
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
@@ -128,8 +131,8 @@ public final class ItemUtils {
             }
 
             if (aMeta.hasLore()) {
-                List<String> aLore = aMeta.getLore();
-                List<String> bLore = bMeta.getLore();
+                List<Component> aLore = aMeta.lore();
+                List<Component> bLore = bMeta.lore();
 
                 if (aLore.size() != bLore.size()) {
                     return false;
