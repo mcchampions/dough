@@ -221,7 +221,7 @@ public class Validate {
      */
     public static <T extends CharSequence> T notEmpty(final T chars, final String message, final Object... values) {
         Objects.requireNonNull(chars, () -> String.format(message, values));
-        if (chars.length() == 0) {
+        if (chars.isEmpty()) {
             throw new IllegalArgumentException(String.format(message, values));
         }
         return chars;
