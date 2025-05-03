@@ -14,32 +14,9 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-/**
- * This Class functions similar to {@link Map} but returns an
- * Optional when calling {@link OptionalMap#get(Object)}.
- * This way you can save yourself some {@link Map#containsKey(Object)} calls
- * and also benefit from the methods that {@link Optional} implements.
- * 
- * @author TheBusyBiscuit
- *
- * @param <K>
- *            The type of keys for this Map
- * @param <V>
- *            The Type of values for this Maps
- */
 public class OptionalMap<K, V> implements Iterable<Map.Entry<K, V>>, Streamable<Entry<K, V>> {
     private final Map<K, V> internalMap;
 
-    /**
-     * An OptionalMap allows you to directly obtain Optionals from a Map.
-     * The Map implementation is up to you, you can pass in the constructor
-     * of any class that implements the Map interface.
-     * 
-     * <code>OptionalMap&gt;String, String&lt; map = new OptionalMap&gt;&lt;(HashMap::new);</code>
-     * 
-     * @param constructor
-     *            A Constructor reference to an existing Map implementation
-     */
     public OptionalMap(Supplier<? extends Map<K, V>> constructor) {
         internalMap = constructor.get();
 
@@ -57,34 +34,14 @@ public class OptionalMap<K, V> implements Iterable<Map.Entry<K, V>>, Streamable<
         return internalMap.size();
     }
 
-    /**
-     * This method returns whether our Map is empty.
-     * 
-     * @return Whether out Map is empty
-     */
     public boolean isEmpty() {
         return internalMap.isEmpty();
     }
 
-    /**
-     * This method gives you an {@link Optional} describing the value mapped to the given key.
-     * If no mapping was found then {@link Optional#empty()} will be returned.
-     * 
-     * @param key
-     *            The key to our Value
-     * @return An Optional describing the result, empty if no mapping was found
-     */
     public Optional<V> get(K key) {
         return Optional.ofNullable(internalMap.get(key));
     }
 
-    /**
-     * {@link OptionalMap#get(Object)} should be preferred.
-     * 
-     * @param key
-     *            The key to our Value
-     * @return Whether the key is present in our Map
-     */
     public boolean containsKey(K key) {
         return get(key).isPresent();
     }
@@ -181,5 +138,4 @@ public class OptionalMap<K, V> implements Iterable<Map.Entry<K, V>>, Streamable<
     public Map<K, V> getInternalMap() {
         return internalMap;
     }
-
 }
