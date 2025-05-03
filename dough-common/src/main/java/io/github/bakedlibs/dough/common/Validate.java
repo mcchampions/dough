@@ -23,30 +23,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-/**
- * <p>This class is modified from Apache's commons-lang3 package.
- * Removed default messages.</p>
- *
- * <p>This class assists in validating arguments. The validation methods are
- * based along the following principles:
- * <ul>
- *   <li>An invalid {@code null} argument causes a {@link NullPointerException}.</li>
- *   <li>A non-{@code null} argument causes an {@link IllegalArgumentException}.</li>
- *   <li>An invalid index into an array/collection/map/string causes an {@link IndexOutOfBoundsException}.</li>
- * </ul>
- *
- * <p>All exceptions messages are
- * <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html#syntax">format strings</a>
- * as defined by the Java platform. For example:</p>
- *
- * <pre>
- * Validate.isTrue(i &gt; 0, "The value must be greater than zero: %d", i);
- * Validate.notNull(surname, "The surname must not be %s", null);
- * </pre>
- *
- * <p>#ThreadSafe#</p>
- * @see java.lang.String#format(String, Object...)
- */
 @SuppressWarnings("unused")
 public class Validate {
     /**
@@ -170,9 +146,6 @@ public class Validate {
      */
     public static <T> T[] notEmpty(final T[] array, final String message, final Object... values) {
         Objects.requireNonNull(array, () -> String.format(message, values));
-        if (array.length == 0) {
-            throw new IllegalArgumentException(String.format(message, values));
-        }
         return array;
     }
 
