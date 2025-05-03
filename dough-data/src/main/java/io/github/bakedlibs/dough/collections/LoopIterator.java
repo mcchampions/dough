@@ -14,7 +14,7 @@ public class LoopIterator<T> implements Iterator<T>, Streamable<T> {
     private List<T> list;
     private int size;
 
-    private int index = 0;
+    private int index;
 
     /**
      * This will create a new instance of {@link LoopIterator} that operates on a copy of the given {@link Collection}

@@ -18,8 +18,8 @@ import java.util.stream.StreamSupport;
 public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
     private final Set<WeightedNode<T>> internalSet;
 
-    private int size = 0;
-    private float totalWeights = 0F;
+    private int size;
+    private float totalWeights;
 
     /**
      * This will initialize a new {@link RandomizedSet} with the internal Set

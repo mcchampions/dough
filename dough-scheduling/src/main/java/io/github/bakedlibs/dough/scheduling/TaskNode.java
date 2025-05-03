@@ -6,7 +6,7 @@ import java.util.function.IntConsumer;
 class TaskNode {
     private final IntConsumer runnable;
     private final boolean asynchronous;
-    private int delay = 0;
+    private int delay;
     private TaskNode nextNode;
 
     protected TaskNode(IntConsumer consumer, boolean async) {

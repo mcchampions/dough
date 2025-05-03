@@ -16,7 +16,7 @@ import me.ryanhamshire.GriefPrevention.GriefPrevention;
 
 public class GriefPreventionProtectionModule implements ProtectionModule {
     private GriefPrevention griefPrevention;
-    private boolean useClaimPermission = false;
+    private boolean useClaimPermission;
 
     private final Plugin plugin;
 

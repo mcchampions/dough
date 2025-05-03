@@ -29,7 +29,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 public class ItemMetaSnapshot {
     private static final Pattern PATTERN = Pattern.compile("§([A-Z])");
     @SuppressWarnings("OptionalAssignedToNull")
-    private Optional<String> displayName = null;
+    private Optional<String> displayName;
     private final Optional<Component> displayNameC;
     private final Optional<List<String>> lore;
     private final OptionalInt customModelData;
