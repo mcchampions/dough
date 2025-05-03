@@ -115,43 +115,13 @@ public class RecipeSnapshot {
     public static <T extends Recipe> RecipeChoice[] getRecipeInput(MinecraftRecipe<? super T> recipeType, T recipe) {
         return recipeType.getInputs(recipe);
     }
-
-    /**
-     * This method will return an Array of {@link RecipeChoice} representing
-     * the given Recipe's input choices.
-     * 
-     * This will perform a call to {@link MinecraftRecipe#of(Recipe)} to find
-     * the given Recipe's Recipe Type.
-     * It is advised to prefer the usage of {@link RecipeSnapshot#getRecipeInput(MinecraftRecipe, Recipe)}.
-     * 
-     * @param <T>
-     *            The Type of recipe
-     * @param recipe
-     *            The Recipe to get the inputs from
-     * 
-     * @return The Inputs for the given Recipe
-     */
+    
     public static <T extends Recipe> RecipeChoice[] getRecipeInput(T recipe) {
         Optional<MinecraftRecipe<? super T>> type = MinecraftRecipe.of(recipe);
 
         return type.map(minecraftRecipe -> getRecipeInput(minecraftRecipe, recipe)).orElseGet(() -> new RecipeChoice[0]);
     }
 
-    /**
-     * This method will return an {@link Optional} describing the output of a Recipe
-     * with the given type and given inputs.
-     * 
-     * If no matching recipe was found, an empty {@link Optional} will be returned.
-     * 
-     * @param <T>
-     *            The Type of recipe
-     * @param recipeType
-     *            The Recipe Type you are looking for
-     * @param inputs
-     *            The Inputs to the Recipe you are looking for
-     * 
-     * @return An {@link Optional} describing the output of the Recipe matching your type and inputs
-     */
     public <T extends Recipe> Optional<ItemStack> getRecipeOutput(MinecraftRecipe<T> recipeType, ItemStack... inputs) {
         if (recipeType.validate(inputs)) {
             return recipeType.getOutput(stream(recipeType.getRecipeClass()), inputs);
