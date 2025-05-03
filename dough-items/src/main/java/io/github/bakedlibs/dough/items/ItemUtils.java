@@ -113,7 +113,7 @@ public final class ItemUtils {
                 return false;
             }
 
-            if (aMeta.hasDisplayName() && !aMeta.getDisplayName().equals(bMeta.getDisplayName())) {
+            if (aMeta.hasDisplayName() && !aMeta.displayName().equals(bMeta.displayName())) {
                 return false;
             }
 
