@@ -15,26 +15,10 @@ import io.github.bakedlibs.dough.items.ItemUtils;
 public final class InvUtils {
     private InvUtils() {}
 
-    /**
-     * Returns whether the Inventory has at least one empty slot
-     * 
-     * @param inv
-     *            The Inventory to check
-     * 
-     * @return Whether an empty slot exists
-     */
     public static boolean hasEmptySlot(Inventory inv) {
         return inv.firstEmpty() != 1;
     }
 
-    /**
-     * This checks if the given {@link Inventory} is empty.
-     * 
-     * @param inv
-     *            The {@link Inventory} to check
-     * 
-     * @return Whether that {@link Inventory} is empty
-     */
     public static boolean isEmpty(Inventory inv) {
         // Sadly Inventory#isEmpty() is not available everywhere
 
@@ -47,36 +31,11 @@ public final class InvUtils {
         return true;
     }
 
-    /**
-     * This method checks both an ItemStack's and an Inventory's maxStackSize to determine
-     * if a given ItemStack can stack with another ItemStack in the given Inventory
-     * 
-     * @author kii-chan-reloaded
-     *
-     * @param stack
-     *            The ItemStack already in the inventory
-     * @param item
-     *            The ItemStack that shall be tested for
-     * @param inv
-     *            The Inventory these items are existing in
-     * 
-     * @return Whether the maxStackSizes allow for these items to stack
-     */
     public static boolean isValidStackSize(ItemStack stack, ItemStack item, Inventory inv) {
         int newStackSize = stack.getAmount() + item.getAmount();
         return newStackSize <= stack.getMaxStackSize() && newStackSize <= inv.getMaxStackSize();
     }
 
-    /**
-     * This checks if a given {@link InventoryType} accepts items of the given {@link Material}
-     * 
-     * @param itemType
-     *            The {@link Material} of the {@link ItemStack}
-     * @param inventoryType
-     *            The {@link InventoryType}
-     * 
-     * @return Whether the given {@link InventoryType} allows this {@link Material} to be stored within
-     */
     public static boolean isItemAllowed(Material itemType, InventoryType inventoryType) {
         return switch (inventoryType) {
             case LECTERN ->
@@ -89,21 +48,6 @@ public final class InvUtils {
         };
     }
 
-    /**
-     * This method checks if an Item can fit into the specified slots.
-     * Note that this also checks {@link ItemStack#getAmount()}
-     * 
-     * If you do not specify any Slots, all Slots of the Inventory will be checked.
-     *
-     * @param inv
-     *            The inventory to check
-     * @param item
-     *            The Item that shall be tested for
-     * @param slots
-     *            The Slots that shall be iterated over
-     * 
-     * @return Whether the slots have space for the {@link ItemStack}
-     */
     public static boolean fits(Inventory inv, ItemStack item, int... slots) {
         if (!isItemAllowed(item.getType(), inv.getType())) {
             return false;
@@ -128,21 +72,6 @@ public final class InvUtils {
         return false;
     }
 
-    /**
-     * This method works similar to {@link #fits(Inventory, ItemStack, int...)} but allows this check to be done for
-     * multiple {@link ItemStack ItemStacks}.
-     * 
-     * If you do not specify any Slots, all Slots of the Inventory will be checked.
-     *
-     * @param inv
-     *            The inventory to check
-     * @param items
-     *            The Items that shall be tested for
-     * @param slots
-     *            The Slots that shall be iterated over
-     * 
-     * @return Whether the slots have space for the given {@link ItemStack ItemStacks}
-     */
     public static boolean fitAll(Inventory inv, ItemStack[] items, int... slots) {
         if (slots.length == 0) {
             slots = IntStream.range(0, inv.getSize()).toArray();
@@ -185,20 +114,6 @@ public final class InvUtils {
         return true;
     }
 
-    /**
-     * This method removes a given amount of items from a given {@link Inventory}
-     * if they pass the given {@link Predicate}
-     * 
-     * @param inv
-     *            The {@link Inventory} from which to remove the item
-     * @param amount
-     *            The amount of items that should be removed
-     * @param replaceConsumables
-     *            Whether to replace consumables, e.g. turn potions into glass bottles etc...
-     * @param predicate
-     *            The Predicate that tests the item
-     * @return Whether the operation was successful
-     */
     public static boolean removeItem(Inventory inv, int amount, boolean replaceConsumables, Predicate<ItemStack> predicate) {
         int removed = 0;
         for (int slot = 0; slot < inv.getSize(); slot++) {
@@ -217,5 +132,4 @@ public final class InvUtils {
 
         return false;
     }
-
 }
