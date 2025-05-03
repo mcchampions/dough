@@ -55,7 +55,7 @@ public class Validate {
      */
     public static void isTrue(final boolean expression, final String message, final long value) {
         if (!expression) {
-            throw new IllegalArgumentException(String.format(message, Long.valueOf(value)));
+            throw new IllegalArgumentException(String.format(message, value));
         }
     }
 
@@ -79,7 +79,7 @@ public class Validate {
      */
     public static void isTrue(final boolean expression, final String message, final double value) {
         if (!expression) {
-            throw new IllegalArgumentException(String.format(message, Double.valueOf(value)));
+            throw new IllegalArgumentException(String.format(message, value));
         }
     }
 
@@ -290,7 +290,7 @@ public class Validate {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 final Object[] newValues = Arrays.copyOf(values, values.length + 1);
-                newValues[values.length] = Integer.valueOf(i);
+                newValues[values.length] = i;
                 throw new IllegalArgumentException(String.format(message, newValues));
             }
         }
@@ -328,7 +328,7 @@ public class Validate {
         for (final Iterator<?> it = iterable.iterator(); it.hasNext(); i++) {
             if (it.next() == null) {
                 final Object[] newValues = Arrays.copyOf(values, values.length + 1);
-                newValues[values.length] = Integer.valueOf(i);
+                newValues[values.length] = i;
                 throw new IllegalArgumentException(String.format(message, newValues));
             }
         }
