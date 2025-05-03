@@ -89,7 +89,7 @@ public class PlayerSkin {
             String targetUrl = "https://sessionserver.mojang.com/session/minecraft/profile/" + uuid.toString().replace("-", "") + "?unsigned=false";
 
             try (InputStreamReader reader = new InputStreamReader(new URL(targetUrl).openStream(), StandardCharsets.UTF_8)) {
-                JsonElement element = new JsonParser().parse(reader);
+                JsonElement element = JsonParser.parseReader(reader);
 
                 if (!(element instanceof JsonNull)) {
                     JsonObject obj = element.getAsJsonObject();
