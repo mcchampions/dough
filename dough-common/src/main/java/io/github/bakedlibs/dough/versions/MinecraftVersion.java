@@ -57,7 +57,7 @@ public class MinecraftVersion extends SemanticVersion {
 
         try {
             // Strip away the later "-R0.1-SNAPSHOT" part
-            String minecraftVersion = CommonPatterns.DASH.split(bukkitVersion)[0];
+            String minecraftVersion = bukkitVersion.split("-")[0];
 
             // Parse this like any other semantic version
             return new MinecraftVersion(SemanticVersion.parse(minecraftVersion));
