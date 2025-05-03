@@ -115,7 +115,7 @@ public class RecipeSnapshot {
     public static <T extends Recipe> RecipeChoice[] getRecipeInput(MinecraftRecipe<? super T> recipeType, T recipe) {
         return recipeType.getInputs(recipe);
     }
-    
+
     public static <T extends Recipe> RecipeChoice[] getRecipeInput(T recipe) {
         Optional<MinecraftRecipe<? super T>> type = MinecraftRecipe.of(recipe);
 
