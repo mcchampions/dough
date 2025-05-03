@@ -217,12 +217,12 @@ public final class ItemUtils {
     /**
      * This Method consumes a specified amount of items from the
      * specified slot.
-     * 
+     * <p>
      * The items will be removed from the slot, if the slot does not hold enough items,
      * it will be replaced with null.
      * Note that this does not check whether there are enough Items present,
      * if you specify a bigger amount than present, it will simply set the Item to null.
-     * 
+     * <p>
      * If replaceConsumables is true, the following things will not be replaced with 'null':
      * {@code Buckets -> new ItemStack(Material.BUCKET)}
      * {@code Potions -> new ItemStack(Material.GLASS_BOTTLE)}
