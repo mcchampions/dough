@@ -10,21 +10,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * This is an infite implementation of {@link Iterator}.
- * When you pass a {@link Collection} or {@link Streamable} to the constructor,
- * this instance will represent an {@link Iterator} which will iterate over the given
- * {@link Collection}, when the end of the {@link Collection} is reached, it will start again at the beginning.
- * This will create an infinite Stream of elements.
- * 
- * Note that this {@link LoopIterator} will create a copy of the given {@link Collection}
- * and not operate on the original.
- * 
- * @author TheBusyBiscuit
- *
- * @param <T>
- *            The Type of element stored in the given {@link Collection}
- */
 public class LoopIterator<T> implements Iterator<T>, Streamable<T> {
     private List<T> list;
     private int size;
