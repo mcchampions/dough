@@ -3,8 +3,6 @@ package io.github.bakedlibs.dough.versions;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 
-import io.github.bakedlibs.dough.common.CommonPatterns;
-
 /**
  * This is an extension of {@link SemanticVersion}, specifically designed
  * for Minecraft's versioning system.
