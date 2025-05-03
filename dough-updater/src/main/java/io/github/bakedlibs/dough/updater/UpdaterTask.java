@@ -9,7 +9,7 @@ import io.github.bakedlibs.dough.versions.Version;
 abstract class UpdaterTask<V extends Version> implements Runnable {
     UpdaterTask(PluginUpdater<V> updater, URL url) {}
 
-    public abstract UpdateInfo parse(String result) throws MalformedURLException, URISyntaxException;
+    public abstract UpdateInfo parse(String result);
 
     @Override
     public void run() {}

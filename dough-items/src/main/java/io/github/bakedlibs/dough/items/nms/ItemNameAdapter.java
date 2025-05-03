@@ -10,7 +10,7 @@ import io.github.bakedlibs.dough.common.DoughLogger;
 import io.github.bakedlibs.dough.versions.MinecraftVersion;
 
 public interface ItemNameAdapter {
-    String getName(ItemStack item) throws IllegalAccessException, InvocationTargetException;
+    String getName(ItemStack item);
 
     static ItemNameAdapter get() {
         try {

@@ -58,12 +58,8 @@ public final class PlayerHead {
     }
 
     public static void setSkin(Block block, PlayerSkin skin, boolean sendBlockUpdate) {
-        try {
-            GameProfile profile = skin.getProfile();
-            adapter.setGameProfile(block, profile, sendBlockUpdate);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        GameProfile profile = skin.getProfile();
+        adapter.setGameProfile(block, profile, sendBlockUpdate);
     }
 
 }

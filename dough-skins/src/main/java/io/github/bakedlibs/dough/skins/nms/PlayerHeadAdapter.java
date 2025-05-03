@@ -12,7 +12,7 @@ import io.github.bakedlibs.dough.common.DoughLogger;
 import io.github.bakedlibs.dough.versions.MinecraftVersion;
 
 public interface PlayerHeadAdapter {
-    void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws IllegalAccessException, InvocationTargetException, InstantiationException;
+    void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate);
 
     static PlayerHeadAdapter get() {
         try {
