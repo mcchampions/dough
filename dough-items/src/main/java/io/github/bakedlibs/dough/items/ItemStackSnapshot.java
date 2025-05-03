@@ -8,18 +8,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-/**
- * This {@link ItemStack}, which is <b>not intended for actual usage</b>, caches its {@link ItemMeta}.
- * This significantly speeds up any {@link ItemStack} comparisons a lot.
- * 
- * You cannot invoke {@link #equals(Object)}, {@link #hashCode()} or any of its setter on an
- * {@link ItemStackSnapshot}.<br>
- * Please be very careful when using this.
- * 
- * @author TheBusyBiscuit
- * @author md5sha256
- *
- */
 public final class ItemStackSnapshot extends ItemStack {
     private static final String ERROR_MESSAGE = "ItemStackSnapshots are immutable and not intended for actual usage.";
 
