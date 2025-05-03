@@ -20,7 +20,6 @@ import org.bukkit.plugin.Plugin;
 
 public class UUIDLookup {
     private static final Pattern UUID_PATTERN = Pattern.compile("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})");
-    private static final JsonParser JSON_PARSER = new JsonParser();
     private static final String ERROR_TOKEN = "error";
     private static final Pattern NAME_PATTERN = Pattern.compile("\\w{3,16}");
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
@@ -52,7 +51,7 @@ public class UUIDLookup {
 
         return HTTP_CLIENT.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
-                .thenApply(s -> JSON_PARSER.parse(s).getAsJsonObject())
+                .thenApply(s -> JsonParser.parseString(s).getAsJsonObject())
                 .thenApply(jsonObject -> {
                     if (jsonObject.get("success").getAsBoolean()) {
                         JsonObject data = jsonObject.getAsJsonObject("data");
@@ -85,7 +84,7 @@ public class UUIDLookup {
             String targetUrl = "https://api.mojang.com/users/profiles/minecraft/" + name;
 
             try (InputStreamReader reader = new InputStreamReader(new URL(targetUrl).openStream(), StandardCharsets.UTF_8)) {
-                JsonElement element = JSON_PARSER.parse(reader);
+                JsonElement element = JsonParser.parseReader(reader);
 
                 if (!(element instanceof JsonNull)) {
                     JsonObject obj = element.getAsJsonObject();
