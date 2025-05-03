@@ -15,21 +15,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-/**
- * This Class represents a collection of elements.
- * Each element is given a weight making the randomized selection
- * of elements weight-based.
- * 
- * This collection acts like a {@link Set}, it will not allow duplicates.
- * 
- * Use {@link RandomizedSet#getRandom()} to draw a random element from this Set.
- * You can also create Subsets of this collection via {@link RandomizedSet#getRandomSubset(int)}
- * 
- * @author TheBusyBiscuit
- *
- * @param <T>
- *            The Type of Element that is stored in this Set
- */
 public class RandomizedSet<T> implements Iterable<T>, Streamable<T> {
     private final Set<WeightedNode<T>> internalSet;
 
