@@ -34,7 +34,7 @@ public class FactionsUUIDProtectionModule implements ProtectionModule {
     public boolean hasPermission(OfflinePlayer p, Location l, Interaction action) {
         Faction faction = Board.getInstance().getFactionAt(new FLocation(l));
 
-        if (faction == null || faction.getId().equals("0")) {
+        if (faction == null || "0".equals(faction.getId())) {
             return true;
         } else {
             return faction.getId().equals(api.getByOfflinePlayer(p).getFaction().getId());

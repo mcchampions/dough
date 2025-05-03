@@ -103,7 +103,7 @@ public class PlayerSkin {
                     JsonArray properties = obj.get("properties").getAsJsonArray();
 
                     for (JsonElement el : properties) {
-                        if (el.isJsonObject() && el.getAsJsonObject().get("name").getAsString().equals("textures")) {
+                        if (el.isJsonObject() && "textures".equals(el.getAsJsonObject().get("name").getAsString())) {
                             String base64Texture = el.getAsJsonObject().get("value").getAsString();
                             PlayerSkin playerSkin = PlayerSkin.fromBase64(uuid, base64Texture);
 
