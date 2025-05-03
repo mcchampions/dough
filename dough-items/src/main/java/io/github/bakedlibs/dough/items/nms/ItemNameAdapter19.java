@@ -14,7 +14,6 @@ class ItemNameAdapter19 implements ItemNameAdapter {
     private final ReflectionGetterMethodFunction toString;
 
     ItemNameAdapter19() throws NoSuchMethodException, SecurityException, ClassNotFoundException, UnknownServerVersionException {
-        super();
 
         Method getCopy = ReflectionUtils.getOBCClass("inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class);
         // Spigot has changed the obf again for 1.19, so we have to adapt with it.

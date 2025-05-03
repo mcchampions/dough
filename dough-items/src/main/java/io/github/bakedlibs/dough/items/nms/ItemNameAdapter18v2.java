@@ -14,7 +14,6 @@ class ItemNameAdapter18v2 implements ItemNameAdapter {
     private final ReflectionGetterMethodFunction toString;
 
     ItemNameAdapter18v2() throws NoSuchMethodException, SecurityException, ClassNotFoundException, UnknownServerVersionException {
-        super();
 
         Method getCopy = ReflectionUtils.getOBCClass("inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class);
         // Spigot has changed the obf again for 1.18.2, so we have to adapt with it.

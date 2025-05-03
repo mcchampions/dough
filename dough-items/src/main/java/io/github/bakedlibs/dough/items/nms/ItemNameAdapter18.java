@@ -14,7 +14,6 @@ class ItemNameAdapter18 implements ItemNameAdapter {
     private final ReflectionGetterMethodFunction toString;
 
     ItemNameAdapter18() throws NoSuchMethodException, SecurityException, ClassNotFoundException, UnknownServerVersionException {
-        super();
 
         Method getCopy = ReflectionUtils.getOBCClass("inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class);
         // Spigot has re-obf'd names however you can get mapped jar... so we do this

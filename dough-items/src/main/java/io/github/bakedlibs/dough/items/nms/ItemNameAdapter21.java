@@ -14,7 +14,6 @@ public class ItemNameAdapter21 implements ItemNameAdapter {
     private final ReflectionGetterMethodFunction toString;
 
     ItemNameAdapter21() throws NoSuchMethodException, SecurityException, ClassNotFoundException, UnknownServerVersionException {
-        super();
 
         Method getCopy = ReflectionUtils.getOBCClass("inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class);
         Method getName = ReflectionUtils.getMethodOrAlternative(ReflectionUtils.getNetMinecraftClass("world.item.ItemStack"), "getDisplayName", "F");
