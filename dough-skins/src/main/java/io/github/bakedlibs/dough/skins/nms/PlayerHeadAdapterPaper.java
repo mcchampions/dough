@@ -26,6 +26,8 @@ public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
             getValue.setAccessible(true);
             getName.setAccessible(true);
             getSignature.setAccessible(true);
+        } else {
+            throw new RuntimeException();
         }
         this.getName = ReflectionUtils.createGetterFunction(getName);
         this.getValue = ReflectionUtils.createGetterFunction(getValue);
