@@ -14,9 +14,9 @@ import org.bukkit.block.Skull;
 import java.lang.reflect.Method;
 
 public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
-    private final ReflectionGetterMethodFunction getName;
-    private final ReflectionGetterMethodFunction getValue;
-    private final ReflectionGetterMethodFunction getSignature;
+    private ReflectionGetterMethodFunction getName;
+    private ReflectionGetterMethodFunction getValue;
+    private ReflectionGetterMethodFunction getSignature;
 
     PlayerHeadAdapterPaper() {
         Method getName = ReflectionUtils.getMethod(Property.class, "getName");
@@ -26,12 +26,10 @@ public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
             getValue.setAccessible(true);
             getName.setAccessible(true);
             getSignature.setAccessible(true);
-        } else {
-            throw new RuntimeException();
+            this.getName = ReflectionUtils.createGetterFunction(getName);
+            this.getValue = ReflectionUtils.createGetterFunction(getValue);
+            this.getSignature = ReflectionUtils.createGetterFunction(getSignature);
         }
-        this.getName = ReflectionUtils.createGetterFunction(getName);
-        this.getValue = ReflectionUtils.createGetterFunction(getValue);
-        this.getSignature = ReflectionUtils.createGetterFunction(getSignature);
     }
 
     @Override
