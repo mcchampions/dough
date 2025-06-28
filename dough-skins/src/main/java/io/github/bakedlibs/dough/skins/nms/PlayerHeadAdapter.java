@@ -1,29 +1,27 @@
 package io.github.bakedlibs.dough.skins.nms;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
-import io.papermc.lib.PaperLib;
-import org.bukkit.block.Block;
-
 import com.mojang.authlib.GameProfile;
-
 import io.github.bakedlibs.dough.common.DoughLogger;
 import io.github.bakedlibs.dough.versions.MinecraftVersion;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+import org.bukkit.block.Block;
 
 public interface PlayerHeadAdapter {
 
     @ParametersAreNonnullByDefault
     void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws IllegalAccessException, InvocationTargetException, InstantiationException;
 
-    public static @Nullable PlayerHeadAdapter get() {
+    static @Nullable PlayerHeadAdapter get() {
         try {
             MinecraftVersion version = MinecraftVersion.get();
 
-            if (version.isAtLeast(1, 20, 5)) {
+            if (version.isAtLeast(1, 21, 6)) {
+                // 1.21.6 mappings
+                return new PlayerHeadAdapter21v6();
+            } else if (version.isAtLeast(1, 20, 5)) {
                 // 1.20.5 mappings
                 return new PlayerHeadAdapter20v5();
             } else if (version.isAtLeast(1, 18)) {
