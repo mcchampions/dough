@@ -29,7 +29,7 @@ class PlayerHeadAdapter21v6 implements PlayerHeadAdapter {
         Class<?> blockPosition = ReflectionUtils.getNetMinecraftClass("core.BlockPosition");
         newPosition = ReflectionUtils.getConstructor(blockPosition, int.class, int.class, int.class);
 
-        getTileEntity = ReflectionUtils.getNMSClass("level.World").getMethod("getBlockEntity", blockPosition);
+        getTileEntity = ReflectionUtils.getNMSClass("level.WorldServer").getMethod("getBlockEntity", blockPosition);
     }
 
     @ParametersAreNonnullByDefault
