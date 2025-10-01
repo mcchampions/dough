@@ -1,7 +1,6 @@
 package io.github.bakedlibs.dough.protection.modules;
 
 import cn.lunadeer.dominion.api.DominionAPI;
-import cn.lunadeer.dominion.api.dtos.DominionDTO;
 import cn.lunadeer.dominion.api.dtos.flag.EnvFlag;
 import cn.lunadeer.dominion.api.dtos.flag.Flag;
 import cn.lunadeer.dominion.api.dtos.flag.Flags;
@@ -69,16 +68,12 @@ public class DominionProtectionModule implements ProtectionModule {
         if (flag == null) {
             return true;
         }
-        DominionDTO dominion = api.getDominion(l);
-        if (dominion == null) {
-            return true;
-        }
         if (flag instanceof PriFlag) {
             PriFlag preFlag = (PriFlag) flag;
-            return api.checkPrivilegeFlag(dominion, preFlag, player);
+            return api.checkPrivilegeFlag(l, preFlag, player);
         } else {
             EnvFlag envFlag = (EnvFlag) flag;
-            return api.checkEnvironmentFlag(dominion, envFlag);
+            return api.checkEnvironmentFlag(l, envFlag);
         }
     }
 
