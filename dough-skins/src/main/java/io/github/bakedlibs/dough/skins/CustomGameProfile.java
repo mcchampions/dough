@@ -18,7 +18,7 @@ import io.github.bakedlibs.dough.versions.UnknownServerVersionException;
 import org.bukkit.profile.PlayerProfile;
 import org.bukkit.profile.PlayerTextures;
 
-public final class CustomGameProfile extends GameProfile {
+public final class CustomGameProfile {
 
     /**
      * The player name for this profile.
@@ -31,35 +31,30 @@ public final class CustomGameProfile extends GameProfile {
      */
     private static final String PROPERTY_KEY = "textures";
 
-    private final URL skinUrl;
-    private final String texture;
-
-    CustomGameProfile(@Nonnull UUID uuid, @Nullable String texture, @Nonnull URL url) {
-        super(uuid, PLAYER_NAME);
-        this.skinUrl = url;
-        this.texture = texture;
-
-        if (texture != null) {
-            getProperties().put(PROPERTY_KEY, new Property(PROPERTY_KEY, texture));
+    public static GameProfile create(@Nonnull UUID uuid, @Nullable String texture){
+        GameProfile profile = new GameProfile(uuid, PLAYER_NAME);
+        if(texture != null){
+            profile.getProperties().put(PROPERTY_KEY, new Property(PROPERTY_KEY, texture));
         }
+        return profile;
     }
 
-    void apply(@Nonnull SkullMeta meta) throws NoSuchFieldException, IllegalAccessException, UnknownServerVersionException {
+    public static void apply(GameProfile profile, @Nonnull SkullMeta meta, URL skinUrl) throws NoSuchFieldException, IllegalAccessException, UnknownServerVersionException {
         // setOwnerProfile was added in 1.18, but getOwningPlayer throws a NullPointerException since 1.20.2
         if (MinecraftVersion.get().isAtLeast(MinecraftVersion.parse("1.20"))) {
-            PlayerProfile playerProfile = Bukkit.createPlayerProfile(this.getId(), PLAYER_NAME);
+            PlayerProfile playerProfile = Bukkit.createPlayerProfile(profile.getId(), PLAYER_NAME);
             PlayerTextures playerTextures = playerProfile.getTextures();
-            playerTextures.setSkin(this.skinUrl);
+            playerTextures.setSkin(skinUrl);
             playerProfile.setTextures(playerTextures);
             meta.setOwnerProfile(playerProfile);
         } else {
             // Forces SkullMeta to properly deserialize and serialize the profile
-            ReflectionUtils.setFieldValue(meta, "profile", this);
+            ReflectionUtils.setFieldValue(meta, "profile", profile);
 
             meta.setOwningPlayer(meta.getOwningPlayer());
 
             // Now override the texture again
-            ReflectionUtils.setFieldValue(meta, "profile", this);
+            ReflectionUtils.setFieldValue(meta, "profile", profile);
         }
 
     }
@@ -70,7 +65,11 @@ public final class CustomGameProfile extends GameProfile {
      * @return the base64 encoded texture.
      */
     @Nullable
-    public String getBase64Texture() {
-        return this.texture;
+    public static String getBase64Texture(GameProfile profile) {
+        Property property = profile.getProperties().get(PROPERTY_KEY).stream().filter(p -> PROPERTY_KEY.equals( p.name())).findAny().orElse(null);
+        if(property != null){
+            return property.value();
+        }
+        return null;
     }
 }
