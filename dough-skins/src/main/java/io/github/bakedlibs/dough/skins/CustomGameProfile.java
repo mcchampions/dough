@@ -40,22 +40,22 @@ public final class CustomGameProfile {
     public static GameProfile create(@Nonnull UUID uuid, @Nullable String texture) {
 
         if (texture != null) {
-            if(gameProfileConstructor == null){
+            if (gameProfileConstructor == null) {
                 GameProfile profile = new GameProfile(uuid, PLAYER_NAME);
                 PropertyMap map = getProperties(profile);
                 map.put(PROPERTY_KEY, new Property(PROPERTY_KEY, texture));
                 return profile;
-            }else {
+            } else {
                 Multimap<String, Property> propertyMultimap = LinkedHashMultimap.create();
                 propertyMultimap.put(PROPERTY_KEY, new Property(PROPERTY_KEY, texture));
-                try{
+                try {
                     PropertyMap map1 = propertyMapConstructor.newInstance(propertyMultimap);
                     return gameProfileConstructor.newInstance(uuid, PLAYER_NAME, map1);
-                }catch (Throwable e){
+                } catch (Throwable e) {
                     throw new RuntimeException(e);
                 }
             }
-        }else{
+        } else {
             return new GameProfile(uuid, PLAYER_NAME);
         }
     }
@@ -65,6 +65,7 @@ public final class CustomGameProfile {
     private static final Field nameField;
     private static final Constructor<PropertyMap> propertyMapConstructor;
     private static final Constructor<GameProfile> gameProfileConstructor;
+
     static {
         try {
             propertiesField = GameProfile.class.getDeclaredField("properties");
@@ -76,7 +77,7 @@ public final class CustomGameProfile {
             propertyMapConstructor = (Constructor<PropertyMap>) PropertyMap.class.getConstructors()[0];
             propertyMapConstructor.setAccessible(true);
             gameProfileConstructor = (Constructor<GameProfile>) Arrays.stream(GameProfile.class.getDeclaredConstructors()).filter(c -> c.getParameterCount() == 3).findAny().orElse(null);
-            if(gameProfileConstructor != null){
+            if (gameProfileConstructor != null) {
                 gameProfileConstructor.setAccessible(true);
             }
         } catch (Throwable e) {
