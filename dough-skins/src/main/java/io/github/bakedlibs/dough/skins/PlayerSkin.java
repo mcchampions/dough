@@ -15,6 +15,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import com.mojang.authlib.GameProfile;
 import org.bukkit.plugin.Plugin;
 
 import com.google.gson.JsonArray;
@@ -29,14 +30,20 @@ public class PlayerSkin {
 
     private static final String ERROR_TOKEN = "error";
 
-    private final CustomGameProfile profile;
+    private final GameProfile profile;
+    private final URL skinUrl;
 
     PlayerSkin(@Nonnull UUID uuid, @Nullable String base64skinTexture, @Nonnull URL url) {
-        this.profile = new CustomGameProfile(uuid, base64skinTexture, url);
+        this.profile = CustomGameProfile.create(uuid, base64skinTexture);
+        this.skinUrl = url;
     }
 
-    public final @Nonnull CustomGameProfile getProfile() {
+    public final @Nonnull GameProfile getProfile() {
         return profile;
+    }
+
+    public final @Nullable URL getSkinUrl(){
+        return skinUrl;
     }
     
     @ParametersAreNonnullByDefault

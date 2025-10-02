@@ -8,6 +8,8 @@ import io.github.bakedlibs.dough.reflection.ReflectionUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import io.github.bakedlibs.dough.skins.CustomGameProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -32,9 +34,9 @@ public class PlayerHeadAdapterPaper implements PlayerHeadAdapter {
 
         Skull skull = (Skull) state;
 
-        Property property = profile.getProperties().get("textures").iterator().next();
+        Property property = CustomGameProfile.getProperties(profile).get("textures").iterator().next();
 
-        PlayerProfile paperPlayerProfile = Bukkit.createProfile(profile.getId(), profile.getName());
+        PlayerProfile paperPlayerProfile = Bukkit.createProfile(CustomGameProfile.getId(profile), CustomGameProfile.getName(profile));
 
         // Old authlib check
         if (getName != null && getValue != null && getSignature != null) {

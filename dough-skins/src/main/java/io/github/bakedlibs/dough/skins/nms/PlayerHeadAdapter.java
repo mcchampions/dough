@@ -3,10 +3,12 @@ package io.github.bakedlibs.dough.skins.nms;
 import com.mojang.authlib.GameProfile;
 import io.github.bakedlibs.dough.common.DoughLogger;
 import io.github.bakedlibs.dough.versions.MinecraftVersion;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.bukkit.block.Block;
 
 public interface PlayerHeadAdapter {
@@ -17,10 +19,14 @@ public interface PlayerHeadAdapter {
     static @Nullable PlayerHeadAdapter get() {
         try {
             MinecraftVersion version = MinecraftVersion.get();
-
-            if (version.isAtLeast(1, 21, 6)) {
-                // 1.21.6 mappings
-                return new PlayerHeadAdapter21v6();
+//
+//            if (version.isAtLeast(1, 21, 6)) {
+//                // 1.21.6 mappings
+//                return new PlayerHeadAdapter21v6();
+//            } else
+            if (version.isAtLeast(1, 21, 1)) {
+                // modern paper without mappings
+                return new PlayerHeadAdapterPaperModern();
             } else if (version.isAtLeast(1, 20, 5)) {
                 // 1.20.5 mappings
                 return new PlayerHeadAdapter20v5();
