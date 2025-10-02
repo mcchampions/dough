@@ -41,6 +41,6 @@ jobs:
 
     - name: Publish dough
       if: github.event_name != 'pull_request'
-      run: mvn -s .mvn/settings.xml -B deploy --file pom.xml --errors
+      run: mvn -s .mvn/settings.xml -B deploy --file pom.xml -Denv.MAVEN_ACCOUNT=${{ vars.MAVEN_ACCOUNT }} -Denv.MAVEN_PASSWORD=${{ secrets.MAVEN_PASSWORD }} --errors
       env:
         GITHUB_TOKEN: ${{ github.token }}
