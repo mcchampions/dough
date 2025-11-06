@@ -10,6 +10,7 @@ import java.util.Base64;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+import com.mojang.authlib.GameProfile;
 import org.bukkit.plugin.Plugin;
 
 import com.google.gson.JsonArray;
@@ -21,14 +22,20 @@ import com.google.gson.JsonParser;
 public class PlayerSkin {
     private static final String ERROR_TOKEN = "error";
 
-    private final CustomGameProfile profile;
+    private final GameProfile profile;
+    private final URL skinUrl;
 
     PlayerSkin(UUID uuid, String base64skinTexture, URL url) {
-        this.profile = new CustomGameProfile(uuid, base64skinTexture, url);
+        this.profile = CustomGameProfile.create(uuid, base64skinTexture);
+        this.skinUrl = url;
     }
 
-    public final CustomGameProfile getProfile() {
+    public final GameProfile getProfile() {
         return profile;
+    }
+
+    public final URL getSkinUrl(){
+        return skinUrl;
     }
     
     public static PlayerSkin fromBase64(UUID uuid, String base64skinTexture, URL url) {

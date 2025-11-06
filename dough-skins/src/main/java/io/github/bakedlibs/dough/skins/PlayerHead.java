@@ -42,7 +42,7 @@ public final class PlayerHead {
     public static ItemStack getItemStack(PlayerSkin skin) {
         return getItemStack(meta -> {
             try {
-                skin.getProfile().apply(meta);
+                CustomGameProfile.apply(skin.getProfile(), meta, skin.getSkinUrl());
             } catch (NoSuchFieldException | IllegalAccessException | UnknownServerVersionException e) {
                 e.printStackTrace();
             }
