@@ -1,5 +1,6 @@
 package io.github.bakedlibs.dough.skins;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.function.Consumer;
 
 import org.bukkit.Material;
@@ -56,7 +57,7 @@ public final class PlayerHead {
         return item;
     }
 
-    public static void setSkin(Block block, PlayerSkin skin, boolean sendBlockUpdate) {
+    public static void setSkin(Block block, PlayerSkin skin, boolean sendBlockUpdate) throws InvocationTargetException, InstantiationException, IllegalAccessException {
         GameProfile profile = skin.getProfile();
         adapter.setGameProfile(block, profile, sendBlockUpdate);
     }

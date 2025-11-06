@@ -1,7 +1,5 @@
 package io.github.bakedlibs.dough.updater;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 import io.github.bakedlibs.dough.versions.Version;

@@ -1,6 +1,5 @@
 package io.github.bakedlibs.dough.items.nms;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 
 import io.papermc.lib.PaperLib;
