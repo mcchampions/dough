@@ -1,6 +1,5 @@
 package io.github.bakedlibs.dough.skins;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.function.Consumer;
 
 import org.bukkit.Material;

@@ -3,13 +3,10 @@ package io.github.bakedlibs.dough.skins.nms;
 import com.destroystokyo.paper.profile.PlayerProfile;
 import com.mojang.authlib.GameProfile;
 import io.github.bakedlibs.dough.reflection.ReflectionUtils;
-import io.github.bakedlibs.dough.versions.UnknownServerVersionException;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Ref;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.block.Block;
@@ -36,10 +33,9 @@ class PlayerHeadAdapterPaperModern implements PlayerHeadAdapter {
 
     @Override
     @ParametersAreNonnullByDefault
-    public void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+    public void setGameProfile(Block block, GameProfile profile, boolean sendBlockUpdate) throws InvocationTargetException, InstantiationException, IllegalAccessException {
         BlockState state = block.getState(false);
-        if (state instanceof Skull) {
-            Skull skull = (Skull) state;
+        if (state instanceof Skull skull) {
             skull.setPlayerProfile(newCraftPlayerProfile.newInstance(profile));
             if (sendBlockUpdate) {
                 skull.update(true, false);
