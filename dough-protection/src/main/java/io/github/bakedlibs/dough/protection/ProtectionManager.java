@@ -19,6 +19,7 @@ import io.github.bakedlibs.dough.protection.modules.BentoBoxProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.BlockLockerProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.BoltProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.ChestProtectProtectionModule;
+import io.github.bakedlibs.dough.protection.modules.DominionProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.FactionsUUIDProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.FunnyGuildsProtectionModule;
 import io.github.bakedlibs.dough.protection.modules.GriefPreventionProtectionModule;
