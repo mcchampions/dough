@@ -3,6 +3,7 @@ package io.github.bakedlibs.dough.versions;
 import java.util.stream.Stream;
 import javax.annotation.Nonnull;
 import org.bukkit.Server;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -24,7 +25,7 @@ class TestMinecraftVersion {
         SemanticVersion expected = new SemanticVersion(major, minor, patch);
 
         assertEquals(expected, version);
-        assertTrue(version.getAsString().startsWith("Minecraft"));
+        Assertions.assertTrue(version.getAsString().startsWith("Minecraft"));
     }
 
     private static @Nonnull Stream<Arguments> getValidVersions() {
@@ -65,7 +66,7 @@ class TestMinecraftVersion {
         SemanticVersion expected = new SemanticVersion(major, minor, patch);
 
         assertEquals(expected, version);
-        assertTrue(version.getAsString().startsWith("Minecraft"));
+        Assertions.assertTrue(version.getAsString().startsWith("Minecraft"));
     }
 
     private static @Nonnull Stream<Arguments> getValidMinecraftVersions() {
