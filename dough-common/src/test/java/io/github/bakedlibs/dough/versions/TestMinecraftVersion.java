@@ -1,18 +1,14 @@
 package io.github.bakedlibs.dough.versions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.stream.Stream;
-
 import javax.annotation.Nonnull;
-
 import org.bukkit.Server;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TestMinecraftVersion {
 
@@ -20,6 +16,8 @@ class TestMinecraftVersion {
     @MethodSource("getValidVersions")
     void testParser(@Nonnull String serverVersion, int major, int minor, int patch) throws UnknownServerVersionException {
         Server server = Mockito.mock(Server.class);
+        // getMinecraftVersion() returns null on a plain mock, causing the primary path to
+        // fall through to the legacy getBukkitVersion() path — which is what we test here.
         Mockito.when(server.getBukkitVersion()).thenReturn(serverVersion);
 
         MinecraftVersion version = MinecraftVersion.of(server);
@@ -48,6 +46,37 @@ class TestMinecraftVersion {
             Arguments.of("1.15-R0.1-SNAPSHOT",      1, 15, 0),
             Arguments.of("1.16.5-R0.1-SNAPSHOT",    1, 16, 5),
             Arguments.of("1.17-R0.1-SNAPSHOT",      1, 17, 0)
+        );
+        // @formatter:on
+    }
+
+    /**
+     * Tests the primary {@code getMinecraftVersion()} path, which is used for year-based
+     * versioning (Minecraft 26.1+) where {@code getBukkitVersion()} may contain extra
+     * build metadata that cannot be parsed as a semantic version.
+     */
+    @ParameterizedTest
+    @MethodSource("getValidMinecraftVersions")
+    void testParserViaGetMinecraftVersion(@Nonnull String minecraftVersion, int major, int minor, int patch) throws UnknownServerVersionException {
+        Server server = Mockito.mock(Server.class);
+        Mockito.when(server.getMinecraftVersion()).thenReturn(minecraftVersion);
+
+        MinecraftVersion version = MinecraftVersion.of(server);
+        SemanticVersion expected = new SemanticVersion(major, minor, patch);
+
+        assertEquals(expected, version);
+        assertTrue(version.getAsString().startsWith("Minecraft"));
+    }
+
+    private static @Nonnull Stream<Arguments> getValidMinecraftVersions() {
+        // @formatter:off
+        return Stream.of(
+            // Year-based versioning introduced in Minecraft 26.1
+            Arguments.of("26.1",   26, 1, 0),
+            Arguments.of("26.1.1", 26, 1, 1),
+            // Traditional versioning also works via this path
+            Arguments.of("1.21.4", 1, 21, 4),
+            Arguments.of("1.21",   1, 21, 0)
         );
         // @formatter:on
     }

@@ -1,12 +1,10 @@
 package io.github.bakedlibs.dough.versions;
 
+import io.github.bakedlibs.dough.common.CommonPatterns;
 import javax.annotation.Nonnull;
-
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
-
-import io.github.bakedlibs.dough.common.CommonPatterns;
 
 /**
  * This is an extension of {@link SemanticVersion}, specifically designed
@@ -58,8 +56,19 @@ public class MinecraftVersion extends SemanticVersion {
      */
     public static @Nonnull MinecraftVersion of(@Nonnull Server server) throws UnknownServerVersionException {
         Validate.notNull(server, "Server should not be null!");
-        String bukkitVersion = server.getBukkitVersion();
 
+        // Try the clean API first: returns the pure game version string (e.g. "1.21.4" or "26.1.1"),
+        // without any build metadata or snapshot suffix. Available since Bukkit 1.13+.
+        try {
+            String minecraftVersion = server.getMinecraftVersion();
+            return new MinecraftVersion(SemanticVersion.parse(minecraftVersion));
+        } catch (Exception ignored) {
+            // Fall through to the legacy getBukkitVersion() path below.
+        }
+
+        // Legacy fallback: parse getBukkitVersion() (e.g. "1.16.5-R0.1-SNAPSHOT")
+        // by stripping the trailing "-R0.x-SNAPSHOT" build suffix.
+        String bukkitVersion = server.getBukkitVersion();
         try {
             // Strip away the later "-R0.1-SNAPSHOT" part
             String minecraftVersion = CommonPatterns.DASH.split(bukkitVersion)[0];
