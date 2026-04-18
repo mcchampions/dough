@@ -51,7 +51,18 @@ public class MinecraftVersion extends SemanticVersion {
      *             This exception is thrown when the {@link Server} version could not be identified
      */
     public static MinecraftVersion of(Server server) throws UnknownServerVersionException {
-                String bukkitVersion = server.getBukkitVersion();
+        // Try the clean API first: returns the pure game version string (e.g. "1.21.4" or "26.1.1"),
+        // without any build metadata or snapshot suffix. Available since Bukkit 1.13+.
+        try {
+            String minecraftVersion = server.getMinecraftVersion();
+            return new MinecraftVersion(SemanticVersion.parse(minecraftVersion));
+        } catch (Exception ignored) {
+            // Fall through to the legacy getBukkitVersion() path below.
+        }
+
+        // Legacy fallback: parse getBukkitVersion() (e.g. "1.16.5-R0.1-SNAPSHOT")
+        // by stripping the trailing "-R0.x-SNAPSHOT" build suffix.
+        String bukkitVersion = server.getBukkitVersion();
 
         try {
             // Strip away the later "-R0.1-SNAPSHOT" part
