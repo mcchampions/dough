@@ -2,6 +2,7 @@ package io.github.bakedlibs.dough.skins;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.UUID;
@@ -65,6 +66,8 @@ public final class CustomGameProfile {
     private static final Field nameField;
     private static final Constructor<PropertyMap> propertyMapConstructor;
     private static final Constructor<GameProfile> gameProfileConstructor;
+    private static final Method propertyGetName;
+    private static final Method propertyGetValue;
 
     static {
         try {
@@ -80,6 +83,8 @@ public final class CustomGameProfile {
             if (gameProfileConstructor != null) {
                 gameProfileConstructor.setAccessible(true);
             }
+            propertyGetName = ReflectionUtils.getMethod(Property.class, "getName");
+            propertyGetValue = ReflectionUtils.getMethod(Property.class, "getValue");
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -169,9 +174,27 @@ public final class CustomGameProfile {
      */
     @Nullable
     public static String getBase64Texture(GameProfile profile) {
-        Property property = getProperties(profile).get(PROPERTY_KEY).stream().filter(p -> PROPERTY_KEY.equals(p.name())).findAny().orElse(null);
+        Property property = getProperties(profile).get(PROPERTY_KEY).stream().filter(p -> {
+            try {
+                if (propertyGetName != null) {
+                    return PROPERTY_KEY.equals(propertyGetName.invoke(p));
+                } else {
+                    return PROPERTY_KEY.equals(p.name());
+                }
+            } catch (Exception e) {
+                return false;
+            }
+        }).findAny().orElse(null);
         if (property != null) {
-            return property.value();
+            try {
+                if (propertyGetValue != null) {
+                    return (String) propertyGetValue.invoke(property);
+                } else {
+                    return property.value();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         return null;
     }
